@@ -36,7 +36,14 @@ export class BotService implements OnModuleInit {
 
         await bot.sendMessage(chatId, 'Я живой!', {
           reply_markup: {
-            keyboard: [[{ text: `Заполни форму ${userId}` }]],
+            inline_keyboard: [
+              [
+                {
+                  text: `Заполни форму ${userId}`,
+                  url: 'https://my-monster-client.vercel.app',
+                },
+              ],
+            ],
           },
         });
       }
