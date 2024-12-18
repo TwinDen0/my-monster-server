@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "generated/client"
 }
 
 datasource db {
@@ -7,11 +8,80 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id         Int    @id @default(autoincrement())
-  telegramId String
-  username   String
-  fullName   String
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  telegramId String @map("telegram_id")
+  username   String @unique
+  fullName   String @map("full_name")
   reputation Int    @default(0)
-  userAvatar String
+  userAvatar String @map("user_avatar")
+
+  collection Collection[]
+
+  @@map("user")
+}
+
+model TypeMonster {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  name    String
+  element EnumTypeElement
+
+  description String
+
+  monsters Monster[]
+
+  @@map("type_monster")
+}
+
+model Monster {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  type   TypeMonster? @relation(fields: [typeId], references: [id])
+  typeId String?      @map("leader_id")
+
+  subtypeName String @map("subtype_name")
+  img         String
+  stageEvo    Int    @default(0) @map("stage_evo")
+  branchEvo   Int    @default(0) @map("branch_evo")
+  starts      Int
+  hunger      Int
+
+  collection Collection[]
+
+  @@map("monster")
+}
+
+model Collection {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  leader   User?   @relation(fields: [leaderId], references: [id])
+  leaderId String? @map("leader_id")
+
+  monster   Monster? @relation(fields: [monsterId], references: [id])
+  monsterId String?  @map("monster_id")
+
+  @@map("collection")
+}
+
+enum EnumTypeElement {
+  FIRE
+  WATER
+  GROUND
+  ICE
+  ELECTRIC
+  AIR
+  DARK
+  GRASS
+  LIGHT
+  NEUTRAL
 }

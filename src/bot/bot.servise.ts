@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { Prisma, Users } from '@prisma/client';
+import { Prisma, User } from 'prisma/generated/client';
 import { PrismaService } from 'src/prisma.service';
 import TelegramBot = require('node-telegram-bot-api');
 
@@ -58,20 +58,20 @@ export class BotService implements OnModuleInit {
     });
   }
 
-  async createUser(data: Prisma.UsersCreateInput): Promise<void> {
-    await this.prisma.users.create({
+  async createUser(data: Prisma.UserCreateInput): Promise<void> {
+    await this.prisma.user.create({
       data,
     });
   }
 
-  async getUser(telegramId: string): Promise<Users> {
-    return await this.prisma.users.findFirst({
+  async getUser(telegramId: string): Promise<User> {
+    return await this.prisma.user.findFirst({
       where: { telegramId },
     });
   }
 
-  async getAllUsers(): Promise<Users[]> {
-    return await this.prisma.users.findMany();
+  async getAllUsers(): Promise<User[]> {
+    return await this.prisma.user.findMany();
   }
 
   async getUserAvatarUrl(userId: number, bot: TelegramBot) {
