@@ -185,6 +185,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -202,6 +206,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -210,8 +215,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  telegramId String @map(\"telegram_id\")\n  username   String @unique\n  fullName   String @map(\"full_name\")\n  reputation Int    @default(0)\n  userAvatar String @map(\"user_avatar\")\n\n  collection Collection[]\n\n  @@map(\"user\")\n}\n\nmodel TypeMonster {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  name    String\n  element EnumTypeElement\n\n  description String\n\n  monsters Monster[]\n\n  @@map(\"type_monster\")\n}\n\nmodel Monster {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  type   TypeMonster? @relation(fields: [typeId], references: [id])\n  typeId String?      @map(\"leader_id\")\n\n  subtypeName String @map(\"subtype_name\")\n  img         String\n  stageEvo    Int    @default(0) @map(\"stage_evo\")\n  branchEvo   Int    @default(0) @map(\"branch_evo\")\n  starts      Int\n  hunger      Int\n\n  collection Collection[]\n\n  @@map(\"monster\")\n}\n\nmodel Collection {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  leader   User?   @relation(fields: [leaderId], references: [id])\n  leaderId String? @map(\"leader_id\")\n\n  monster   Monster? @relation(fields: [monsterId], references: [id])\n  monsterId String?  @map(\"monster_id\")\n\n  @@map(\"collection\")\n}\n\nenum EnumTypeElement {\n  FIRE\n  WATER\n  GROUND\n  ICE\n  ELECTRIC\n  AIR\n  DARK\n  GRASS\n  LIGHT\n  NEUTRAL\n}\n",
-  "inlineSchemaHash": "00e79cf8143a5a401ce0a12c4668520750115cb4b9e10b9158e9b17d3b99bfbb",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"generated/client\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  telegramId String @map(\"telegram_id\")\n  username   String @unique\n  fullName   String @map(\"full_name\")\n  reputation Int    @default(0)\n  userAvatar String @map(\"user_avatar\")\n\n  collection Collection[]\n\n  @@map(\"user\")\n}\n\nmodel TypeMonster {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  name    String\n  element EnumTypeElement\n\n  description String\n\n  monsters Monster[]\n\n  @@map(\"type_monster\")\n}\n\nmodel Monster {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  type   TypeMonster? @relation(fields: [typeId], references: [id])\n  typeId String?      @map(\"leader_id\")\n\n  subtypeName String @map(\"subtype_name\")\n  img         String\n  stageEvo    Int    @default(0) @map(\"stage_evo\")\n  branchEvo   Int    @default(0) @map(\"branch_evo\")\n  starts      Int\n  hunger      Int\n\n  collection Collection[]\n\n  @@map(\"monster\")\n}\n\nmodel Collection {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updateAt  DateTime @updatedAt @map(\"updated_at\")\n\n  leader   User?   @relation(fields: [leaderId], references: [id])\n  leaderId String? @map(\"leader_id\")\n\n  monster   Monster? @relation(fields: [monsterId], references: [id])\n  monsterId String?  @map(\"monster_id\")\n\n  @@map(\"collection\")\n}\n\nenum EnumTypeElement {\n  FIRE\n  WATER\n  GROUND\n  ICE\n  ELECTRIC\n  AIR\n  DARK\n  GRASS\n  LIGHT\n  NEUTRAL\n}\n",
+  "inlineSchemaHash": "61253fcf0637c89016dad75be8f17cc369eac690e67c991057464243cc52ea43",
   "copyEngine": true
 }
 
@@ -251,6 +256,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "prisma/generated/client/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "prisma/generated/client/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/generated/client/schema.prisma")
