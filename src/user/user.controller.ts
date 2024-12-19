@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { UserService } from './user.service';
 
@@ -6,10 +6,10 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
+  @Get('/:username')
   @ApiOperation({ summary: 'Получить профиль пользователя' })
-  async statistics(@Query('user') username?: string) {
+  async statistics(@Param() params: { username: string }) {
     console.log('Получаю профиль пользователя!!');
-    return this.userService.getByUsername(username);
+    return this.userService.getByUsername(params.username);
   }
 }

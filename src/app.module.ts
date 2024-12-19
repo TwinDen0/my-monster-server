@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
-import { BotService } from './bot/bot.servise';
+import { TelegrafModule } from 'nestjs-telegraf';
+import { AppService } from './app.service';
+import { AppUpdate } from './app.update';
 import { PrismaService } from './prisma.service';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [UserModule],
-  providers: [BotService, PrismaService],
+  imports: [
+    UserModule,
+    TelegrafModule.forRoot({
+      token: process.env.BOT_API_TOKEN,
+    }),
+  ],
+  providers: [AppUpdate, AppService, PrismaService],
 })
 export class AppModule {}
