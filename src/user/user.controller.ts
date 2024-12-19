@@ -9,6 +9,7 @@ export class UserController {
   @Get()
   @ApiOperation({ summary: 'Получить профиль пользователя' })
   async statistics(@Query('user') username?: string) {
+    console.log('Получаю профиль пользователя!!');
     return this.userService.getByUsername(username);
   }
 }

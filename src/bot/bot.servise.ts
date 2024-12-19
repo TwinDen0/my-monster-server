@@ -12,6 +12,7 @@ export class BotService implements OnModuleInit {
   }
 
   async botMessage() {
+    console.log('ПРИШЛО СООБЩЕНИЕ БОТУ!');
     const bot = new TelegramBot(process.env.BOT_API_TOKEN, { polling: true });
 
     bot.on('message', async (msg) => {
