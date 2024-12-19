@@ -1,12 +1,12 @@
 import { InjectBot, Start, Update } from 'nestjs-telegraf';
 import { Context, Telegraf } from 'telegraf';
-import { AppService } from './app.service';
+import { UserService } from './user/user.service';
 
 @Update()
 export class AppUpdate {
   constructor(
     @InjectBot() private readonly bot: Telegraf<Context>,
-    private readonly appService: AppService,
+    private readonly userService: UserService,
   ) {}
 
   @Start()
@@ -14,24 +14,24 @@ export class AppUpdate {
     const chatId = ctx.message.chat.id;
     const text = ctx.message;
     const userId = String(ctx.from.id);
-    const userAvatar = this.appService.getUserAvatarUrl(
+    const userAvatar = await this.userService.getUserAvatarUrl(
       ctx.from.id,
       this.bot.telegram,
     );
 
-    const user = this.appService.getUserByTgId(userId);
+    const user = await this.userService.getUser(userId);
 
     if (user) {
       console.log('Он уже есть!');
     } else {
-      await this.appService.create({
+      await this.userService.create({
         telegramId: userId,
         username: ctx.from?.username ? ctx.from?.username : '',
-        fullName: `${ctx.from?.first_name ? ctx.from?.first_name : ''} ${ctx.from?.last_name ? ctx.from?.last_name : ''}`,
-        userAvatar: String(userAvatar),
+        fullName: `${ctx.from?.first_name ? ctx.from?.first_name : ''}${ctx.from?.last_name ? ' ' + ctx.from?.last_name : ''}`,
+        userAvatar: userAvatar,
       });
     }
 
-    await ctx.reply(`Hi! ${user}`);
+    await ctx.reply(`Hi! ${userId}`);
   }
 }

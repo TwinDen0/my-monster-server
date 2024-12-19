@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TelegrafModule } from 'nestjs-telegraf';
-import { AppService } from './app.service';
 import { AppUpdate } from './app.update';
 import { PrismaService } from './prisma.service';
 import { UserModule } from './user/user.module';
@@ -12,6 +11,6 @@ import { UserModule } from './user/user.module';
       token: process.env.BOT_API_TOKEN,
     }),
   ],
-  providers: [AppUpdate, AppService, PrismaService],
+  providers: [AppUpdate, PrismaService],
 })
 export class AppModule {}

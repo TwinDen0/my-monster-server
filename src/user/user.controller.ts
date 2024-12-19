@@ -6,10 +6,10 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('/:username')
+  @Get('/:tgId')
   @ApiOperation({ summary: 'Получить профиль пользователя' })
-  async statistics(@Param() params: { username: string }) {
+  async statistics(@Param() params: { tgId: string }) {
     console.log('Получаю профиль пользователя!!');
-    return this.userService.getByUsername(params.username);
+    return this.userService.getUser(params.tgId);
   }
 }
