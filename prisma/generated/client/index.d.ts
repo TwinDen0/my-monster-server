@@ -5442,18 +5442,18 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    telegramId?: string
     username?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     createdAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
-    telegramId?: StringFilter<"User"> | string
     fullName?: StringFilter<"User"> | string
     reputation?: IntFilter<"User"> | number
     userAvatar?: StringFilter<"User"> | string
     collection?: CollectionListRelationFilter
-  }, "id" | "username">
+  }, "id" | "telegramId" | "username">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder

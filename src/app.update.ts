@@ -11,6 +11,27 @@ export class AppUpdate {
 
   @Start()
   async startCommand(ctx: Context) {
-    await ctx.reply('Hi! Friend');
+    const chatId = ctx.message.chat.id;
+    const text = ctx.message;
+    const userId = String(ctx.from.id);
+    const userAvatar = this.appService.getUserAvatarUrl(
+      ctx.from.id,
+      this.bot.telegram,
+    );
+
+    const user = this.appService.getUserByTgId(userId);
+
+    if (user) {
+      console.log('Он уже есть!');
+    } else {
+      await this.appService.create({
+        telegramId: userId,
+        username: ctx.from?.username ? ctx.from?.username : '',
+        fullName: `${ctx.from?.first_name ? ctx.from?.first_name : ''} ${ctx.from?.last_name ? ctx.from?.last_name : ''}`,
+        userAvatar: String(userAvatar),
+      });
+    }
+
+    await ctx.reply(`Hi! ${user}`);
   }
 }
