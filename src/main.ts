@@ -16,7 +16,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   app.enableCors({
-    origin: 'https://my-monster-client.vercel.app', // Укажите ваш клиентский домен
+    origin: ['http://localhost:3000', 'https://my-monster-client.vercel.app'], // Укажите ваш клиентский домен
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Разрешенные методы
     credentials: true, // Разрешить отправку куки
   });
