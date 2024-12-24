@@ -1,4 +1,4 @@
-export class CreateUserDto {
+export class UserDto {
   telegramId: string;
   username: string;
   fullName: string;

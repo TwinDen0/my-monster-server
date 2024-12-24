@@ -33,6 +33,16 @@ export type Monster = $Result.DefaultSelection<Prisma.$MonsterPayload>
  * 
  */
 export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
+/**
+ * Model DailyMonsters
+ * 
+ */
+export type DailyMonsters = $Result.DefaultSelection<Prisma.$DailyMonstersPayload>
+/**
+ * Model Pack
+ * 
+ */
+export type Pack = $Result.DefaultSelection<Prisma.$PackPayload>
 
 /**
  * Enums
@@ -221,6 +231,26 @@ export class PrismaClient<
     * ```
     */
   get collection(): Prisma.CollectionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.dailyMonsters`: Exposes CRUD operations for the **DailyMonsters** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DailyMonsters
+    * const dailyMonsters = await prisma.dailyMonsters.findMany()
+    * ```
+    */
+  get dailyMonsters(): Prisma.DailyMonstersDelegate<ExtArgs>;
+
+  /**
+   * `prisma.pack`: Exposes CRUD operations for the **Pack** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Packs
+    * const packs = await prisma.pack.findMany()
+    * ```
+    */
+  get pack(): Prisma.PackDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -664,7 +694,9 @@ export namespace Prisma {
     User: 'User',
     TypeMonster: 'TypeMonster',
     Monster: 'Monster',
-    Collection: 'Collection'
+    Collection: 'Collection',
+    DailyMonsters: 'DailyMonsters',
+    Pack: 'Pack'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -680,7 +712,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "typeMonster" | "monster" | "collection"
+      modelProps: "user" | "typeMonster" | "monster" | "collection" | "dailyMonsters" | "pack"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -964,6 +996,146 @@ export namespace Prisma {
           }
         }
       }
+      DailyMonsters: {
+        payload: Prisma.$DailyMonstersPayload<ExtArgs>
+        fields: Prisma.DailyMonstersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DailyMonstersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DailyMonstersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          findFirst: {
+            args: Prisma.DailyMonstersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DailyMonstersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          findMany: {
+            args: Prisma.DailyMonstersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>[]
+          }
+          create: {
+            args: Prisma.DailyMonstersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          createMany: {
+            args: Prisma.DailyMonstersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DailyMonstersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>[]
+          }
+          delete: {
+            args: Prisma.DailyMonstersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          update: {
+            args: Prisma.DailyMonstersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          deleteMany: {
+            args: Prisma.DailyMonstersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DailyMonstersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DailyMonstersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyMonstersPayload>
+          }
+          aggregate: {
+            args: Prisma.DailyMonstersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDailyMonsters>
+          }
+          groupBy: {
+            args: Prisma.DailyMonstersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DailyMonstersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DailyMonstersCountArgs<ExtArgs>
+            result: $Utils.Optional<DailyMonstersCountAggregateOutputType> | number
+          }
+        }
+      }
+      Pack: {
+        payload: Prisma.$PackPayload<ExtArgs>
+        fields: Prisma.PackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          findFirst: {
+            args: Prisma.PackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          findMany: {
+            args: Prisma.PackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>[]
+          }
+          create: {
+            args: Prisma.PackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          createMany: {
+            args: Prisma.PackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>[]
+          }
+          delete: {
+            args: Prisma.PackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          update: {
+            args: Prisma.PackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackPayload>
+          }
+          aggregate: {
+            args: Prisma.PackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePack>
+          }
+          groupBy: {
+            args: Prisma.PackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackCountArgs<ExtArgs>
+            result: $Utils.Optional<PackCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1188,10 +1360,12 @@ export namespace Prisma {
 
   export type MonsterCountOutputType = {
     collection: number
+    dailyMonsters: number
   }
 
   export type MonsterCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | MonsterCountOutputTypeCountCollectionArgs
+    dailyMonsters?: boolean | MonsterCountOutputTypeCountDailyMonstersArgs
   }
 
   // Custom InputTypes
@@ -1212,6 +1386,13 @@ export namespace Prisma {
     where?: CollectionWhereInput
   }
 
+  /**
+   * MonsterCountOutputType without action
+   */
+  export type MonsterCountOutputTypeCountDailyMonstersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyMonstersWhereInput
+  }
+
 
   /**
    * Models
@@ -1230,10 +1411,14 @@ export namespace Prisma {
   }
 
   export type UserAvgAggregateOutputType = {
+    coins: number | null
+    crystals: number | null
     reputation: number | null
   }
 
   export type UserSumAggregateOutputType = {
+    coins: number | null
+    crystals: number | null
     reputation: number | null
   }
 
@@ -1241,6 +1426,8 @@ export namespace Prisma {
     id: string | null
     createdAt: Date | null
     updateAt: Date | null
+    coins: number | null
+    crystals: number | null
     telegramId: string | null
     username: string | null
     fullName: string | null
@@ -1252,6 +1439,8 @@ export namespace Prisma {
     id: string | null
     createdAt: Date | null
     updateAt: Date | null
+    coins: number | null
+    crystals: number | null
     telegramId: string | null
     username: string | null
     fullName: string | null
@@ -1263,6 +1452,8 @@ export namespace Prisma {
     id: number
     createdAt: number
     updateAt: number
+    coins: number
+    crystals: number
     telegramId: number
     username: number
     fullName: number
@@ -1273,10 +1464,14 @@ export namespace Prisma {
 
 
   export type UserAvgAggregateInputType = {
+    coins?: true
+    crystals?: true
     reputation?: true
   }
 
   export type UserSumAggregateInputType = {
+    coins?: true
+    crystals?: true
     reputation?: true
   }
 
@@ -1284,6 +1479,8 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updateAt?: true
+    coins?: true
+    crystals?: true
     telegramId?: true
     username?: true
     fullName?: true
@@ -1295,6 +1492,8 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updateAt?: true
+    coins?: true
+    crystals?: true
     telegramId?: true
     username?: true
     fullName?: true
@@ -1306,6 +1505,8 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updateAt?: true
+    coins?: true
+    crystals?: true
     telegramId?: true
     username?: true
     fullName?: true
@@ -1404,6 +1605,8 @@ export namespace Prisma {
     id: string
     createdAt: Date
     updateAt: Date
+    coins: number
+    crystals: number
     telegramId: string
     username: string
     fullName: string
@@ -1434,6 +1637,8 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updateAt?: boolean
+    coins?: boolean
+    crystals?: boolean
     telegramId?: boolean
     username?: boolean
     fullName?: boolean
@@ -1447,6 +1652,8 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updateAt?: boolean
+    coins?: boolean
+    crystals?: boolean
     telegramId?: boolean
     username?: boolean
     fullName?: boolean
@@ -1458,6 +1665,8 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updateAt?: boolean
+    coins?: boolean
+    crystals?: boolean
     telegramId?: boolean
     username?: boolean
     fullName?: boolean
@@ -1480,6 +1689,8 @@ export namespace Prisma {
       id: string
       createdAt: Date
       updateAt: Date
+      coins: number
+      crystals: number
       telegramId: string
       username: string
       fullName: string
@@ -1882,6 +2093,8 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updateAt: FieldRef<"User", 'DateTime'>
+    readonly coins: FieldRef<"User", 'Int'>
+    readonly crystals: FieldRef<"User", 'Int'>
     readonly telegramId: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
     readonly fullName: FieldRef<"User", 'String'>
@@ -2250,6 +2463,7 @@ export namespace Prisma {
     createdAt: Date | null
     updateAt: Date | null
     name: string | null
+    img: string | null
     element: $Enums.EnumTypeElement | null
     description: string | null
   }
@@ -2259,6 +2473,7 @@ export namespace Prisma {
     createdAt: Date | null
     updateAt: Date | null
     name: string | null
+    img: string | null
     element: $Enums.EnumTypeElement | null
     description: string | null
   }
@@ -2268,6 +2483,7 @@ export namespace Prisma {
     createdAt: number
     updateAt: number
     name: number
+    img: number
     element: number
     description: number
     _all: number
@@ -2279,6 +2495,7 @@ export namespace Prisma {
     createdAt?: true
     updateAt?: true
     name?: true
+    img?: true
     element?: true
     description?: true
   }
@@ -2288,6 +2505,7 @@ export namespace Prisma {
     createdAt?: true
     updateAt?: true
     name?: true
+    img?: true
     element?: true
     description?: true
   }
@@ -2297,6 +2515,7 @@ export namespace Prisma {
     createdAt?: true
     updateAt?: true
     name?: true
+    img?: true
     element?: true
     description?: true
     _all?: true
@@ -2379,6 +2598,7 @@ export namespace Prisma {
     createdAt: Date
     updateAt: Date
     name: string
+    img: string | null
     element: $Enums.EnumTypeElement
     description: string
     _count: TypeMonsterCountAggregateOutputType | null
@@ -2405,6 +2625,7 @@ export namespace Prisma {
     createdAt?: boolean
     updateAt?: boolean
     name?: boolean
+    img?: boolean
     element?: boolean
     description?: boolean
     monsters?: boolean | TypeMonster$monstersArgs<ExtArgs>
@@ -2416,6 +2637,7 @@ export namespace Prisma {
     createdAt?: boolean
     updateAt?: boolean
     name?: boolean
+    img?: boolean
     element?: boolean
     description?: boolean
   }, ExtArgs["result"]["typeMonster"]>
@@ -2425,6 +2647,7 @@ export namespace Prisma {
     createdAt?: boolean
     updateAt?: boolean
     name?: boolean
+    img?: boolean
     element?: boolean
     description?: boolean
   }
@@ -2445,6 +2668,7 @@ export namespace Prisma {
       createdAt: Date
       updateAt: Date
       name: string
+      img: string | null
       element: $Enums.EnumTypeElement
       description: string
     }, ExtArgs["result"]["typeMonster"]>
@@ -2845,6 +3069,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"TypeMonster", 'DateTime'>
     readonly updateAt: FieldRef<"TypeMonster", 'DateTime'>
     readonly name: FieldRef<"TypeMonster", 'String'>
+    readonly img: FieldRef<"TypeMonster", 'String'>
     readonly element: FieldRef<"TypeMonster", 'EnumTypeElement'>
     readonly description: FieldRef<"TypeMonster", 'String'>
   }
@@ -3447,6 +3672,7 @@ export namespace Prisma {
     hunger?: boolean
     type?: boolean | Monster$typeArgs<ExtArgs>
     collection?: boolean | Monster$collectionArgs<ExtArgs>
+    dailyMonsters?: boolean | Monster$dailyMonstersArgs<ExtArgs>
     _count?: boolean | MonsterCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["monster"]>
 
@@ -3480,6 +3706,7 @@ export namespace Prisma {
   export type MonsterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     type?: boolean | Monster$typeArgs<ExtArgs>
     collection?: boolean | Monster$collectionArgs<ExtArgs>
+    dailyMonsters?: boolean | Monster$dailyMonstersArgs<ExtArgs>
     _count?: boolean | MonsterCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MonsterIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3491,6 +3718,7 @@ export namespace Prisma {
     objects: {
       type: Prisma.$TypeMonsterPayload<ExtArgs> | null
       collection: Prisma.$CollectionPayload<ExtArgs>[]
+      dailyMonsters: Prisma.$DailyMonstersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3869,6 +4097,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     type<T extends Monster$typeArgs<ExtArgs> = {}>(args?: Subset<T, Monster$typeArgs<ExtArgs>>): Prisma__TypeMonsterClient<$Result.GetResult<Prisma.$TypeMonsterPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     collection<T extends Monster$collectionArgs<ExtArgs> = {}>(args?: Subset<T, Monster$collectionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findMany"> | Null>
+    dailyMonsters<T extends Monster$dailyMonstersArgs<ExtArgs> = {}>(args?: Subset<T, Monster$dailyMonstersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4258,6 +4487,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CollectionScalarFieldEnum | CollectionScalarFieldEnum[]
+  }
+
+  /**
+   * Monster.dailyMonsters
+   */
+  export type Monster$dailyMonstersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    where?: DailyMonstersWhereInput
+    orderBy?: DailyMonstersOrderByWithRelationInput | DailyMonstersOrderByWithRelationInput[]
+    cursor?: DailyMonstersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DailyMonstersScalarFieldEnum | DailyMonstersScalarFieldEnum[]
   }
 
   /**
@@ -5245,6 +5494,2042 @@ export namespace Prisma {
 
 
   /**
+   * Model DailyMonsters
+   */
+
+  export type AggregateDailyMonsters = {
+    _count: DailyMonstersCountAggregateOutputType | null
+    _min: DailyMonstersMinAggregateOutputType | null
+    _max: DailyMonstersMaxAggregateOutputType | null
+  }
+
+  export type DailyMonstersMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    date: Date | null
+    price: string | null
+    isCoinsPrice: boolean | null
+    monsterId: string | null
+  }
+
+  export type DailyMonstersMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    date: Date | null
+    price: string | null
+    isCoinsPrice: boolean | null
+    monsterId: string | null
+  }
+
+  export type DailyMonstersCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updateAt: number
+    date: number
+    price: number
+    isCoinsPrice: number
+    monsterId: number
+    _all: number
+  }
+
+
+  export type DailyMonstersMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    date?: true
+    price?: true
+    isCoinsPrice?: true
+    monsterId?: true
+  }
+
+  export type DailyMonstersMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    date?: true
+    price?: true
+    isCoinsPrice?: true
+    monsterId?: true
+  }
+
+  export type DailyMonstersCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    date?: true
+    price?: true
+    isCoinsPrice?: true
+    monsterId?: true
+    _all?: true
+  }
+
+  export type DailyMonstersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DailyMonsters to aggregate.
+     */
+    where?: DailyMonstersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyMonsters to fetch.
+     */
+    orderBy?: DailyMonstersOrderByWithRelationInput | DailyMonstersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DailyMonstersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyMonsters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyMonsters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DailyMonsters
+    **/
+    _count?: true | DailyMonstersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DailyMonstersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DailyMonstersMaxAggregateInputType
+  }
+
+  export type GetDailyMonstersAggregateType<T extends DailyMonstersAggregateArgs> = {
+        [P in keyof T & keyof AggregateDailyMonsters]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDailyMonsters[P]>
+      : GetScalarType<T[P], AggregateDailyMonsters[P]>
+  }
+
+
+
+
+  export type DailyMonstersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyMonstersWhereInput
+    orderBy?: DailyMonstersOrderByWithAggregationInput | DailyMonstersOrderByWithAggregationInput[]
+    by: DailyMonstersScalarFieldEnum[] | DailyMonstersScalarFieldEnum
+    having?: DailyMonstersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DailyMonstersCountAggregateInputType | true
+    _min?: DailyMonstersMinAggregateInputType
+    _max?: DailyMonstersMaxAggregateInputType
+  }
+
+  export type DailyMonstersGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updateAt: Date
+    date: Date
+    price: string
+    isCoinsPrice: boolean
+    monsterId: string | null
+    _count: DailyMonstersCountAggregateOutputType | null
+    _min: DailyMonstersMinAggregateOutputType | null
+    _max: DailyMonstersMaxAggregateOutputType | null
+  }
+
+  type GetDailyMonstersGroupByPayload<T extends DailyMonstersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DailyMonstersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DailyMonstersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DailyMonstersGroupByOutputType[P]>
+            : GetScalarType<T[P], DailyMonstersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DailyMonstersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    date?: boolean
+    price?: boolean
+    isCoinsPrice?: boolean
+    monsterId?: boolean
+    monster?: boolean | DailyMonsters$monsterArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyMonsters"]>
+
+  export type DailyMonstersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    date?: boolean
+    price?: boolean
+    isCoinsPrice?: boolean
+    monsterId?: boolean
+    monster?: boolean | DailyMonsters$monsterArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyMonsters"]>
+
+  export type DailyMonstersSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    date?: boolean
+    price?: boolean
+    isCoinsPrice?: boolean
+    monsterId?: boolean
+  }
+
+  export type DailyMonstersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    monster?: boolean | DailyMonsters$monsterArgs<ExtArgs>
+  }
+  export type DailyMonstersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    monster?: boolean | DailyMonsters$monsterArgs<ExtArgs>
+  }
+
+  export type $DailyMonstersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DailyMonsters"
+    objects: {
+      monster: Prisma.$MonsterPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updateAt: Date
+      date: Date
+      price: string
+      isCoinsPrice: boolean
+      monsterId: string | null
+    }, ExtArgs["result"]["dailyMonsters"]>
+    composites: {}
+  }
+
+  type DailyMonstersGetPayload<S extends boolean | null | undefined | DailyMonstersDefaultArgs> = $Result.GetResult<Prisma.$DailyMonstersPayload, S>
+
+  type DailyMonstersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<DailyMonstersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: DailyMonstersCountAggregateInputType | true
+    }
+
+  export interface DailyMonstersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DailyMonsters'], meta: { name: 'DailyMonsters' } }
+    /**
+     * Find zero or one DailyMonsters that matches the filter.
+     * @param {DailyMonstersFindUniqueArgs} args - Arguments to find a DailyMonsters
+     * @example
+     * // Get one DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DailyMonstersFindUniqueArgs>(args: SelectSubset<T, DailyMonstersFindUniqueArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one DailyMonsters that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {DailyMonstersFindUniqueOrThrowArgs} args - Arguments to find a DailyMonsters
+     * @example
+     * // Get one DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DailyMonstersFindUniqueOrThrowArgs>(args: SelectSubset<T, DailyMonstersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first DailyMonsters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersFindFirstArgs} args - Arguments to find a DailyMonsters
+     * @example
+     * // Get one DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DailyMonstersFindFirstArgs>(args?: SelectSubset<T, DailyMonstersFindFirstArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first DailyMonsters that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersFindFirstOrThrowArgs} args - Arguments to find a DailyMonsters
+     * @example
+     * // Get one DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DailyMonstersFindFirstOrThrowArgs>(args?: SelectSubset<T, DailyMonstersFindFirstOrThrowArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more DailyMonsters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findMany()
+     * 
+     * // Get first 10 DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dailyMonstersWithIdOnly = await prisma.dailyMonsters.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DailyMonstersFindManyArgs>(args?: SelectSubset<T, DailyMonstersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a DailyMonsters.
+     * @param {DailyMonstersCreateArgs} args - Arguments to create a DailyMonsters.
+     * @example
+     * // Create one DailyMonsters
+     * const DailyMonsters = await prisma.dailyMonsters.create({
+     *   data: {
+     *     // ... data to create a DailyMonsters
+     *   }
+     * })
+     * 
+     */
+    create<T extends DailyMonstersCreateArgs>(args: SelectSubset<T, DailyMonstersCreateArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many DailyMonsters.
+     * @param {DailyMonstersCreateManyArgs} args - Arguments to create many DailyMonsters.
+     * @example
+     * // Create many DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DailyMonstersCreateManyArgs>(args?: SelectSubset<T, DailyMonstersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DailyMonsters and returns the data saved in the database.
+     * @param {DailyMonstersCreateManyAndReturnArgs} args - Arguments to create many DailyMonsters.
+     * @example
+     * // Create many DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DailyMonsters and only return the `id`
+     * const dailyMonstersWithIdOnly = await prisma.dailyMonsters.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DailyMonstersCreateManyAndReturnArgs>(args?: SelectSubset<T, DailyMonstersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a DailyMonsters.
+     * @param {DailyMonstersDeleteArgs} args - Arguments to delete one DailyMonsters.
+     * @example
+     * // Delete one DailyMonsters
+     * const DailyMonsters = await prisma.dailyMonsters.delete({
+     *   where: {
+     *     // ... filter to delete one DailyMonsters
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DailyMonstersDeleteArgs>(args: SelectSubset<T, DailyMonstersDeleteArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one DailyMonsters.
+     * @param {DailyMonstersUpdateArgs} args - Arguments to update one DailyMonsters.
+     * @example
+     * // Update one DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DailyMonstersUpdateArgs>(args: SelectSubset<T, DailyMonstersUpdateArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more DailyMonsters.
+     * @param {DailyMonstersDeleteManyArgs} args - Arguments to filter DailyMonsters to delete.
+     * @example
+     * // Delete a few DailyMonsters
+     * const { count } = await prisma.dailyMonsters.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DailyMonstersDeleteManyArgs>(args?: SelectSubset<T, DailyMonstersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DailyMonsters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DailyMonstersUpdateManyArgs>(args: SelectSubset<T, DailyMonstersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DailyMonsters.
+     * @param {DailyMonstersUpsertArgs} args - Arguments to update or create a DailyMonsters.
+     * @example
+     * // Update or create a DailyMonsters
+     * const dailyMonsters = await prisma.dailyMonsters.upsert({
+     *   create: {
+     *     // ... data to create a DailyMonsters
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DailyMonsters we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DailyMonstersUpsertArgs>(args: SelectSubset<T, DailyMonstersUpsertArgs<ExtArgs>>): Prisma__DailyMonstersClient<$Result.GetResult<Prisma.$DailyMonstersPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of DailyMonsters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersCountArgs} args - Arguments to filter DailyMonsters to count.
+     * @example
+     * // Count the number of DailyMonsters
+     * const count = await prisma.dailyMonsters.count({
+     *   where: {
+     *     // ... the filter for the DailyMonsters we want to count
+     *   }
+     * })
+    **/
+    count<T extends DailyMonstersCountArgs>(
+      args?: Subset<T, DailyMonstersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DailyMonstersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DailyMonsters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DailyMonstersAggregateArgs>(args: Subset<T, DailyMonstersAggregateArgs>): Prisma.PrismaPromise<GetDailyMonstersAggregateType<T>>
+
+    /**
+     * Group by DailyMonsters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyMonstersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DailyMonstersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DailyMonstersGroupByArgs['orderBy'] }
+        : { orderBy?: DailyMonstersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DailyMonstersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDailyMonstersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DailyMonsters model
+   */
+  readonly fields: DailyMonstersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DailyMonsters.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DailyMonstersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    monster<T extends DailyMonsters$monsterArgs<ExtArgs> = {}>(args?: Subset<T, DailyMonsters$monsterArgs<ExtArgs>>): Prisma__MonsterClient<$Result.GetResult<Prisma.$MonsterPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DailyMonsters model
+   */ 
+  interface DailyMonstersFieldRefs {
+    readonly id: FieldRef<"DailyMonsters", 'String'>
+    readonly createdAt: FieldRef<"DailyMonsters", 'DateTime'>
+    readonly updateAt: FieldRef<"DailyMonsters", 'DateTime'>
+    readonly date: FieldRef<"DailyMonsters", 'DateTime'>
+    readonly price: FieldRef<"DailyMonsters", 'String'>
+    readonly isCoinsPrice: FieldRef<"DailyMonsters", 'Boolean'>
+    readonly monsterId: FieldRef<"DailyMonsters", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DailyMonsters findUnique
+   */
+  export type DailyMonstersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyMonsters to fetch.
+     */
+    where: DailyMonstersWhereUniqueInput
+  }
+
+  /**
+   * DailyMonsters findUniqueOrThrow
+   */
+  export type DailyMonstersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyMonsters to fetch.
+     */
+    where: DailyMonstersWhereUniqueInput
+  }
+
+  /**
+   * DailyMonsters findFirst
+   */
+  export type DailyMonstersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyMonsters to fetch.
+     */
+    where?: DailyMonstersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyMonsters to fetch.
+     */
+    orderBy?: DailyMonstersOrderByWithRelationInput | DailyMonstersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DailyMonsters.
+     */
+    cursor?: DailyMonstersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyMonsters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyMonsters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DailyMonsters.
+     */
+    distinct?: DailyMonstersScalarFieldEnum | DailyMonstersScalarFieldEnum[]
+  }
+
+  /**
+   * DailyMonsters findFirstOrThrow
+   */
+  export type DailyMonstersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyMonsters to fetch.
+     */
+    where?: DailyMonstersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyMonsters to fetch.
+     */
+    orderBy?: DailyMonstersOrderByWithRelationInput | DailyMonstersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DailyMonsters.
+     */
+    cursor?: DailyMonstersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyMonsters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyMonsters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DailyMonsters.
+     */
+    distinct?: DailyMonstersScalarFieldEnum | DailyMonstersScalarFieldEnum[]
+  }
+
+  /**
+   * DailyMonsters findMany
+   */
+  export type DailyMonstersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyMonsters to fetch.
+     */
+    where?: DailyMonstersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyMonsters to fetch.
+     */
+    orderBy?: DailyMonstersOrderByWithRelationInput | DailyMonstersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DailyMonsters.
+     */
+    cursor?: DailyMonstersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyMonsters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyMonsters.
+     */
+    skip?: number
+    distinct?: DailyMonstersScalarFieldEnum | DailyMonstersScalarFieldEnum[]
+  }
+
+  /**
+   * DailyMonsters create
+   */
+  export type DailyMonstersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DailyMonsters.
+     */
+    data: XOR<DailyMonstersCreateInput, DailyMonstersUncheckedCreateInput>
+  }
+
+  /**
+   * DailyMonsters createMany
+   */
+  export type DailyMonstersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DailyMonsters.
+     */
+    data: DailyMonstersCreateManyInput | DailyMonstersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DailyMonsters createManyAndReturn
+   */
+  export type DailyMonstersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many DailyMonsters.
+     */
+    data: DailyMonstersCreateManyInput | DailyMonstersCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DailyMonsters update
+   */
+  export type DailyMonstersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DailyMonsters.
+     */
+    data: XOR<DailyMonstersUpdateInput, DailyMonstersUncheckedUpdateInput>
+    /**
+     * Choose, which DailyMonsters to update.
+     */
+    where: DailyMonstersWhereUniqueInput
+  }
+
+  /**
+   * DailyMonsters updateMany
+   */
+  export type DailyMonstersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DailyMonsters.
+     */
+    data: XOR<DailyMonstersUpdateManyMutationInput, DailyMonstersUncheckedUpdateManyInput>
+    /**
+     * Filter which DailyMonsters to update
+     */
+    where?: DailyMonstersWhereInput
+  }
+
+  /**
+   * DailyMonsters upsert
+   */
+  export type DailyMonstersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DailyMonsters to update in case it exists.
+     */
+    where: DailyMonstersWhereUniqueInput
+    /**
+     * In case the DailyMonsters found by the `where` argument doesn't exist, create a new DailyMonsters with this data.
+     */
+    create: XOR<DailyMonstersCreateInput, DailyMonstersUncheckedCreateInput>
+    /**
+     * In case the DailyMonsters was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DailyMonstersUpdateInput, DailyMonstersUncheckedUpdateInput>
+  }
+
+  /**
+   * DailyMonsters delete
+   */
+  export type DailyMonstersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+    /**
+     * Filter which DailyMonsters to delete.
+     */
+    where: DailyMonstersWhereUniqueInput
+  }
+
+  /**
+   * DailyMonsters deleteMany
+   */
+  export type DailyMonstersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DailyMonsters to delete
+     */
+    where?: DailyMonstersWhereInput
+  }
+
+  /**
+   * DailyMonsters.monster
+   */
+  export type DailyMonsters$monsterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Monster
+     */
+    select?: MonsterSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonsterInclude<ExtArgs> | null
+    where?: MonsterWhereInput
+  }
+
+  /**
+   * DailyMonsters without action
+   */
+  export type DailyMonstersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyMonsters
+     */
+    select?: DailyMonstersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyMonstersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Pack
+   */
+
+  export type AggregatePack = {
+    _count: PackCountAggregateOutputType | null
+    _avg: PackAvgAggregateOutputType | null
+    _sum: PackSumAggregateOutputType | null
+    _min: PackMinAggregateOutputType | null
+    _max: PackMaxAggregateOutputType | null
+  }
+
+  export type PackAvgAggregateOutputType = {
+    priceCoin: number | null
+    priceCrystal: number | null
+    coinMin: number | null
+    coinMax: number | null
+    crystalMin: number | null
+    crystalMax: number | null
+    percentDropMonster: number | null
+  }
+
+  export type PackSumAggregateOutputType = {
+    priceCoin: number | null
+    priceCrystal: number | null
+    coinMin: number | null
+    coinMax: number | null
+    crystalMin: number | null
+    crystalMax: number | null
+    percentDropMonster: number | null
+  }
+
+  export type PackMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    name: string | null
+    description: string | null
+    img: string | null
+    type: string | null
+    endAt: Date | null
+    priceCoin: number | null
+    priceCrystal: number | null
+    coinMin: number | null
+    coinMax: number | null
+    crystalMin: number | null
+    crystalMax: number | null
+    percentDropMonster: number | null
+  }
+
+  export type PackMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    name: string | null
+    description: string | null
+    img: string | null
+    type: string | null
+    endAt: Date | null
+    priceCoin: number | null
+    priceCrystal: number | null
+    coinMin: number | null
+    coinMax: number | null
+    crystalMin: number | null
+    crystalMax: number | null
+    percentDropMonster: number | null
+  }
+
+  export type PackCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updateAt: number
+    name: number
+    description: number
+    img: number
+    type: number
+    endAt: number
+    priceCoin: number
+    priceCrystal: number
+    coinMin: number
+    coinMax: number
+    crystalMin: number
+    crystalMax: number
+    percentDropMonster: number
+    monsters: number
+    _all: number
+  }
+
+
+  export type PackAvgAggregateInputType = {
+    priceCoin?: true
+    priceCrystal?: true
+    coinMin?: true
+    coinMax?: true
+    crystalMin?: true
+    crystalMax?: true
+    percentDropMonster?: true
+  }
+
+  export type PackSumAggregateInputType = {
+    priceCoin?: true
+    priceCrystal?: true
+    coinMin?: true
+    coinMax?: true
+    crystalMin?: true
+    crystalMax?: true
+    percentDropMonster?: true
+  }
+
+  export type PackMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    description?: true
+    img?: true
+    type?: true
+    endAt?: true
+    priceCoin?: true
+    priceCrystal?: true
+    coinMin?: true
+    coinMax?: true
+    crystalMin?: true
+    crystalMax?: true
+    percentDropMonster?: true
+  }
+
+  export type PackMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    description?: true
+    img?: true
+    type?: true
+    endAt?: true
+    priceCoin?: true
+    priceCrystal?: true
+    coinMin?: true
+    coinMax?: true
+    crystalMin?: true
+    crystalMax?: true
+    percentDropMonster?: true
+  }
+
+  export type PackCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    description?: true
+    img?: true
+    type?: true
+    endAt?: true
+    priceCoin?: true
+    priceCrystal?: true
+    coinMin?: true
+    coinMax?: true
+    crystalMin?: true
+    crystalMax?: true
+    percentDropMonster?: true
+    monsters?: true
+    _all?: true
+  }
+
+  export type PackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Pack to aggregate.
+     */
+    where?: PackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Packs to fetch.
+     */
+    orderBy?: PackOrderByWithRelationInput | PackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Packs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Packs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Packs
+    **/
+    _count?: true | PackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PackAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PackSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackMaxAggregateInputType
+  }
+
+  export type GetPackAggregateType<T extends PackAggregateArgs> = {
+        [P in keyof T & keyof AggregatePack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePack[P]>
+      : GetScalarType<T[P], AggregatePack[P]>
+  }
+
+
+
+
+  export type PackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackWhereInput
+    orderBy?: PackOrderByWithAggregationInput | PackOrderByWithAggregationInput[]
+    by: PackScalarFieldEnum[] | PackScalarFieldEnum
+    having?: PackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackCountAggregateInputType | true
+    _avg?: PackAvgAggregateInputType
+    _sum?: PackSumAggregateInputType
+    _min?: PackMinAggregateInputType
+    _max?: PackMaxAggregateInputType
+  }
+
+  export type PackGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updateAt: Date
+    name: string
+    description: string
+    img: string
+    type: string
+    endAt: Date | null
+    priceCoin: number | null
+    priceCrystal: number | null
+    coinMin: number
+    coinMax: number
+    crystalMin: number
+    crystalMax: number
+    percentDropMonster: number
+    monsters: JsonValue | null
+    _count: PackCountAggregateOutputType | null
+    _avg: PackAvgAggregateOutputType | null
+    _sum: PackSumAggregateOutputType | null
+    _min: PackMinAggregateOutputType | null
+    _max: PackMaxAggregateOutputType | null
+  }
+
+  type GetPackGroupByPayload<T extends PackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackGroupByOutputType[P]>
+            : GetScalarType<T[P], PackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    description?: boolean
+    img?: boolean
+    type?: boolean
+    endAt?: boolean
+    priceCoin?: boolean
+    priceCrystal?: boolean
+    coinMin?: boolean
+    coinMax?: boolean
+    crystalMin?: boolean
+    crystalMax?: boolean
+    percentDropMonster?: boolean
+    monsters?: boolean
+  }, ExtArgs["result"]["pack"]>
+
+  export type PackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    description?: boolean
+    img?: boolean
+    type?: boolean
+    endAt?: boolean
+    priceCoin?: boolean
+    priceCrystal?: boolean
+    coinMin?: boolean
+    coinMax?: boolean
+    crystalMin?: boolean
+    crystalMax?: boolean
+    percentDropMonster?: boolean
+    monsters?: boolean
+  }, ExtArgs["result"]["pack"]>
+
+  export type PackSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    description?: boolean
+    img?: boolean
+    type?: boolean
+    endAt?: boolean
+    priceCoin?: boolean
+    priceCrystal?: boolean
+    coinMin?: boolean
+    coinMax?: boolean
+    crystalMin?: boolean
+    crystalMax?: boolean
+    percentDropMonster?: boolean
+    monsters?: boolean
+  }
+
+
+  export type $PackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Pack"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updateAt: Date
+      name: string
+      description: string
+      img: string
+      type: string
+      endAt: Date | null
+      priceCoin: number | null
+      priceCrystal: number | null
+      coinMin: number
+      coinMax: number
+      crystalMin: number
+      crystalMax: number
+      percentDropMonster: number
+      monsters: Prisma.JsonValue | null
+    }, ExtArgs["result"]["pack"]>
+    composites: {}
+  }
+
+  type PackGetPayload<S extends boolean | null | undefined | PackDefaultArgs> = $Result.GetResult<Prisma.$PackPayload, S>
+
+  type PackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PackFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PackCountAggregateInputType | true
+    }
+
+  export interface PackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Pack'], meta: { name: 'Pack' } }
+    /**
+     * Find zero or one Pack that matches the filter.
+     * @param {PackFindUniqueArgs} args - Arguments to find a Pack
+     * @example
+     * // Get one Pack
+     * const pack = await prisma.pack.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackFindUniqueArgs>(args: SelectSubset<T, PackFindUniqueArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Pack that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PackFindUniqueOrThrowArgs} args - Arguments to find a Pack
+     * @example
+     * // Get one Pack
+     * const pack = await prisma.pack.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackFindUniqueOrThrowArgs>(args: SelectSubset<T, PackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Pack that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackFindFirstArgs} args - Arguments to find a Pack
+     * @example
+     * // Get one Pack
+     * const pack = await prisma.pack.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackFindFirstArgs>(args?: SelectSubset<T, PackFindFirstArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Pack that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackFindFirstOrThrowArgs} args - Arguments to find a Pack
+     * @example
+     * // Get one Pack
+     * const pack = await prisma.pack.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackFindFirstOrThrowArgs>(args?: SelectSubset<T, PackFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Packs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Packs
+     * const packs = await prisma.pack.findMany()
+     * 
+     * // Get first 10 Packs
+     * const packs = await prisma.pack.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packWithIdOnly = await prisma.pack.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackFindManyArgs>(args?: SelectSubset<T, PackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Pack.
+     * @param {PackCreateArgs} args - Arguments to create a Pack.
+     * @example
+     * // Create one Pack
+     * const Pack = await prisma.pack.create({
+     *   data: {
+     *     // ... data to create a Pack
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackCreateArgs>(args: SelectSubset<T, PackCreateArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Packs.
+     * @param {PackCreateManyArgs} args - Arguments to create many Packs.
+     * @example
+     * // Create many Packs
+     * const pack = await prisma.pack.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackCreateManyArgs>(args?: SelectSubset<T, PackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Packs and returns the data saved in the database.
+     * @param {PackCreateManyAndReturnArgs} args - Arguments to create many Packs.
+     * @example
+     * // Create many Packs
+     * const pack = await prisma.pack.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Packs and only return the `id`
+     * const packWithIdOnly = await prisma.pack.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PackCreateManyAndReturnArgs>(args?: SelectSubset<T, PackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Pack.
+     * @param {PackDeleteArgs} args - Arguments to delete one Pack.
+     * @example
+     * // Delete one Pack
+     * const Pack = await prisma.pack.delete({
+     *   where: {
+     *     // ... filter to delete one Pack
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackDeleteArgs>(args: SelectSubset<T, PackDeleteArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Pack.
+     * @param {PackUpdateArgs} args - Arguments to update one Pack.
+     * @example
+     * // Update one Pack
+     * const pack = await prisma.pack.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackUpdateArgs>(args: SelectSubset<T, PackUpdateArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Packs.
+     * @param {PackDeleteManyArgs} args - Arguments to filter Packs to delete.
+     * @example
+     * // Delete a few Packs
+     * const { count } = await prisma.pack.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackDeleteManyArgs>(args?: SelectSubset<T, PackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Packs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Packs
+     * const pack = await prisma.pack.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackUpdateManyArgs>(args: SelectSubset<T, PackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Pack.
+     * @param {PackUpsertArgs} args - Arguments to update or create a Pack.
+     * @example
+     * // Update or create a Pack
+     * const pack = await prisma.pack.upsert({
+     *   create: {
+     *     // ... data to create a Pack
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Pack we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackUpsertArgs>(args: SelectSubset<T, PackUpsertArgs<ExtArgs>>): Prisma__PackClient<$Result.GetResult<Prisma.$PackPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Packs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackCountArgs} args - Arguments to filter Packs to count.
+     * @example
+     * // Count the number of Packs
+     * const count = await prisma.pack.count({
+     *   where: {
+     *     // ... the filter for the Packs we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackCountArgs>(
+      args?: Subset<T, PackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Pack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackAggregateArgs>(args: Subset<T, PackAggregateArgs>): Prisma.PrismaPromise<GetPackAggregateType<T>>
+
+    /**
+     * Group by Pack.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackGroupByArgs['orderBy'] }
+        : { orderBy?: PackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Pack model
+   */
+  readonly fields: PackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Pack.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Pack model
+   */ 
+  interface PackFieldRefs {
+    readonly id: FieldRef<"Pack", 'String'>
+    readonly createdAt: FieldRef<"Pack", 'DateTime'>
+    readonly updateAt: FieldRef<"Pack", 'DateTime'>
+    readonly name: FieldRef<"Pack", 'String'>
+    readonly description: FieldRef<"Pack", 'String'>
+    readonly img: FieldRef<"Pack", 'String'>
+    readonly type: FieldRef<"Pack", 'String'>
+    readonly endAt: FieldRef<"Pack", 'DateTime'>
+    readonly priceCoin: FieldRef<"Pack", 'Int'>
+    readonly priceCrystal: FieldRef<"Pack", 'Int'>
+    readonly coinMin: FieldRef<"Pack", 'Int'>
+    readonly coinMax: FieldRef<"Pack", 'Int'>
+    readonly crystalMin: FieldRef<"Pack", 'Int'>
+    readonly crystalMax: FieldRef<"Pack", 'Int'>
+    readonly percentDropMonster: FieldRef<"Pack", 'Int'>
+    readonly monsters: FieldRef<"Pack", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Pack findUnique
+   */
+  export type PackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter, which Pack to fetch.
+     */
+    where: PackWhereUniqueInput
+  }
+
+  /**
+   * Pack findUniqueOrThrow
+   */
+  export type PackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter, which Pack to fetch.
+     */
+    where: PackWhereUniqueInput
+  }
+
+  /**
+   * Pack findFirst
+   */
+  export type PackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter, which Pack to fetch.
+     */
+    where?: PackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Packs to fetch.
+     */
+    orderBy?: PackOrderByWithRelationInput | PackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Packs.
+     */
+    cursor?: PackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Packs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Packs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Packs.
+     */
+    distinct?: PackScalarFieldEnum | PackScalarFieldEnum[]
+  }
+
+  /**
+   * Pack findFirstOrThrow
+   */
+  export type PackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter, which Pack to fetch.
+     */
+    where?: PackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Packs to fetch.
+     */
+    orderBy?: PackOrderByWithRelationInput | PackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Packs.
+     */
+    cursor?: PackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Packs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Packs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Packs.
+     */
+    distinct?: PackScalarFieldEnum | PackScalarFieldEnum[]
+  }
+
+  /**
+   * Pack findMany
+   */
+  export type PackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter, which Packs to fetch.
+     */
+    where?: PackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Packs to fetch.
+     */
+    orderBy?: PackOrderByWithRelationInput | PackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Packs.
+     */
+    cursor?: PackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Packs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Packs.
+     */
+    skip?: number
+    distinct?: PackScalarFieldEnum | PackScalarFieldEnum[]
+  }
+
+  /**
+   * Pack create
+   */
+  export type PackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Pack.
+     */
+    data: XOR<PackCreateInput, PackUncheckedCreateInput>
+  }
+
+  /**
+   * Pack createMany
+   */
+  export type PackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Packs.
+     */
+    data: PackCreateManyInput | PackCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Pack createManyAndReturn
+   */
+  export type PackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Packs.
+     */
+    data: PackCreateManyInput | PackCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Pack update
+   */
+  export type PackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Pack.
+     */
+    data: XOR<PackUpdateInput, PackUncheckedUpdateInput>
+    /**
+     * Choose, which Pack to update.
+     */
+    where: PackWhereUniqueInput
+  }
+
+  /**
+   * Pack updateMany
+   */
+  export type PackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Packs.
+     */
+    data: XOR<PackUpdateManyMutationInput, PackUncheckedUpdateManyInput>
+    /**
+     * Filter which Packs to update
+     */
+    where?: PackWhereInput
+  }
+
+  /**
+   * Pack upsert
+   */
+  export type PackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Pack to update in case it exists.
+     */
+    where: PackWhereUniqueInput
+    /**
+     * In case the Pack found by the `where` argument doesn't exist, create a new Pack with this data.
+     */
+    create: XOR<PackCreateInput, PackUncheckedCreateInput>
+    /**
+     * In case the Pack was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackUpdateInput, PackUncheckedUpdateInput>
+  }
+
+  /**
+   * Pack delete
+   */
+  export type PackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+    /**
+     * Filter which Pack to delete.
+     */
+    where: PackWhereUniqueInput
+  }
+
+  /**
+   * Pack deleteMany
+   */
+  export type PackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Packs to delete
+     */
+    where?: PackWhereInput
+  }
+
+  /**
+   * Pack without action
+   */
+  export type PackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pack
+     */
+    select?: PackSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5262,6 +7547,8 @@ export namespace Prisma {
     id: 'id',
     createdAt: 'createdAt',
     updateAt: 'updateAt',
+    coins: 'coins',
+    crystals: 'crystals',
     telegramId: 'telegramId',
     username: 'username',
     fullName: 'fullName',
@@ -5277,6 +7564,7 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updateAt: 'updateAt',
     name: 'name',
+    img: 'img',
     element: 'element',
     description: 'description'
   };
@@ -5311,12 +7599,55 @@ export namespace Prisma {
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
 
 
+  export const DailyMonstersScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updateAt: 'updateAt',
+    date: 'date',
+    price: 'price',
+    isCoinsPrice: 'isCoinsPrice',
+    monsterId: 'monsterId'
+  };
+
+  export type DailyMonstersScalarFieldEnum = (typeof DailyMonstersScalarFieldEnum)[keyof typeof DailyMonstersScalarFieldEnum]
+
+
+  export const PackScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updateAt: 'updateAt',
+    name: 'name',
+    description: 'description',
+    img: 'img',
+    type: 'type',
+    endAt: 'endAt',
+    priceCoin: 'priceCoin',
+    priceCrystal: 'priceCrystal',
+    coinMin: 'coinMin',
+    coinMax: 'coinMax',
+    crystalMin: 'crystalMin',
+    crystalMax: 'crystalMax',
+    percentDropMonster: 'percentDropMonster',
+    monsters: 'monsters'
+  };
+
+  export type PackScalarFieldEnum = (typeof PackScalarFieldEnum)[keyof typeof PackScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -5333,6 +7664,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -5397,6 +7737,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5420,6 +7774,8 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
+    coins?: IntFilter<"User"> | number
+    crystals?: IntFilter<"User"> | number
     telegramId?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
     fullName?: StringFilter<"User"> | string
@@ -5432,6 +7788,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updateAt?: SortOrder
+    coins?: SortOrder
+    crystals?: SortOrder
     telegramId?: SortOrder
     username?: SortOrder
     fullName?: SortOrder
@@ -5449,6 +7807,8 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     createdAt?: DateTimeFilter<"User"> | Date | string
     updateAt?: DateTimeFilter<"User"> | Date | string
+    coins?: IntFilter<"User"> | number
+    crystals?: IntFilter<"User"> | number
     fullName?: StringFilter<"User"> | string
     reputation?: IntFilter<"User"> | number
     userAvatar?: StringFilter<"User"> | string
@@ -5459,6 +7819,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updateAt?: SortOrder
+    coins?: SortOrder
+    crystals?: SortOrder
     telegramId?: SortOrder
     username?: SortOrder
     fullName?: SortOrder
@@ -5478,6 +7840,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    coins?: IntWithAggregatesFilter<"User"> | number
+    crystals?: IntWithAggregatesFilter<"User"> | number
     telegramId?: StringWithAggregatesFilter<"User"> | string
     username?: StringWithAggregatesFilter<"User"> | string
     fullName?: StringWithAggregatesFilter<"User"> | string
@@ -5493,6 +7857,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TypeMonster"> | Date | string
     updateAt?: DateTimeFilter<"TypeMonster"> | Date | string
     name?: StringFilter<"TypeMonster"> | string
+    img?: StringNullableFilter<"TypeMonster"> | string | null
     element?: EnumEnumTypeElementFilter<"TypeMonster"> | $Enums.EnumTypeElement
     description?: StringFilter<"TypeMonster"> | string
     monsters?: MonsterListRelationFilter
@@ -5503,6 +7868,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updateAt?: SortOrder
     name?: SortOrder
+    img?: SortOrderInput | SortOrder
     element?: SortOrder
     description?: SortOrder
     monsters?: MonsterOrderByRelationAggregateInput
@@ -5516,6 +7882,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TypeMonster"> | Date | string
     updateAt?: DateTimeFilter<"TypeMonster"> | Date | string
     name?: StringFilter<"TypeMonster"> | string
+    img?: StringNullableFilter<"TypeMonster"> | string | null
     element?: EnumEnumTypeElementFilter<"TypeMonster"> | $Enums.EnumTypeElement
     description?: StringFilter<"TypeMonster"> | string
     monsters?: MonsterListRelationFilter
@@ -5526,6 +7893,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updateAt?: SortOrder
     name?: SortOrder
+    img?: SortOrderInput | SortOrder
     element?: SortOrder
     description?: SortOrder
     _count?: TypeMonsterCountOrderByAggregateInput
@@ -5541,6 +7909,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"TypeMonster"> | Date | string
     updateAt?: DateTimeWithAggregatesFilter<"TypeMonster"> | Date | string
     name?: StringWithAggregatesFilter<"TypeMonster"> | string
+    img?: StringNullableWithAggregatesFilter<"TypeMonster"> | string | null
     element?: EnumEnumTypeElementWithAggregatesFilter<"TypeMonster"> | $Enums.EnumTypeElement
     description?: StringWithAggregatesFilter<"TypeMonster"> | string
   }
@@ -5561,6 +7930,7 @@ export namespace Prisma {
     hunger?: IntFilter<"Monster"> | number
     type?: XOR<TypeMonsterNullableScalarRelationFilter, TypeMonsterWhereInput> | null
     collection?: CollectionListRelationFilter
+    dailyMonsters?: DailyMonstersListRelationFilter
   }
 
   export type MonsterOrderByWithRelationInput = {
@@ -5576,6 +7946,7 @@ export namespace Prisma {
     hunger?: SortOrder
     type?: TypeMonsterOrderByWithRelationInput
     collection?: CollectionOrderByRelationAggregateInput
+    dailyMonsters?: DailyMonstersOrderByRelationAggregateInput
   }
 
   export type MonsterWhereUniqueInput = Prisma.AtLeast<{
@@ -5594,6 +7965,7 @@ export namespace Prisma {
     hunger?: IntFilter<"Monster"> | number
     type?: XOR<TypeMonsterNullableScalarRelationFilter, TypeMonsterWhereInput> | null
     collection?: CollectionListRelationFilter
+    dailyMonsters?: DailyMonstersListRelationFilter
   }, "id">
 
   export type MonsterOrderByWithAggregationInput = {
@@ -5688,10 +8060,186 @@ export namespace Prisma {
     monsterId?: StringNullableWithAggregatesFilter<"Collection"> | string | null
   }
 
+  export type DailyMonstersWhereInput = {
+    AND?: DailyMonstersWhereInput | DailyMonstersWhereInput[]
+    OR?: DailyMonstersWhereInput[]
+    NOT?: DailyMonstersWhereInput | DailyMonstersWhereInput[]
+    id?: StringFilter<"DailyMonsters"> | string
+    createdAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    updateAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    date?: DateTimeFilter<"DailyMonsters"> | Date | string
+    price?: StringFilter<"DailyMonsters"> | string
+    isCoinsPrice?: BoolFilter<"DailyMonsters"> | boolean
+    monsterId?: StringNullableFilter<"DailyMonsters"> | string | null
+    monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
+  }
+
+  export type DailyMonstersOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    date?: SortOrder
+    price?: SortOrder
+    isCoinsPrice?: SortOrder
+    monsterId?: SortOrderInput | SortOrder
+    monster?: MonsterOrderByWithRelationInput
+  }
+
+  export type DailyMonstersWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DailyMonstersWhereInput | DailyMonstersWhereInput[]
+    OR?: DailyMonstersWhereInput[]
+    NOT?: DailyMonstersWhereInput | DailyMonstersWhereInput[]
+    createdAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    updateAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    date?: DateTimeFilter<"DailyMonsters"> | Date | string
+    price?: StringFilter<"DailyMonsters"> | string
+    isCoinsPrice?: BoolFilter<"DailyMonsters"> | boolean
+    monsterId?: StringNullableFilter<"DailyMonsters"> | string | null
+    monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
+  }, "id">
+
+  export type DailyMonstersOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    date?: SortOrder
+    price?: SortOrder
+    isCoinsPrice?: SortOrder
+    monsterId?: SortOrderInput | SortOrder
+    _count?: DailyMonstersCountOrderByAggregateInput
+    _max?: DailyMonstersMaxOrderByAggregateInput
+    _min?: DailyMonstersMinOrderByAggregateInput
+  }
+
+  export type DailyMonstersScalarWhereWithAggregatesInput = {
+    AND?: DailyMonstersScalarWhereWithAggregatesInput | DailyMonstersScalarWhereWithAggregatesInput[]
+    OR?: DailyMonstersScalarWhereWithAggregatesInput[]
+    NOT?: DailyMonstersScalarWhereWithAggregatesInput | DailyMonstersScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DailyMonsters"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"DailyMonsters"> | Date | string
+    updateAt?: DateTimeWithAggregatesFilter<"DailyMonsters"> | Date | string
+    date?: DateTimeWithAggregatesFilter<"DailyMonsters"> | Date | string
+    price?: StringWithAggregatesFilter<"DailyMonsters"> | string
+    isCoinsPrice?: BoolWithAggregatesFilter<"DailyMonsters"> | boolean
+    monsterId?: StringNullableWithAggregatesFilter<"DailyMonsters"> | string | null
+  }
+
+  export type PackWhereInput = {
+    AND?: PackWhereInput | PackWhereInput[]
+    OR?: PackWhereInput[]
+    NOT?: PackWhereInput | PackWhereInput[]
+    id?: StringFilter<"Pack"> | string
+    createdAt?: DateTimeFilter<"Pack"> | Date | string
+    updateAt?: DateTimeFilter<"Pack"> | Date | string
+    name?: StringFilter<"Pack"> | string
+    description?: StringFilter<"Pack"> | string
+    img?: StringFilter<"Pack"> | string
+    type?: StringFilter<"Pack"> | string
+    endAt?: DateTimeNullableFilter<"Pack"> | Date | string | null
+    priceCoin?: IntNullableFilter<"Pack"> | number | null
+    priceCrystal?: IntNullableFilter<"Pack"> | number | null
+    coinMin?: IntFilter<"Pack"> | number
+    coinMax?: IntFilter<"Pack"> | number
+    crystalMin?: IntFilter<"Pack"> | number
+    crystalMax?: IntFilter<"Pack"> | number
+    percentDropMonster?: IntFilter<"Pack"> | number
+    monsters?: JsonNullableFilter<"Pack">
+  }
+
+  export type PackOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    img?: SortOrder
+    type?: SortOrder
+    endAt?: SortOrderInput | SortOrder
+    priceCoin?: SortOrderInput | SortOrder
+    priceCrystal?: SortOrderInput | SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+    monsters?: SortOrderInput | SortOrder
+  }
+
+  export type PackWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PackWhereInput | PackWhereInput[]
+    OR?: PackWhereInput[]
+    NOT?: PackWhereInput | PackWhereInput[]
+    createdAt?: DateTimeFilter<"Pack"> | Date | string
+    updateAt?: DateTimeFilter<"Pack"> | Date | string
+    name?: StringFilter<"Pack"> | string
+    description?: StringFilter<"Pack"> | string
+    img?: StringFilter<"Pack"> | string
+    type?: StringFilter<"Pack"> | string
+    endAt?: DateTimeNullableFilter<"Pack"> | Date | string | null
+    priceCoin?: IntNullableFilter<"Pack"> | number | null
+    priceCrystal?: IntNullableFilter<"Pack"> | number | null
+    coinMin?: IntFilter<"Pack"> | number
+    coinMax?: IntFilter<"Pack"> | number
+    crystalMin?: IntFilter<"Pack"> | number
+    crystalMax?: IntFilter<"Pack"> | number
+    percentDropMonster?: IntFilter<"Pack"> | number
+    monsters?: JsonNullableFilter<"Pack">
+  }, "id">
+
+  export type PackOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    img?: SortOrder
+    type?: SortOrder
+    endAt?: SortOrderInput | SortOrder
+    priceCoin?: SortOrderInput | SortOrder
+    priceCrystal?: SortOrderInput | SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+    monsters?: SortOrderInput | SortOrder
+    _count?: PackCountOrderByAggregateInput
+    _avg?: PackAvgOrderByAggregateInput
+    _max?: PackMaxOrderByAggregateInput
+    _min?: PackMinOrderByAggregateInput
+    _sum?: PackSumOrderByAggregateInput
+  }
+
+  export type PackScalarWhereWithAggregatesInput = {
+    AND?: PackScalarWhereWithAggregatesInput | PackScalarWhereWithAggregatesInput[]
+    OR?: PackScalarWhereWithAggregatesInput[]
+    NOT?: PackScalarWhereWithAggregatesInput | PackScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Pack"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Pack"> | Date | string
+    updateAt?: DateTimeWithAggregatesFilter<"Pack"> | Date | string
+    name?: StringWithAggregatesFilter<"Pack"> | string
+    description?: StringWithAggregatesFilter<"Pack"> | string
+    img?: StringWithAggregatesFilter<"Pack"> | string
+    type?: StringWithAggregatesFilter<"Pack"> | string
+    endAt?: DateTimeNullableWithAggregatesFilter<"Pack"> | Date | string | null
+    priceCoin?: IntNullableWithAggregatesFilter<"Pack"> | number | null
+    priceCrystal?: IntNullableWithAggregatesFilter<"Pack"> | number | null
+    coinMin?: IntWithAggregatesFilter<"Pack"> | number
+    coinMax?: IntWithAggregatesFilter<"Pack"> | number
+    crystalMin?: IntWithAggregatesFilter<"Pack"> | number
+    crystalMax?: IntWithAggregatesFilter<"Pack"> | number
+    percentDropMonster?: IntWithAggregatesFilter<"Pack"> | number
+    monsters?: JsonNullableWithAggregatesFilter<"Pack">
+  }
+
   export type UserCreateInput = {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    coins?: number
+    crystals?: number
     telegramId: string
     username: string
     fullName: string
@@ -5704,6 +8252,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    coins?: number
+    crystals?: number
     telegramId: string
     username: string
     fullName: string
@@ -5716,6 +8266,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -5728,6 +8280,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -5740,6 +8294,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    coins?: number
+    crystals?: number
     telegramId: string
     username: string
     fullName: string
@@ -5751,6 +8307,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -5762,6 +8320,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -5774,6 +8334,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     name: string
+    img?: string | null
     element: $Enums.EnumTypeElement
     description: string
     monsters?: MonsterCreateNestedManyWithoutTypeInput
@@ -5784,6 +8345,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     name: string
+    img?: string | null
     element: $Enums.EnumTypeElement
     description: string
     monsters?: MonsterUncheckedCreateNestedManyWithoutTypeInput
@@ -5794,6 +8356,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
     monsters?: MonsterUpdateManyWithoutTypeNestedInput
@@ -5804,6 +8367,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
     monsters?: MonsterUncheckedUpdateManyWithoutTypeNestedInput
@@ -5814,6 +8378,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     name: string
+    img?: string | null
     element: $Enums.EnumTypeElement
     description: string
   }
@@ -5823,6 +8388,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
   }
@@ -5832,6 +8398,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
   }
@@ -5845,9 +8412,10 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
     type?: TypeMonsterCreateNestedOneWithoutMonstersInput
     collection?: CollectionCreateNestedManyWithoutMonsterInput
+    dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterUncheckedCreateInput = {
@@ -5860,8 +8428,9 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
+    dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterUpdateInput = {
@@ -5876,6 +8445,7 @@ export namespace Prisma {
     hunger?: IntFieldUpdateOperationsInput | number
     type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
     collection?: CollectionUpdateManyWithoutMonsterNestedInput
+    dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
   }
 
   export type MonsterUncheckedUpdateInput = {
@@ -5890,6 +8460,7 @@ export namespace Prisma {
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
+    dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
   export type MonsterCreateManyInput = {
@@ -5902,7 +8473,7 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
   }
 
   export type MonsterUpdateManyMutationInput = {
@@ -5984,6 +8555,208 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type DailyMonstersCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+    monster?: MonsterCreateNestedOneWithoutDailyMonstersInput
+  }
+
+  export type DailyMonstersUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+    monsterId?: string | null
+  }
+
+  export type DailyMonstersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+    monster?: MonsterUpdateOneWithoutDailyMonstersNestedInput
+  }
+
+  export type DailyMonstersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+    monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DailyMonstersCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+    monsterId?: string | null
+  }
+
+  export type DailyMonstersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DailyMonstersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+    monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PackCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    description: string
+    img: string
+    type: string
+    endAt?: Date | string | null
+    priceCoin?: number | null
+    priceCrystal?: number | null
+    coinMin: number
+    coinMax: number
+    crystalMin: number
+    crystalMax: number
+    percentDropMonster: number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    description: string
+    img: string
+    type: string
+    endAt?: Date | string | null
+    priceCoin?: number | null
+    priceCrystal?: number | null
+    coinMin: number
+    coinMax: number
+    crystalMin: number
+    crystalMax: number
+    percentDropMonster: number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priceCoin?: NullableIntFieldUpdateOperationsInput | number | null
+    priceCrystal?: NullableIntFieldUpdateOperationsInput | number | null
+    coinMin?: IntFieldUpdateOperationsInput | number
+    coinMax?: IntFieldUpdateOperationsInput | number
+    crystalMin?: IntFieldUpdateOperationsInput | number
+    crystalMax?: IntFieldUpdateOperationsInput | number
+    percentDropMonster?: IntFieldUpdateOperationsInput | number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priceCoin?: NullableIntFieldUpdateOperationsInput | number | null
+    priceCrystal?: NullableIntFieldUpdateOperationsInput | number | null
+    coinMin?: IntFieldUpdateOperationsInput | number
+    coinMax?: IntFieldUpdateOperationsInput | number
+    crystalMin?: IntFieldUpdateOperationsInput | number
+    crystalMax?: IntFieldUpdateOperationsInput | number
+    percentDropMonster?: IntFieldUpdateOperationsInput | number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    description: string
+    img: string
+    type: string
+    endAt?: Date | string | null
+    priceCoin?: number | null
+    priceCrystal?: number | null
+    coinMin: number
+    coinMax: number
+    crystalMin: number
+    crystalMax: number
+    percentDropMonster: number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priceCoin?: NullableIntFieldUpdateOperationsInput | number | null
+    priceCrystal?: NullableIntFieldUpdateOperationsInput | number | null
+    coinMin?: IntFieldUpdateOperationsInput | number
+    coinMax?: IntFieldUpdateOperationsInput | number
+    crystalMin?: IntFieldUpdateOperationsInput | number
+    crystalMax?: IntFieldUpdateOperationsInput | number
+    percentDropMonster?: IntFieldUpdateOperationsInput | number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PackUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priceCoin?: NullableIntFieldUpdateOperationsInput | number | null
+    priceCrystal?: NullableIntFieldUpdateOperationsInput | number | null
+    coinMin?: IntFieldUpdateOperationsInput | number
+    coinMax?: IntFieldUpdateOperationsInput | number
+    crystalMin?: IntFieldUpdateOperationsInput | number
+    crystalMax?: IntFieldUpdateOperationsInput | number
+    percentDropMonster?: IntFieldUpdateOperationsInput | number
+    monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6035,6 +8808,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updateAt?: SortOrder
+    coins?: SortOrder
+    crystals?: SortOrder
     telegramId?: SortOrder
     username?: SortOrder
     fullName?: SortOrder
@@ -6043,6 +8818,8 @@ export namespace Prisma {
   }
 
   export type UserAvgOrderByAggregateInput = {
+    coins?: SortOrder
+    crystals?: SortOrder
     reputation?: SortOrder
   }
 
@@ -6050,6 +8827,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updateAt?: SortOrder
+    coins?: SortOrder
+    crystals?: SortOrder
     telegramId?: SortOrder
     username?: SortOrder
     fullName?: SortOrder
@@ -6061,6 +8840,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updateAt?: SortOrder
+    coins?: SortOrder
+    crystals?: SortOrder
     telegramId?: SortOrder
     username?: SortOrder
     fullName?: SortOrder
@@ -6069,6 +8850,8 @@ export namespace Prisma {
   }
 
   export type UserSumOrderByAggregateInput = {
+    coins?: SortOrder
+    crystals?: SortOrder
     reputation?: SortOrder
   }
 
@@ -6120,60 +8903,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type EnumEnumTypeElementFilter<$PrismaModel = never> = {
-    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
-    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    not?: NestedEnumEnumTypeElementFilter<$PrismaModel> | $Enums.EnumTypeElement
-  }
-
-  export type MonsterListRelationFilter = {
-    every?: MonsterWhereInput
-    some?: MonsterWhereInput
-    none?: MonsterWhereInput
-  }
-
-  export type MonsterOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type TypeMonsterCountOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    updateAt?: SortOrder
-    name?: SortOrder
-    element?: SortOrder
-    description?: SortOrder
-  }
-
-  export type TypeMonsterMaxOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    updateAt?: SortOrder
-    name?: SortOrder
-    element?: SortOrder
-    description?: SortOrder
-  }
-
-  export type TypeMonsterMinOrderByAggregateInput = {
-    id?: SortOrder
-    createdAt?: SortOrder
-    updateAt?: SortOrder
-    name?: SortOrder
-    element?: SortOrder
-    description?: SortOrder
-  }
-
-  export type EnumEnumTypeElementWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
-    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    not?: NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel> | $Enums.EnumTypeElement
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumEnumTypeElementFilter<$PrismaModel>
-    _max?: NestedEnumEnumTypeElementFilter<$PrismaModel>
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6189,14 +8918,99 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type TypeMonsterNullableScalarRelationFilter = {
-    is?: TypeMonsterWhereInput | null
-    isNot?: TypeMonsterWhereInput | null
+  export type EnumEnumTypeElementFilter<$PrismaModel = never> = {
+    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
+    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    not?: NestedEnumEnumTypeElementFilter<$PrismaModel> | $Enums.EnumTypeElement
+  }
+
+  export type MonsterListRelationFilter = {
+    every?: MonsterWhereInput
+    some?: MonsterWhereInput
+    none?: MonsterWhereInput
   }
 
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type MonsterOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TypeMonsterCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    element?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TypeMonsterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    element?: SortOrder
+    description?: SortOrder
+  }
+
+  export type TypeMonsterMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    element?: SortOrder
+    description?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumEnumTypeElementWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
+    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    not?: NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel> | $Enums.EnumTypeElement
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEnumTypeElementFilter<$PrismaModel>
+    _max?: NestedEnumEnumTypeElementFilter<$PrismaModel>
+  }
+
+  export type TypeMonsterNullableScalarRelationFilter = {
+    is?: TypeMonsterWhereInput | null
+    isNot?: TypeMonsterWhereInput | null
+  }
+
+  export type DailyMonstersListRelationFilter = {
+    every?: DailyMonstersWhereInput
+    some?: DailyMonstersWhereInput
+    none?: DailyMonstersWhereInput
+  }
+
+  export type DailyMonstersOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type MonsterCountOrderByAggregateInput = {
@@ -6252,24 +9066,6 @@ export namespace Prisma {
     hunger?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
@@ -6302,6 +9098,223 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrder
     monsterId?: SortOrder
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DailyMonstersCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    date?: SortOrder
+    price?: SortOrder
+    isCoinsPrice?: SortOrder
+    monsterId?: SortOrder
+  }
+
+  export type DailyMonstersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    date?: SortOrder
+    price?: SortOrder
+    isCoinsPrice?: SortOrder
+    monsterId?: SortOrder
+  }
+
+  export type DailyMonstersMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    date?: SortOrder
+    price?: SortOrder
+    isCoinsPrice?: SortOrder
+    monsterId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type PackCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    img?: SortOrder
+    type?: SortOrder
+    endAt?: SortOrder
+    priceCoin?: SortOrder
+    priceCrystal?: SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+    monsters?: SortOrder
+  }
+
+  export type PackAvgOrderByAggregateInput = {
+    priceCoin?: SortOrder
+    priceCrystal?: SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+  }
+
+  export type PackMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    img?: SortOrder
+    type?: SortOrder
+    endAt?: SortOrder
+    priceCoin?: SortOrder
+    priceCrystal?: SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+  }
+
+  export type PackMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    img?: SortOrder
+    type?: SortOrder
+    endAt?: SortOrder
+    priceCoin?: SortOrder
+    priceCrystal?: SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+  }
+
+  export type PackSumOrderByAggregateInput = {
+    priceCoin?: SortOrder
+    priceCrystal?: SortOrder
+    coinMin?: SortOrder
+    coinMax?: SortOrder
+    crystalMin?: SortOrder
+    crystalMax?: SortOrder
+    percentDropMonster?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type CollectionCreateNestedManyWithoutLeaderInput = {
@@ -6376,6 +9389,10 @@ export namespace Prisma {
     connect?: MonsterWhereUniqueInput | MonsterWhereUniqueInput[]
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type EnumEnumTypeElementFieldUpdateOperationsInput = {
     set?: $Enums.EnumTypeElement
   }
@@ -6421,11 +9438,25 @@ export namespace Prisma {
     connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
   }
 
+  export type DailyMonstersCreateNestedManyWithoutMonsterInput = {
+    create?: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput> | DailyMonstersCreateWithoutMonsterInput[] | DailyMonstersUncheckedCreateWithoutMonsterInput[]
+    connectOrCreate?: DailyMonstersCreateOrConnectWithoutMonsterInput | DailyMonstersCreateOrConnectWithoutMonsterInput[]
+    createMany?: DailyMonstersCreateManyMonsterInputEnvelope
+    connect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+  }
+
   export type CollectionUncheckedCreateNestedManyWithoutMonsterInput = {
     create?: XOR<CollectionCreateWithoutMonsterInput, CollectionUncheckedCreateWithoutMonsterInput> | CollectionCreateWithoutMonsterInput[] | CollectionUncheckedCreateWithoutMonsterInput[]
     connectOrCreate?: CollectionCreateOrConnectWithoutMonsterInput | CollectionCreateOrConnectWithoutMonsterInput[]
     createMany?: CollectionCreateManyMonsterInputEnvelope
     connect?: CollectionWhereUniqueInput | CollectionWhereUniqueInput[]
+  }
+
+  export type DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput = {
+    create?: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput> | DailyMonstersCreateWithoutMonsterInput[] | DailyMonstersUncheckedCreateWithoutMonsterInput[]
+    connectOrCreate?: DailyMonstersCreateOrConnectWithoutMonsterInput | DailyMonstersCreateOrConnectWithoutMonsterInput[]
+    createMany?: DailyMonstersCreateManyMonsterInputEnvelope
+    connect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
   }
 
   export type TypeMonsterUpdateOneWithoutMonstersNestedInput = {
@@ -6452,8 +9483,18 @@ export namespace Prisma {
     deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type DailyMonstersUpdateManyWithoutMonsterNestedInput = {
+    create?: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput> | DailyMonstersCreateWithoutMonsterInput[] | DailyMonstersUncheckedCreateWithoutMonsterInput[]
+    connectOrCreate?: DailyMonstersCreateOrConnectWithoutMonsterInput | DailyMonstersCreateOrConnectWithoutMonsterInput[]
+    upsert?: DailyMonstersUpsertWithWhereUniqueWithoutMonsterInput | DailyMonstersUpsertWithWhereUniqueWithoutMonsterInput[]
+    createMany?: DailyMonstersCreateManyMonsterInputEnvelope
+    set?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    disconnect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    delete?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    connect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    update?: DailyMonstersUpdateWithWhereUniqueWithoutMonsterInput | DailyMonstersUpdateWithWhereUniqueWithoutMonsterInput[]
+    updateMany?: DailyMonstersUpdateManyWithWhereWithoutMonsterInput | DailyMonstersUpdateManyWithWhereWithoutMonsterInput[]
+    deleteMany?: DailyMonstersScalarWhereInput | DailyMonstersScalarWhereInput[]
   }
 
   export type CollectionUncheckedUpdateManyWithoutMonsterNestedInput = {
@@ -6468,6 +9509,20 @@ export namespace Prisma {
     update?: CollectionUpdateWithWhereUniqueWithoutMonsterInput | CollectionUpdateWithWhereUniqueWithoutMonsterInput[]
     updateMany?: CollectionUpdateManyWithWhereWithoutMonsterInput | CollectionUpdateManyWithWhereWithoutMonsterInput[]
     deleteMany?: CollectionScalarWhereInput | CollectionScalarWhereInput[]
+  }
+
+  export type DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput = {
+    create?: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput> | DailyMonstersCreateWithoutMonsterInput[] | DailyMonstersUncheckedCreateWithoutMonsterInput[]
+    connectOrCreate?: DailyMonstersCreateOrConnectWithoutMonsterInput | DailyMonstersCreateOrConnectWithoutMonsterInput[]
+    upsert?: DailyMonstersUpsertWithWhereUniqueWithoutMonsterInput | DailyMonstersUpsertWithWhereUniqueWithoutMonsterInput[]
+    createMany?: DailyMonstersCreateManyMonsterInputEnvelope
+    set?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    disconnect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    delete?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    connect?: DailyMonstersWhereUniqueInput | DailyMonstersWhereUniqueInput[]
+    update?: DailyMonstersUpdateWithWhereUniqueWithoutMonsterInput | DailyMonstersUpdateWithWhereUniqueWithoutMonsterInput[]
+    updateMany?: DailyMonstersUpdateManyWithWhereWithoutMonsterInput | DailyMonstersUpdateManyWithWhereWithoutMonsterInput[]
+    deleteMany?: DailyMonstersScalarWhereInput | DailyMonstersScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutCollectionInput = {
@@ -6500,6 +9555,38 @@ export namespace Prisma {
     delete?: MonsterWhereInput | boolean
     connect?: MonsterWhereUniqueInput
     update?: XOR<XOR<MonsterUpdateToOneWithWhereWithoutCollectionInput, MonsterUpdateWithoutCollectionInput>, MonsterUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type MonsterCreateNestedOneWithoutDailyMonstersInput = {
+    create?: XOR<MonsterCreateWithoutDailyMonstersInput, MonsterUncheckedCreateWithoutDailyMonstersInput>
+    connectOrCreate?: MonsterCreateOrConnectWithoutDailyMonstersInput
+    connect?: MonsterWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type MonsterUpdateOneWithoutDailyMonstersNestedInput = {
+    create?: XOR<MonsterCreateWithoutDailyMonstersInput, MonsterUncheckedCreateWithoutDailyMonstersInput>
+    connectOrCreate?: MonsterCreateOrConnectWithoutDailyMonstersInput
+    upsert?: MonsterUpsertWithoutDailyMonstersInput
+    disconnect?: MonsterWhereInput | boolean
+    delete?: MonsterWhereInput | boolean
+    connect?: MonsterWhereUniqueInput
+    update?: XOR<XOR<MonsterUpdateToOneWithWhereWithoutDailyMonstersInput, MonsterUpdateWithoutDailyMonstersInput>, MonsterUncheckedUpdateWithoutDailyMonstersInput>
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6596,23 +9683,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedEnumEnumTypeElementFilter<$PrismaModel = never> = {
-    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
-    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    not?: NestedEnumEnumTypeElementFilter<$PrismaModel> | $Enums.EnumTypeElement
-  }
-
-  export type NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
-    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
-    not?: NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel> | $Enums.EnumTypeElement
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumEnumTypeElementFilter<$PrismaModel>
-    _max?: NestedEnumEnumTypeElementFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6625,6 +9695,13 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedEnumEnumTypeElementFilter<$PrismaModel = never> = {
+    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
+    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    not?: NestedEnumEnumTypeElementFilter<$PrismaModel> | $Enums.EnumTypeElement
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6653,6 +9730,103 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EnumTypeElement | EnumEnumTypeElementFieldRefInput<$PrismaModel>
+    in?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EnumTypeElement[] | ListEnumEnumTypeElementFieldRefInput<$PrismaModel>
+    not?: NestedEnumEnumTypeElementWithAggregatesFilter<$PrismaModel> | $Enums.EnumTypeElement
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEnumTypeElementFilter<$PrismaModel>
+    _max?: NestedEnumEnumTypeElementFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type CollectionCreateWithoutLeaderInput = {
@@ -6715,8 +9889,9 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
     collection?: CollectionCreateNestedManyWithoutMonsterInput
+    dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterUncheckedCreateWithoutTypeInput = {
@@ -6728,8 +9903,9 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
+    dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterCreateOrConnectWithoutTypeInput = {
@@ -6779,6 +9955,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     name: string
+    img?: string | null
     element: $Enums.EnumTypeElement
     description: string
   }
@@ -6788,6 +9965,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     name: string
+    img?: string | null
     element: $Enums.EnumTypeElement
     description: string
   }
@@ -6821,6 +9999,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DailyMonstersCreateWithoutMonsterInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+  }
+
+  export type DailyMonstersUncheckedCreateWithoutMonsterInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+  }
+
+  export type DailyMonstersCreateOrConnectWithoutMonsterInput = {
+    where: DailyMonstersWhereUniqueInput
+    create: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput>
+  }
+
+  export type DailyMonstersCreateManyMonsterInputEnvelope = {
+    data: DailyMonstersCreateManyMonsterInput | DailyMonstersCreateManyMonsterInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TypeMonsterUpsertWithoutMonstersInput = {
     update: XOR<TypeMonsterUpdateWithoutMonstersInput, TypeMonsterUncheckedUpdateWithoutMonstersInput>
     create: XOR<TypeMonsterCreateWithoutMonstersInput, TypeMonsterUncheckedCreateWithoutMonstersInput>
@@ -6837,6 +10043,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
   }
@@ -6846,6 +10053,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    img?: NullableStringFieldUpdateOperationsInput | string | null
     element?: EnumEnumTypeElementFieldUpdateOperationsInput | $Enums.EnumTypeElement
     description?: StringFieldUpdateOperationsInput | string
   }
@@ -6866,10 +10074,41 @@ export namespace Prisma {
     data: XOR<CollectionUpdateManyMutationInput, CollectionUncheckedUpdateManyWithoutMonsterInput>
   }
 
+  export type DailyMonstersUpsertWithWhereUniqueWithoutMonsterInput = {
+    where: DailyMonstersWhereUniqueInput
+    update: XOR<DailyMonstersUpdateWithoutMonsterInput, DailyMonstersUncheckedUpdateWithoutMonsterInput>
+    create: XOR<DailyMonstersCreateWithoutMonsterInput, DailyMonstersUncheckedCreateWithoutMonsterInput>
+  }
+
+  export type DailyMonstersUpdateWithWhereUniqueWithoutMonsterInput = {
+    where: DailyMonstersWhereUniqueInput
+    data: XOR<DailyMonstersUpdateWithoutMonsterInput, DailyMonstersUncheckedUpdateWithoutMonsterInput>
+  }
+
+  export type DailyMonstersUpdateManyWithWhereWithoutMonsterInput = {
+    where: DailyMonstersScalarWhereInput
+    data: XOR<DailyMonstersUpdateManyMutationInput, DailyMonstersUncheckedUpdateManyWithoutMonsterInput>
+  }
+
+  export type DailyMonstersScalarWhereInput = {
+    AND?: DailyMonstersScalarWhereInput | DailyMonstersScalarWhereInput[]
+    OR?: DailyMonstersScalarWhereInput[]
+    NOT?: DailyMonstersScalarWhereInput | DailyMonstersScalarWhereInput[]
+    id?: StringFilter<"DailyMonsters"> | string
+    createdAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    updateAt?: DateTimeFilter<"DailyMonsters"> | Date | string
+    date?: DateTimeFilter<"DailyMonsters"> | Date | string
+    price?: StringFilter<"DailyMonsters"> | string
+    isCoinsPrice?: BoolFilter<"DailyMonsters"> | boolean
+    monsterId?: StringNullableFilter<"DailyMonsters"> | string | null
+  }
+
   export type UserCreateWithoutCollectionInput = {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    coins?: number
+    crystals?: number
     telegramId: string
     username: string
     fullName: string
@@ -6881,6 +10120,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    coins?: number
+    crystals?: number
     telegramId: string
     username: string
     fullName: string
@@ -6902,8 +10143,9 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
     type?: TypeMonsterCreateNestedOneWithoutMonstersInput
+    dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterUncheckedCreateWithoutCollectionInput = {
@@ -6916,7 +10158,8 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
+    dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
 
   export type MonsterCreateOrConnectWithoutCollectionInput = {
@@ -6939,6 +10182,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -6950,6 +10195,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coins?: IntFieldUpdateOperationsInput | number
+    crystals?: IntFieldUpdateOperationsInput | number
     telegramId?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
@@ -6979,6 +10226,7 @@ export namespace Prisma {
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
     type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
+    dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
   }
 
   export type MonsterUncheckedUpdateWithoutCollectionInput = {
@@ -6992,6 +10240,79 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
+  }
+
+  export type MonsterCreateWithoutDailyMonstersInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    subtypeName: string
+    img: string
+    stageEvo?: number
+    branchEvo?: number
+    starts: number
+    hunger?: number
+    type?: TypeMonsterCreateNestedOneWithoutMonstersInput
+    collection?: CollectionCreateNestedManyWithoutMonsterInput
+  }
+
+  export type MonsterUncheckedCreateWithoutDailyMonstersInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    typeId?: string | null
+    subtypeName: string
+    img: string
+    stageEvo?: number
+    branchEvo?: number
+    starts: number
+    hunger?: number
+    collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
+  }
+
+  export type MonsterCreateOrConnectWithoutDailyMonstersInput = {
+    where: MonsterWhereUniqueInput
+    create: XOR<MonsterCreateWithoutDailyMonstersInput, MonsterUncheckedCreateWithoutDailyMonstersInput>
+  }
+
+  export type MonsterUpsertWithoutDailyMonstersInput = {
+    update: XOR<MonsterUpdateWithoutDailyMonstersInput, MonsterUncheckedUpdateWithoutDailyMonstersInput>
+    create: XOR<MonsterCreateWithoutDailyMonstersInput, MonsterUncheckedCreateWithoutDailyMonstersInput>
+    where?: MonsterWhereInput
+  }
+
+  export type MonsterUpdateToOneWithWhereWithoutDailyMonstersInput = {
+    where?: MonsterWhereInput
+    data: XOR<MonsterUpdateWithoutDailyMonstersInput, MonsterUncheckedUpdateWithoutDailyMonstersInput>
+  }
+
+  export type MonsterUpdateWithoutDailyMonstersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtypeName?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    stageEvo?: IntFieldUpdateOperationsInput | number
+    branchEvo?: IntFieldUpdateOperationsInput | number
+    starts?: IntFieldUpdateOperationsInput | number
+    hunger?: IntFieldUpdateOperationsInput | number
+    type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
+    collection?: CollectionUpdateManyWithoutMonsterNestedInput
+  }
+
+  export type MonsterUncheckedUpdateWithoutDailyMonstersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    typeId?: NullableStringFieldUpdateOperationsInput | string | null
+    subtypeName?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    stageEvo?: IntFieldUpdateOperationsInput | number
+    branchEvo?: IntFieldUpdateOperationsInput | number
+    starts?: IntFieldUpdateOperationsInput | number
+    hunger?: IntFieldUpdateOperationsInput | number
+    collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
   export type CollectionCreateManyLeaderInput = {
@@ -7031,7 +10352,7 @@ export namespace Prisma {
     stageEvo?: number
     branchEvo?: number
     starts: number
-    hunger: number
+    hunger?: number
   }
 
   export type MonsterUpdateWithoutTypeInput = {
@@ -7045,6 +10366,7 @@ export namespace Prisma {
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUpdateManyWithoutMonsterNestedInput
+    dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
   }
 
   export type MonsterUncheckedUpdateWithoutTypeInput = {
@@ -7058,6 +10380,7 @@ export namespace Prisma {
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
+    dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
   export type MonsterUncheckedUpdateManyWithoutTypeInput = {
@@ -7079,6 +10402,15 @@ export namespace Prisma {
     leaderId?: string | null
   }
 
+  export type DailyMonstersCreateManyMonsterInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    date?: Date | string
+    price: string
+    isCoinsPrice: boolean
+  }
+
   export type CollectionUpdateWithoutMonsterInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7098,6 +10430,33 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DailyMonstersUpdateWithoutMonsterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DailyMonstersUncheckedUpdateWithoutMonsterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type DailyMonstersUncheckedUpdateManyWithoutMonsterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: StringFieldUpdateOperationsInput | string
+    isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

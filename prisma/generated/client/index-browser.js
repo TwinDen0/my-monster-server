@@ -121,6 +121,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   updateAt: 'updateAt',
+  coins: 'coins',
+  crystals: 'crystals',
   telegramId: 'telegramId',
   username: 'username',
   fullName: 'fullName',
@@ -133,6 +135,7 @@ exports.Prisma.TypeMonsterScalarFieldEnum = {
   createdAt: 'createdAt',
   updateAt: 'updateAt',
   name: 'name',
+  img: 'img',
   element: 'element',
   description: 'description'
 };
@@ -158,9 +161,43 @@ exports.Prisma.CollectionScalarFieldEnum = {
   monsterId: 'monsterId'
 };
 
+exports.Prisma.DailyMonstersScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt',
+  date: 'date',
+  price: 'price',
+  isCoinsPrice: 'isCoinsPrice',
+  monsterId: 'monsterId'
+};
+
+exports.Prisma.PackScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt',
+  name: 'name',
+  description: 'description',
+  img: 'img',
+  type: 'type',
+  endAt: 'endAt',
+  priceCoin: 'priceCoin',
+  priceCrystal: 'priceCrystal',
+  coinMin: 'coinMin',
+  coinMax: 'coinMax',
+  crystalMin: 'crystalMin',
+  crystalMax: 'crystalMax',
+  percentDropMonster: 'percentDropMonster',
+  monsters: 'monsters'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -171,6 +208,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.EnumTypeElement = exports.$Enums.EnumTypeElement = {
   FIRE: 'FIRE',
@@ -189,7 +232,9 @@ exports.Prisma.ModelName = {
   User: 'User',
   TypeMonster: 'TypeMonster',
   Monster: 'Monster',
-  Collection: 'Collection'
+  Collection: 'Collection',
+  DailyMonsters: 'DailyMonsters',
+  Pack: 'Pack'
 };
 
 /**
