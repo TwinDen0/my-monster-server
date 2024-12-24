@@ -62,6 +62,7 @@ export class MonsterService {
       });
     } catch (error) {
       console.log('Error creating type monster:', error);
+      return null;
     }
   }
 
