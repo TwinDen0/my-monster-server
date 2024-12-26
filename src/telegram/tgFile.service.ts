@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { clearSession } from 'src/app.utils';
 import { FileService } from 'src/file/file.service';
 import { Context } from '../context.interface';
 
@@ -27,7 +28,6 @@ export class TgFileService {
     } else {
       await ctx.reply('Ошибка загрузки файла');
     }
-    ctx.session.type = '';
-    ctx.session.text = '';
+    await clearSession(ctx);
   }
 }

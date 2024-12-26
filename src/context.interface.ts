@@ -6,6 +6,7 @@ export interface Context extends ContextTelegraf {
     type?:
       | 'save_file'
       | ''
+      | 'add_collection'
       | 'send_message'
       | 'create_pack'
       | 'create_monster'

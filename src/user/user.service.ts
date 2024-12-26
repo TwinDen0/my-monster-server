@@ -28,6 +28,9 @@ export class UserService {
       where: {
         telegramId,
       },
+      include: {
+        collection: true,
+      },
     });
     console.log('Пришел: ', telegramId, ' Вернулся: ', user);
     return user;

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createTable } from 'src/app.utils';
+import { clearSession, createTable } from 'src/app.utils';
 import { MarketService } from 'src/market/market.service';
 import { Context } from '../context.interface';
 
@@ -41,8 +41,8 @@ export class TgMarketService {
     const parts = message.split('\n').map((part) => part.trim());
 
     if (parts.length !== 4) {
-      ctx.session.type = '';
       await ctx.reply(`Введены неверные данные`);
+      await clearSession(ctx);
       return;
     }
 

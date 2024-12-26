@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { EnumTypeElement } from 'prisma/generated/client';
-import { createTable } from 'src/app.utils';
+import { clearSession, createTable } from 'src/app.utils';
 import { MonsterDto } from 'src/monster/dto/monster.dto';
 import { TypeMonsterDto } from 'src/monster/dto/typeMonster.dto';
 import { MonsterService } from 'src/monster/monster.service';
@@ -36,7 +36,7 @@ export class TgMonsterService {
 
     if (!typeMonster) {
       await ctx.reply('Указан некорректный Id! Создание остановлено.');
-      ctx.session.type = '';
+      await clearSession(ctx);
       return;
     }
     const monsters = await this.monsterService.getMonsterByType(message);
@@ -101,8 +101,7 @@ export class TgMonsterService {
     } else {
       await ctx.reply('Ошибка создания монстра.');
     }
-    ctx.session.text = '';
-    ctx.session.type = '';
+    await clearSession(ctx);
   }
 
   async createTypeStep1(ctx: Context) {

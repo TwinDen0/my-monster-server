@@ -41,12 +41,6 @@ export class HandlersService {
 
   async help(ctx: Context) {}
 
-  async clear(ctx: Context) {
-    await ctx.reply(`Контекст отчищен`);
-    ctx.session.type = '';
-    ctx.session.text = '';
-  }
-
   async sessionData(ctx: Context) {
     await ctx.reply(
       `session.type: ${ctx.session.type}\nsession.text: ${ctx.session.text}`,

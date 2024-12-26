@@ -1,3 +1,5 @@
+import { Context } from './context.interface';
+
 export function createTable(dataArr: any[], titleArr: string[]) {
   let table: string = '';
 
@@ -18,4 +20,10 @@ export function createTable(dataArr: any[], titleArr: string[]) {
   });
 
   return table;
+}
+
+export async function clearSession(ctx: Context) {
+  ctx.session.type = '';
+  ctx.session.text = '';
+  ctx.reply(`Контекст отчищен`);
 }

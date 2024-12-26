@@ -10,11 +10,13 @@ import {
 } from 'nestjs-telegraf';
 import { Telegraf } from 'telegraf';
 import { yesOrNoButtons } from './app.buttons';
+import { clearSession } from './app.utils';
 import { Context } from './context.interface';
 import { FileService } from './file/file.service';
 import { MarketService } from './market/market.service';
 import { MonsterService } from './monster/monster.service';
 import { HandlersService } from './telegram/handlers.service';
+import { TgCollectionService } from './telegram/tgCollection.service';
 import { TgFileService } from './telegram/tgFile.service';
 import { TgMarketService } from './telegram/tgMarket.service';
 import { TgMonsterService } from './telegram/tgMonster.service';
@@ -31,6 +33,7 @@ export class AppUpdate {
     private readonly tgMonsterService: TgMonsterService,
     private readonly tgMarketService: TgMarketService,
     private readonly tgFileService: TgFileService,
+    private readonly tgCollectionService: TgCollectionService,
     private readonly handlersService: HandlersService,
   ) {}
 
@@ -42,7 +45,7 @@ export class AppUpdate {
 
   @Hears('/clear')
   async clear(ctx: Context) {
-    await this.handlersService.clear(ctx);
+    await clearSession(ctx);
   }
 
   @Hears('/session_data')
@@ -73,6 +76,11 @@ export class AppUpdate {
     await this.tgFileService.saveFilePath(ctx);
   }
 
+  @Hears('🚸 Добавить в коллекцию')
+  async addCollection(ctx: Context) {
+    await this.tgCollectionService.addCollection1(ctx);
+  }
+
   @On('document')
   async getPhoto(@Message() message: any, @Ctx() ctx: Context) {
     if (ctx.session.type === 'save_file') {
@@ -82,28 +90,35 @@ export class AppUpdate {
 
   @On('text')
   async getText(@Message('text') message: string, @Ctx() ctx: Context) {
-    if (ctx.session.type === 'create_type_monster') {
-      await this.tgMonsterService.createTypeStep2(message, ctx);
-      return;
-    }
+    switch (ctx.session.type) {
+      case 'create_type_monster':
+        await this.tgMonsterService.createTypeStep2(message, ctx);
+        break;
 
-    if (ctx.session.type === 'create_monster') {
-      await this.tgMonsterService.createStep2(message, ctx);
-      return;
-    }
+      case 'create_monster':
+        await this.tgMonsterService.createStep2(message, ctx);
+        break;
 
-    if (ctx.session.type === 'create_monster_2') {
-      await this.tgMonsterService.createStep3(message, ctx);
-      return;
-    }
+      case 'create_monster_2':
+        await this.tgMonsterService.createStep3(message, ctx);
+        break;
 
-    if (ctx.session.type === 'save_file') {
-      ctx.session.text = message;
-      await ctx.reply('Теперь отправь файл, который необходимо скачать: ');
-    }
+      case 'save_file':
+        ctx.session.text = message;
+        await ctx.reply('Теперь отправь файл, который необходимо скачать: ');
+        break;
 
-    if (ctx.session.type === 'create_pack') {
-      await this.tgMarketService.createPackStep2(message, ctx);
+      case 'create_pack':
+        await this.tgMarketService.createPackStep2(message, ctx);
+        break;
+
+      case 'add_collection':
+        await this.tgCollectionService.addCollection2(message, ctx);
+        break;
+
+      default:
+        // Обработка случая, если тип не совпадает ни с одним из ожидаемых
+        await ctx.reply('Неизвестный тип действия.');
     }
   }
 
@@ -165,8 +180,7 @@ export class AppUpdate {
       await ctx.reply('Создание монстра отменено!');
     }
 
-    ctx.session.text = '';
-    ctx.session.type = '';
+    await clearSession(ctx);
   }
 
   @Action('create_type_monster')
