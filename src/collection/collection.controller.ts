@@ -10,6 +10,7 @@ export class CollectionController {
   @ApiOperation({ summary: 'Старт эволюции' })
   async startEvo(@Query() query: { tgId: string; collectionId: string }) {
     const { tgId, collectionId } = query;
+    console.log('пришел: ', query);
     return await this.collectionService.startEvo(tgId, collectionId);
   }
 }

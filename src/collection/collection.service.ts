@@ -30,6 +30,9 @@ export class CollectionService {
       where: { telegramId: tgId },
     });
 
+    console.log(user);
+    console.log('user.evoPlaces: ', user.evoPlaces);
+
     if (user.evoPlaces > 0) {
       await this.prisma.user.update({
         where: { telegramId: tgId },
@@ -43,7 +46,7 @@ export class CollectionService {
 
       return userMonster;
     } else {
-      throw new Error('Нет доступных мест для эволюции');
+      return null;
     }
   }
 }
