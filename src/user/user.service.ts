@@ -29,7 +29,11 @@ export class UserService {
         telegramId,
       },
       include: {
-        collection: true,
+        collection: {
+          include: {
+            monster: true,
+          },
+        },
       },
     });
     console.log('Пришел: ', telegramId, ' Вернулся: ', user);
