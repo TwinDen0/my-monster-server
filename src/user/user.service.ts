@@ -36,6 +36,43 @@ export class UserService {
         },
       },
     });
+
+    const now = new Date();
+
+    if (user && user.collection) {
+      for (const collection of user.collection) {
+        if (collection.isEvo && collection.monster) {
+          const { updateAt } = collection;
+          const { hunger } = collection.monster;
+
+          // Вычисляем время, прошедшее с последнего обновления
+          const timeDiff = now.getTime() - new Date(updateAt).getTime(); // миллисекунды
+          const hoursPassed = Math.floor(timeDiff / (1000 * 60 * 60)); // преобразуем в часы
+
+          // Обновляем hungerLevel
+          collection.hungerLevel += hoursPassed;
+
+          // Проверяем, если голод превышает максимум
+          if (collection.hungerLevel >= hunger) {
+            collection.isSleep = true;
+          }
+        }
+      }
+
+      // Сохранение обновленных значений в базу данных
+      await Promise.all(
+        user.collection.map((collection) =>
+          this.prisma.collection.update({
+            where: { id: collection.id },
+            data: {
+              hungerLevel: collection.hungerLevel,
+              isSleep: collection.isSleep,
+            },
+          }),
+        ),
+      );
+    }
+
     console.log('Пришел: ', telegramId, ' Вернулся: ', user);
     return user;
   }

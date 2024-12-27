@@ -165,7 +165,8 @@ exports.Prisma.CollectionScalarFieldEnum = {
   hungerLevel: 'hungerLevel',
   xp: 'xp',
   miningXp: 'miningXp',
-  isEvo: 'isEvo'
+  isEvo: 'isEvo',
+  isSleep: 'isSleep'
 };
 
 exports.Prisma.DailyMonstersScalarFieldEnum = {

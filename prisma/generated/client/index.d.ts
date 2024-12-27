@@ -4591,6 +4591,7 @@ export namespace Prisma {
     xp: number | null
     miningXp: number | null
     isEvo: boolean | null
+    isSleep: boolean | null
   }
 
   export type CollectionMaxAggregateOutputType = {
@@ -4604,6 +4605,7 @@ export namespace Prisma {
     xp: number | null
     miningXp: number | null
     isEvo: boolean | null
+    isSleep: boolean | null
   }
 
   export type CollectionCountAggregateOutputType = {
@@ -4617,6 +4619,7 @@ export namespace Prisma {
     xp: number
     miningXp: number
     isEvo: number
+    isSleep: number
     _all: number
   }
 
@@ -4644,6 +4647,7 @@ export namespace Prisma {
     xp?: true
     miningXp?: true
     isEvo?: true
+    isSleep?: true
   }
 
   export type CollectionMaxAggregateInputType = {
@@ -4657,6 +4661,7 @@ export namespace Prisma {
     xp?: true
     miningXp?: true
     isEvo?: true
+    isSleep?: true
   }
 
   export type CollectionCountAggregateInputType = {
@@ -4670,6 +4675,7 @@ export namespace Prisma {
     xp?: true
     miningXp?: true
     isEvo?: true
+    isSleep?: true
     _all?: true
   }
 
@@ -4770,6 +4776,7 @@ export namespace Prisma {
     xp: number
     miningXp: number
     isEvo: boolean
+    isSleep: boolean
     _count: CollectionCountAggregateOutputType | null
     _avg: CollectionAvgAggregateOutputType | null
     _sum: CollectionSumAggregateOutputType | null
@@ -4802,6 +4809,7 @@ export namespace Prisma {
     xp?: boolean
     miningXp?: boolean
     isEvo?: boolean
+    isSleep?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
@@ -4817,6 +4825,7 @@ export namespace Prisma {
     xp?: boolean
     miningXp?: boolean
     isEvo?: boolean
+    isSleep?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
@@ -4832,6 +4841,7 @@ export namespace Prisma {
     xp?: boolean
     miningXp?: boolean
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4860,6 +4870,7 @@ export namespace Prisma {
       xp: number
       miningXp: number
       isEvo: boolean
+      isSleep: boolean
     }, ExtArgs["result"]["collection"]>
     composites: {}
   }
@@ -5265,6 +5276,7 @@ export namespace Prisma {
     readonly xp: FieldRef<"Collection", 'Int'>
     readonly miningXp: FieldRef<"Collection", 'Int'>
     readonly isEvo: FieldRef<"Collection", 'Boolean'>
+    readonly isSleep: FieldRef<"Collection", 'Boolean'>
   }
     
 
@@ -7734,7 +7746,8 @@ export namespace Prisma {
     hungerLevel: 'hungerLevel',
     xp: 'xp',
     miningXp: 'miningXp',
-    isEvo: 'isEvo'
+    isEvo: 'isEvo',
+    isSleep: 'isSleep'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
@@ -8167,6 +8180,7 @@ export namespace Prisma {
     xp?: IntFilter<"Collection"> | number
     miningXp?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
+    isSleep?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
   }
@@ -8182,6 +8196,7 @@ export namespace Prisma {
     xp?: SortOrder
     miningXp?: SortOrder
     isEvo?: SortOrder
+    isSleep?: SortOrder
     leader?: UserOrderByWithRelationInput
     monster?: MonsterOrderByWithRelationInput
   }
@@ -8200,6 +8215,7 @@ export namespace Prisma {
     xp?: IntFilter<"Collection"> | number
     miningXp?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
+    isSleep?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
   }, "id">
@@ -8215,6 +8231,7 @@ export namespace Prisma {
     xp?: SortOrder
     miningXp?: SortOrder
     isEvo?: SortOrder
+    isSleep?: SortOrder
     _count?: CollectionCountOrderByAggregateInput
     _avg?: CollectionAvgOrderByAggregateInput
     _max?: CollectionMaxOrderByAggregateInput
@@ -8236,6 +8253,7 @@ export namespace Prisma {
     xp?: IntWithAggregatesFilter<"Collection"> | number
     miningXp?: IntWithAggregatesFilter<"Collection"> | number
     isEvo?: BoolWithAggregatesFilter<"Collection"> | boolean
+    isSleep?: BoolWithAggregatesFilter<"Collection"> | boolean
   }
 
   export type DailyMonstersWhereInput = {
@@ -8702,6 +8720,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monster?: MonsterCreateNestedOneWithoutCollectionInput
   }
@@ -8717,6 +8736,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionUpdateInput = {
@@ -8728,6 +8748,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
   }
@@ -8743,6 +8764,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionCreateManyInput = {
@@ -8756,6 +8778,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionUpdateManyMutationInput = {
@@ -8767,6 +8790,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyInput = {
@@ -8780,6 +8804,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DailyMonstersCreateInput = {
@@ -9329,6 +9354,7 @@ export namespace Prisma {
     xp?: SortOrder
     miningXp?: SortOrder
     isEvo?: SortOrder
+    isSleep?: SortOrder
   }
 
   export type CollectionAvgOrderByAggregateInput = {
@@ -9348,6 +9374,7 @@ export namespace Prisma {
     xp?: SortOrder
     miningXp?: SortOrder
     isEvo?: SortOrder
+    isSleep?: SortOrder
   }
 
   export type CollectionMinOrderByAggregateInput = {
@@ -9361,6 +9388,7 @@ export namespace Prisma {
     xp?: SortOrder
     miningXp?: SortOrder
     isEvo?: SortOrder
+    isSleep?: SortOrder
   }
 
   export type CollectionSumOrderByAggregateInput = {
@@ -10102,6 +10130,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
     monster?: MonsterCreateNestedOneWithoutCollectionInput
   }
 
@@ -10115,6 +10144,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionCreateOrConnectWithoutLeaderInput = {
@@ -10157,6 +10187,7 @@ export namespace Prisma {
     xp?: IntFilter<"Collection"> | number
     miningXp?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
+    isSleep?: BoolFilter<"Collection"> | boolean
   }
 
   export type MonsterCreateWithoutTypeInput = {
@@ -10266,6 +10297,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
   }
 
@@ -10279,6 +10311,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionCreateOrConnectWithoutMonsterInput = {
@@ -10629,6 +10662,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type CollectionUpdateWithoutLeaderInput = {
@@ -10640,6 +10674,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
   }
 
@@ -10653,6 +10688,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyWithoutLeaderInput = {
@@ -10665,6 +10701,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MonsterCreateManyTypeInput = {
@@ -10733,6 +10770,7 @@ export namespace Prisma {
     xp?: number
     miningXp?: number
     isEvo?: boolean
+    isSleep?: boolean
   }
 
   export type DailyMonstersCreateManyMonsterInput = {
@@ -10753,6 +10791,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
   }
 
@@ -10766,6 +10805,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyWithoutMonsterInput = {
@@ -10778,6 +10818,7 @@ export namespace Prisma {
     xp?: IntFieldUpdateOperationsInput | number
     miningXp?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isSleep?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DailyMonstersUpdateWithoutMonsterInput = {

@@ -87,7 +87,8 @@ model Collection {
 
   miningXp Int @default(1)
 
-  isEvo Boolean @default(false)
+  isEvo   Boolean @default(false)
+  isSleep Boolean @default(false)
 
   @@map("collection")
 }
