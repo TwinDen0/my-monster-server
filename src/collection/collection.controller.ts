@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 import { CollectionService } from './collection.service';
 
@@ -8,11 +8,8 @@ export class CollectionController {
 
   @Get('start_evo')
   @ApiOperation({ summary: 'Старт эволюции' })
-  async startEvo() {
-    //@Query() query: { tgId: string; collectionId: string }
-    // const { tgId, collectionId } = query;
-    console.log('пришел: ');
-    return null;
-    // return await this.collectionService.startEvo(tgId, collectionId);
+  async startEvo(@Query() query: { tgId: string; collectionId: string }) {
+    const { tgId, collectionId } = query;
+    return await this.collectionService.startEvo(tgId, collectionId);
   }
 }

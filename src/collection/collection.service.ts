@@ -30,7 +30,6 @@ export class CollectionService {
       where: { telegramId: tgId },
     });
 
-    console.log(user);
     console.log('user.evoPlaces: ', user.evoPlaces);
 
     if (user.evoPlaces > 0) {
