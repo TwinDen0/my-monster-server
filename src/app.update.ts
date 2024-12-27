@@ -81,6 +81,11 @@ export class AppUpdate {
     await this.tgCollectionService.addCollection1(ctx);
   }
 
+  @Hears('🗑 Удалить развитие')
+  async deleteActiveMonster(ctx: Context) {
+    await this.tgCollectionService.deleteActiveMonster(ctx);
+  }
+
   @On('document')
   async getPhoto(@Message() message: any, @Ctx() ctx: Context) {
     if (ctx.session.type === 'save_file') {

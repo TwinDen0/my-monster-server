@@ -3,6 +3,7 @@ import { clearSession } from 'src/app.utils';
 import { CollectionService } from 'src/collection/collection.service';
 import { CollectionDto } from 'src/collection/dto/collection.dto';
 import { MonsterService } from 'src/monster/monster.service';
+import { PrismaService } from 'src/prisma.service';
 import { UserService } from 'src/user/user.service';
 import { Context } from '../context.interface';
 
@@ -12,6 +13,7 @@ export class TgCollectionService {
     private readonly userService: UserService,
     private readonly monsterService: MonsterService,
     private readonly collectionService: CollectionService,
+    private readonly prisma: PrismaService,
   ) {}
 
   async addCollection1(ctx: Context) {
@@ -55,5 +57,35 @@ export class TgCollectionService {
       `${user.fullName} получает ${parts[2]} ${monster.subtypeName}!\n\nНовая запись: ${newCollectionRecord.id}`,
     );
     ctx.session.type = 'add_collection';
+    await clearSession(ctx);
+  }
+
+  async deleteActiveMonster(ctx: Context) {
+    await ctx.reply(`Удаляю...`);
+    const userId = String(ctx.from.id);
+
+    const collection = await this.prisma.collection.updateMany({
+      where: {
+        leaderId: userId,
+        isEvo: false,
+      },
+      data: {
+        isEvo: false,
+      },
+    });
+    console.log(collection);
+
+    const user = await this.prisma.user.update({
+      where: {
+        telegramId: userId,
+      },
+      data: {
+        evoPlaces: 3,
+      },
+    });
+
+    console.log(user);
+    await ctx.reply(`Удалил ...`);
+    await clearSession(ctx);
   }
 }

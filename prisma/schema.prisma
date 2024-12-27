@@ -74,7 +74,7 @@ model Collection {
   createdAt DateTime @default(now()) @map("created_at")
   updateAt  DateTime @updatedAt @map("updated_at")
 
-  leader   User?   @relation(fields: [leaderId], references: [id])
+  leader   User?   @relation(fields: [leaderId], references: [telegramId])
   leaderId String? @map("leader_id")
 
   monster   Monster? @relation(fields: [monsterId], references: [id])
