@@ -47,7 +47,8 @@ export class TgCollectionService {
       name: parts[2],
     };
 
-    const newCollectionRecord = await this.collectionService.createEntry(dto);
+    const newCollectionRecord =
+      await this.collectionService.createUserMonster(dto);
 
     console.log(newCollectionRecord);
     await ctx.reply(
