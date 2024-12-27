@@ -8,7 +8,7 @@ export class CollectionController {
 
   @HttpCode(200)
   @ApiOperation({ summary: 'Старт эволюции' })
-  @Get('startEvo')
+  @Get('start_evo')
   async startEvo(@Query() query: { tgId: string; collectionId: string }) {
     const { tgId, collectionId } = query;
     return await this.collectionService.startEvo(tgId, collectionId);
