@@ -19,6 +19,7 @@ export class CollectionService {
             id: dto.monsterId,
           },
         },
+        name: dto.name,
       },
     });
     return createdPack;

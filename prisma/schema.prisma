@@ -23,6 +23,8 @@ model User {
   reputation Int    @default(0)
   userAvatar String @map("user_avatar")
 
+  evoPlaces Int @default(3)
+
   collection Collection[]
 
   @@map("user")
@@ -59,6 +61,8 @@ model Monster {
   starts      Int
   hunger      Int    @default(100)
 
+  xpNextLvl Int @default(2880)
+
   collection    Collection[]
   dailyMonsters DailyMonsters[]
 
@@ -75,6 +79,15 @@ model Collection {
 
   monster   Monster? @relation(fields: [monsterId], references: [id])
   monsterId String?  @map("monster_id")
+
+  name String?
+
+  hungerLevel Int @default(0)
+  xp          Int @default(0)
+
+  miningXp Int @default(1)
+
+  isEvo Boolean @default(false)
 
   @@map("collection")
 }

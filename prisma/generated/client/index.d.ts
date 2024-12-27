@@ -1414,12 +1414,14 @@ export namespace Prisma {
     coins: number | null
     crystals: number | null
     reputation: number | null
+    evoPlaces: number | null
   }
 
   export type UserSumAggregateOutputType = {
     coins: number | null
     crystals: number | null
     reputation: number | null
+    evoPlaces: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1433,6 +1435,7 @@ export namespace Prisma {
     fullName: string | null
     reputation: number | null
     userAvatar: string | null
+    evoPlaces: number | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1446,6 +1449,7 @@ export namespace Prisma {
     fullName: string | null
     reputation: number | null
     userAvatar: string | null
+    evoPlaces: number | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1459,6 +1463,7 @@ export namespace Prisma {
     fullName: number
     reputation: number
     userAvatar: number
+    evoPlaces: number
     _all: number
   }
 
@@ -1467,12 +1472,14 @@ export namespace Prisma {
     coins?: true
     crystals?: true
     reputation?: true
+    evoPlaces?: true
   }
 
   export type UserSumAggregateInputType = {
     coins?: true
     crystals?: true
     reputation?: true
+    evoPlaces?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -1486,6 +1493,7 @@ export namespace Prisma {
     fullName?: true
     reputation?: true
     userAvatar?: true
+    evoPlaces?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1499,6 +1507,7 @@ export namespace Prisma {
     fullName?: true
     reputation?: true
     userAvatar?: true
+    evoPlaces?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1512,6 +1521,7 @@ export namespace Prisma {
     fullName?: true
     reputation?: true
     userAvatar?: true
+    evoPlaces?: true
     _all?: true
   }
 
@@ -1612,6 +1622,7 @@ export namespace Prisma {
     fullName: string
     reputation: number
     userAvatar: string
+    evoPlaces: number
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1644,6 +1655,7 @@ export namespace Prisma {
     fullName?: boolean
     reputation?: boolean
     userAvatar?: boolean
+    evoPlaces?: boolean
     collection?: boolean | User$collectionArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1659,6 +1671,7 @@ export namespace Prisma {
     fullName?: boolean
     reputation?: boolean
     userAvatar?: boolean
+    evoPlaces?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1672,6 +1685,7 @@ export namespace Prisma {
     fullName?: boolean
     reputation?: boolean
     userAvatar?: boolean
+    evoPlaces?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1696,6 +1710,7 @@ export namespace Prisma {
       fullName: string
       reputation: number
       userAvatar: string
+      evoPlaces: number
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2100,6 +2115,7 @@ export namespace Prisma {
     readonly fullName: FieldRef<"User", 'String'>
     readonly reputation: FieldRef<"User", 'Int'>
     readonly userAvatar: FieldRef<"User", 'String'>
+    readonly evoPlaces: FieldRef<"User", 'Int'>
   }
     
 
@@ -3437,6 +3453,7 @@ export namespace Prisma {
     branchEvo: number | null
     starts: number | null
     hunger: number | null
+    xpNextLvl: number | null
   }
 
   export type MonsterSumAggregateOutputType = {
@@ -3444,6 +3461,7 @@ export namespace Prisma {
     branchEvo: number | null
     starts: number | null
     hunger: number | null
+    xpNextLvl: number | null
   }
 
   export type MonsterMinAggregateOutputType = {
@@ -3457,6 +3475,7 @@ export namespace Prisma {
     branchEvo: number | null
     starts: number | null
     hunger: number | null
+    xpNextLvl: number | null
   }
 
   export type MonsterMaxAggregateOutputType = {
@@ -3470,6 +3489,7 @@ export namespace Prisma {
     branchEvo: number | null
     starts: number | null
     hunger: number | null
+    xpNextLvl: number | null
   }
 
   export type MonsterCountAggregateOutputType = {
@@ -3483,6 +3503,7 @@ export namespace Prisma {
     branchEvo: number
     starts: number
     hunger: number
+    xpNextLvl: number
     _all: number
   }
 
@@ -3492,6 +3513,7 @@ export namespace Prisma {
     branchEvo?: true
     starts?: true
     hunger?: true
+    xpNextLvl?: true
   }
 
   export type MonsterSumAggregateInputType = {
@@ -3499,6 +3521,7 @@ export namespace Prisma {
     branchEvo?: true
     starts?: true
     hunger?: true
+    xpNextLvl?: true
   }
 
   export type MonsterMinAggregateInputType = {
@@ -3512,6 +3535,7 @@ export namespace Prisma {
     branchEvo?: true
     starts?: true
     hunger?: true
+    xpNextLvl?: true
   }
 
   export type MonsterMaxAggregateInputType = {
@@ -3525,6 +3549,7 @@ export namespace Prisma {
     branchEvo?: true
     starts?: true
     hunger?: true
+    xpNextLvl?: true
   }
 
   export type MonsterCountAggregateInputType = {
@@ -3538,6 +3563,7 @@ export namespace Prisma {
     branchEvo?: true
     starts?: true
     hunger?: true
+    xpNextLvl?: true
     _all?: true
   }
 
@@ -3638,6 +3664,7 @@ export namespace Prisma {
     branchEvo: number
     starts: number
     hunger: number
+    xpNextLvl: number
     _count: MonsterCountAggregateOutputType | null
     _avg: MonsterAvgAggregateOutputType | null
     _sum: MonsterSumAggregateOutputType | null
@@ -3670,6 +3697,7 @@ export namespace Prisma {
     branchEvo?: boolean
     starts?: boolean
     hunger?: boolean
+    xpNextLvl?: boolean
     type?: boolean | Monster$typeArgs<ExtArgs>
     collection?: boolean | Monster$collectionArgs<ExtArgs>
     dailyMonsters?: boolean | Monster$dailyMonstersArgs<ExtArgs>
@@ -3687,6 +3715,7 @@ export namespace Prisma {
     branchEvo?: boolean
     starts?: boolean
     hunger?: boolean
+    xpNextLvl?: boolean
     type?: boolean | Monster$typeArgs<ExtArgs>
   }, ExtArgs["result"]["monster"]>
 
@@ -3701,6 +3730,7 @@ export namespace Prisma {
     branchEvo?: boolean
     starts?: boolean
     hunger?: boolean
+    xpNextLvl?: boolean
   }
 
   export type MonsterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3731,6 +3761,7 @@ export namespace Prisma {
       branchEvo: number
       starts: number
       hunger: number
+      xpNextLvl: number
     }, ExtArgs["result"]["monster"]>
     composites: {}
   }
@@ -4137,6 +4168,7 @@ export namespace Prisma {
     readonly branchEvo: FieldRef<"Monster", 'Int'>
     readonly starts: FieldRef<"Monster", 'Int'>
     readonly hunger: FieldRef<"Monster", 'Int'>
+    readonly xpNextLvl: FieldRef<"Monster", 'Int'>
   }
     
 
@@ -4530,8 +4562,22 @@ export namespace Prisma {
 
   export type AggregateCollection = {
     _count: CollectionCountAggregateOutputType | null
+    _avg: CollectionAvgAggregateOutputType | null
+    _sum: CollectionSumAggregateOutputType | null
     _min: CollectionMinAggregateOutputType | null
     _max: CollectionMaxAggregateOutputType | null
+  }
+
+  export type CollectionAvgAggregateOutputType = {
+    hungerLevel: number | null
+    xp: number | null
+    miningXp: number | null
+  }
+
+  export type CollectionSumAggregateOutputType = {
+    hungerLevel: number | null
+    xp: number | null
+    miningXp: number | null
   }
 
   export type CollectionMinAggregateOutputType = {
@@ -4540,6 +4586,11 @@ export namespace Prisma {
     updateAt: Date | null
     leaderId: string | null
     monsterId: string | null
+    name: string | null
+    hungerLevel: number | null
+    xp: number | null
+    miningXp: number | null
+    isEvo: boolean | null
   }
 
   export type CollectionMaxAggregateOutputType = {
@@ -4548,6 +4599,11 @@ export namespace Prisma {
     updateAt: Date | null
     leaderId: string | null
     monsterId: string | null
+    name: string | null
+    hungerLevel: number | null
+    xp: number | null
+    miningXp: number | null
+    isEvo: boolean | null
   }
 
   export type CollectionCountAggregateOutputType = {
@@ -4556,9 +4612,26 @@ export namespace Prisma {
     updateAt: number
     leaderId: number
     monsterId: number
+    name: number
+    hungerLevel: number
+    xp: number
+    miningXp: number
+    isEvo: number
     _all: number
   }
 
+
+  export type CollectionAvgAggregateInputType = {
+    hungerLevel?: true
+    xp?: true
+    miningXp?: true
+  }
+
+  export type CollectionSumAggregateInputType = {
+    hungerLevel?: true
+    xp?: true
+    miningXp?: true
+  }
 
   export type CollectionMinAggregateInputType = {
     id?: true
@@ -4566,6 +4639,11 @@ export namespace Prisma {
     updateAt?: true
     leaderId?: true
     monsterId?: true
+    name?: true
+    hungerLevel?: true
+    xp?: true
+    miningXp?: true
+    isEvo?: true
   }
 
   export type CollectionMaxAggregateInputType = {
@@ -4574,6 +4652,11 @@ export namespace Prisma {
     updateAt?: true
     leaderId?: true
     monsterId?: true
+    name?: true
+    hungerLevel?: true
+    xp?: true
+    miningXp?: true
+    isEvo?: true
   }
 
   export type CollectionCountAggregateInputType = {
@@ -4582,6 +4665,11 @@ export namespace Prisma {
     updateAt?: true
     leaderId?: true
     monsterId?: true
+    name?: true
+    hungerLevel?: true
+    xp?: true
+    miningXp?: true
+    isEvo?: true
     _all?: true
   }
 
@@ -4623,6 +4711,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CollectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CollectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CollectionMinAggregateInputType
@@ -4653,6 +4753,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CollectionCountAggregateInputType | true
+    _avg?: CollectionAvgAggregateInputType
+    _sum?: CollectionSumAggregateInputType
     _min?: CollectionMinAggregateInputType
     _max?: CollectionMaxAggregateInputType
   }
@@ -4663,7 +4765,14 @@ export namespace Prisma {
     updateAt: Date
     leaderId: string | null
     monsterId: string | null
+    name: string | null
+    hungerLevel: number
+    xp: number
+    miningXp: number
+    isEvo: boolean
     _count: CollectionCountAggregateOutputType | null
+    _avg: CollectionAvgAggregateOutputType | null
+    _sum: CollectionSumAggregateOutputType | null
     _min: CollectionMinAggregateOutputType | null
     _max: CollectionMaxAggregateOutputType | null
   }
@@ -4688,6 +4797,11 @@ export namespace Prisma {
     updateAt?: boolean
     leaderId?: boolean
     monsterId?: boolean
+    name?: boolean
+    hungerLevel?: boolean
+    xp?: boolean
+    miningXp?: boolean
+    isEvo?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
@@ -4698,6 +4812,11 @@ export namespace Prisma {
     updateAt?: boolean
     leaderId?: boolean
     monsterId?: boolean
+    name?: boolean
+    hungerLevel?: boolean
+    xp?: boolean
+    miningXp?: boolean
+    isEvo?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
@@ -4708,6 +4827,11 @@ export namespace Prisma {
     updateAt?: boolean
     leaderId?: boolean
     monsterId?: boolean
+    name?: boolean
+    hungerLevel?: boolean
+    xp?: boolean
+    miningXp?: boolean
+    isEvo?: boolean
   }
 
   export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4731,6 +4855,11 @@ export namespace Prisma {
       updateAt: Date
       leaderId: string | null
       monsterId: string | null
+      name: string | null
+      hungerLevel: number
+      xp: number
+      miningXp: number
+      isEvo: boolean
     }, ExtArgs["result"]["collection"]>
     composites: {}
   }
@@ -5131,6 +5260,11 @@ export namespace Prisma {
     readonly updateAt: FieldRef<"Collection", 'DateTime'>
     readonly leaderId: FieldRef<"Collection", 'String'>
     readonly monsterId: FieldRef<"Collection", 'String'>
+    readonly name: FieldRef<"Collection", 'String'>
+    readonly hungerLevel: FieldRef<"Collection", 'Int'>
+    readonly xp: FieldRef<"Collection", 'Int'>
+    readonly miningXp: FieldRef<"Collection", 'Int'>
+    readonly isEvo: FieldRef<"Collection", 'Boolean'>
   }
     
 
@@ -7553,7 +7687,8 @@ export namespace Prisma {
     username: 'username',
     fullName: 'fullName',
     reputation: 'reputation',
-    userAvatar: 'userAvatar'
+    userAvatar: 'userAvatar',
+    evoPlaces: 'evoPlaces'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7582,7 +7717,8 @@ export namespace Prisma {
     stageEvo: 'stageEvo',
     branchEvo: 'branchEvo',
     starts: 'starts',
-    hunger: 'hunger'
+    hunger: 'hunger',
+    xpNextLvl: 'xpNextLvl'
   };
 
   export type MonsterScalarFieldEnum = (typeof MonsterScalarFieldEnum)[keyof typeof MonsterScalarFieldEnum]
@@ -7593,7 +7729,12 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updateAt: 'updateAt',
     leaderId: 'leaderId',
-    monsterId: 'monsterId'
+    monsterId: 'monsterId',
+    name: 'name',
+    hungerLevel: 'hungerLevel',
+    xp: 'xp',
+    miningXp: 'miningXp',
+    isEvo: 'isEvo'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
@@ -7781,6 +7922,7 @@ export namespace Prisma {
     fullName?: StringFilter<"User"> | string
     reputation?: IntFilter<"User"> | number
     userAvatar?: StringFilter<"User"> | string
+    evoPlaces?: IntFilter<"User"> | number
     collection?: CollectionListRelationFilter
   }
 
@@ -7795,6 +7937,7 @@ export namespace Prisma {
     fullName?: SortOrder
     reputation?: SortOrder
     userAvatar?: SortOrder
+    evoPlaces?: SortOrder
     collection?: CollectionOrderByRelationAggregateInput
   }
 
@@ -7812,6 +7955,7 @@ export namespace Prisma {
     fullName?: StringFilter<"User"> | string
     reputation?: IntFilter<"User"> | number
     userAvatar?: StringFilter<"User"> | string
+    evoPlaces?: IntFilter<"User"> | number
     collection?: CollectionListRelationFilter
   }, "id" | "telegramId" | "username">
 
@@ -7826,6 +7970,7 @@ export namespace Prisma {
     fullName?: SortOrder
     reputation?: SortOrder
     userAvatar?: SortOrder
+    evoPlaces?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -7847,6 +7992,7 @@ export namespace Prisma {
     fullName?: StringWithAggregatesFilter<"User"> | string
     reputation?: IntWithAggregatesFilter<"User"> | number
     userAvatar?: StringWithAggregatesFilter<"User"> | string
+    evoPlaces?: IntWithAggregatesFilter<"User"> | number
   }
 
   export type TypeMonsterWhereInput = {
@@ -7928,6 +8074,7 @@ export namespace Prisma {
     branchEvo?: IntFilter<"Monster"> | number
     starts?: IntFilter<"Monster"> | number
     hunger?: IntFilter<"Monster"> | number
+    xpNextLvl?: IntFilter<"Monster"> | number
     type?: XOR<TypeMonsterNullableScalarRelationFilter, TypeMonsterWhereInput> | null
     collection?: CollectionListRelationFilter
     dailyMonsters?: DailyMonstersListRelationFilter
@@ -7944,6 +8091,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
     type?: TypeMonsterOrderByWithRelationInput
     collection?: CollectionOrderByRelationAggregateInput
     dailyMonsters?: DailyMonstersOrderByRelationAggregateInput
@@ -7963,6 +8111,7 @@ export namespace Prisma {
     branchEvo?: IntFilter<"Monster"> | number
     starts?: IntFilter<"Monster"> | number
     hunger?: IntFilter<"Monster"> | number
+    xpNextLvl?: IntFilter<"Monster"> | number
     type?: XOR<TypeMonsterNullableScalarRelationFilter, TypeMonsterWhereInput> | null
     collection?: CollectionListRelationFilter
     dailyMonsters?: DailyMonstersListRelationFilter
@@ -7979,6 +8128,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
     _count?: MonsterCountOrderByAggregateInput
     _avg?: MonsterAvgOrderByAggregateInput
     _max?: MonsterMaxOrderByAggregateInput
@@ -8000,6 +8150,7 @@ export namespace Prisma {
     branchEvo?: IntWithAggregatesFilter<"Monster"> | number
     starts?: IntWithAggregatesFilter<"Monster"> | number
     hunger?: IntWithAggregatesFilter<"Monster"> | number
+    xpNextLvl?: IntWithAggregatesFilter<"Monster"> | number
   }
 
   export type CollectionWhereInput = {
@@ -8011,6 +8162,11 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"Collection"> | Date | string
     leaderId?: StringNullableFilter<"Collection"> | string | null
     monsterId?: StringNullableFilter<"Collection"> | string | null
+    name?: StringNullableFilter<"Collection"> | string | null
+    hungerLevel?: IntFilter<"Collection"> | number
+    xp?: IntFilter<"Collection"> | number
+    miningXp?: IntFilter<"Collection"> | number
+    isEvo?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
   }
@@ -8021,6 +8177,11 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrderInput | SortOrder
     monsterId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+    isEvo?: SortOrder
     leader?: UserOrderByWithRelationInput
     monster?: MonsterOrderByWithRelationInput
   }
@@ -8034,6 +8195,11 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"Collection"> | Date | string
     leaderId?: StringNullableFilter<"Collection"> | string | null
     monsterId?: StringNullableFilter<"Collection"> | string | null
+    name?: StringNullableFilter<"Collection"> | string | null
+    hungerLevel?: IntFilter<"Collection"> | number
+    xp?: IntFilter<"Collection"> | number
+    miningXp?: IntFilter<"Collection"> | number
+    isEvo?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
   }, "id">
@@ -8044,9 +8210,16 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrderInput | SortOrder
     monsterId?: SortOrderInput | SortOrder
+    name?: SortOrderInput | SortOrder
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+    isEvo?: SortOrder
     _count?: CollectionCountOrderByAggregateInput
+    _avg?: CollectionAvgOrderByAggregateInput
     _max?: CollectionMaxOrderByAggregateInput
     _min?: CollectionMinOrderByAggregateInput
+    _sum?: CollectionSumOrderByAggregateInput
   }
 
   export type CollectionScalarWhereWithAggregatesInput = {
@@ -8058,6 +8231,11 @@ export namespace Prisma {
     updateAt?: DateTimeWithAggregatesFilter<"Collection"> | Date | string
     leaderId?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     monsterId?: StringNullableWithAggregatesFilter<"Collection"> | string | null
+    name?: StringNullableWithAggregatesFilter<"Collection"> | string | null
+    hungerLevel?: IntWithAggregatesFilter<"Collection"> | number
+    xp?: IntWithAggregatesFilter<"Collection"> | number
+    miningXp?: IntWithAggregatesFilter<"Collection"> | number
+    isEvo?: BoolWithAggregatesFilter<"Collection"> | boolean
   }
 
   export type DailyMonstersWhereInput = {
@@ -8245,6 +8423,7 @@ export namespace Prisma {
     fullName: string
     reputation?: number
     userAvatar: string
+    evoPlaces?: number
     collection?: CollectionCreateNestedManyWithoutLeaderInput
   }
 
@@ -8259,6 +8438,7 @@ export namespace Prisma {
     fullName: string
     reputation?: number
     userAvatar: string
+    evoPlaces?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutLeaderInput
   }
 
@@ -8273,6 +8453,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUpdateManyWithoutLeaderNestedInput
   }
 
@@ -8287,6 +8468,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutLeaderNestedInput
   }
 
@@ -8301,6 +8483,7 @@ export namespace Prisma {
     fullName: string
     reputation?: number
     userAvatar: string
+    evoPlaces?: number
   }
 
   export type UserUpdateManyMutationInput = {
@@ -8314,6 +8497,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -8327,6 +8511,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
   }
 
   export type TypeMonsterCreateInput = {
@@ -8413,6 +8598,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     type?: TypeMonsterCreateNestedOneWithoutMonstersInput
     collection?: CollectionCreateNestedManyWithoutMonsterInput
     dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
@@ -8429,6 +8615,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
     dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
@@ -8443,6 +8630,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
     collection?: CollectionUpdateManyWithoutMonsterNestedInput
     dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
@@ -8459,6 +8647,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
     dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
@@ -8474,6 +8663,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
   }
 
   export type MonsterUpdateManyMutationInput = {
@@ -8486,6 +8676,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonsterUncheckedUpdateManyInput = {
@@ -8499,12 +8690,18 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
   }
 
   export type CollectionCreateInput = {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monster?: MonsterCreateNestedOneWithoutCollectionInput
   }
@@ -8515,12 +8712,22 @@ export namespace Prisma {
     updateAt?: Date | string
     leaderId?: string | null
     monsterId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type CollectionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
   }
@@ -8531,6 +8738,11 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionCreateManyInput = {
@@ -8539,12 +8751,22 @@ export namespace Prisma {
     updateAt?: Date | string
     leaderId?: string | null
     monsterId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type CollectionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyInput = {
@@ -8553,6 +8775,11 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DailyMonstersCreateInput = {
@@ -8815,12 +9042,14 @@ export namespace Prisma {
     fullName?: SortOrder
     reputation?: SortOrder
     userAvatar?: SortOrder
+    evoPlaces?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     coins?: SortOrder
     crystals?: SortOrder
     reputation?: SortOrder
+    evoPlaces?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -8834,6 +9063,7 @@ export namespace Prisma {
     fullName?: SortOrder
     reputation?: SortOrder
     userAvatar?: SortOrder
+    evoPlaces?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -8847,12 +9077,14 @@ export namespace Prisma {
     fullName?: SortOrder
     reputation?: SortOrder
     userAvatar?: SortOrder
+    evoPlaces?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     coins?: SortOrder
     crystals?: SortOrder
     reputation?: SortOrder
+    evoPlaces?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9024,6 +9256,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
   }
 
   export type MonsterAvgOrderByAggregateInput = {
@@ -9031,6 +9264,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
   }
 
   export type MonsterMaxOrderByAggregateInput = {
@@ -9044,6 +9278,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
   }
 
   export type MonsterMinOrderByAggregateInput = {
@@ -9057,6 +9292,7 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
   }
 
   export type MonsterSumOrderByAggregateInput = {
@@ -9064,6 +9300,12 @@ export namespace Prisma {
     branchEvo?: SortOrder
     starts?: SortOrder
     hunger?: SortOrder
+    xpNextLvl?: SortOrder
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type UserNullableScalarRelationFilter = {
@@ -9082,6 +9324,17 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrder
     monsterId?: SortOrder
+    name?: SortOrder
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+    isEvo?: SortOrder
+  }
+
+  export type CollectionAvgOrderByAggregateInput = {
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
   }
 
   export type CollectionMaxOrderByAggregateInput = {
@@ -9090,6 +9343,11 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrder
     monsterId?: SortOrder
+    name?: SortOrder
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+    isEvo?: SortOrder
   }
 
   export type CollectionMinOrderByAggregateInput = {
@@ -9098,11 +9356,25 @@ export namespace Prisma {
     updateAt?: SortOrder
     leaderId?: SortOrder
     monsterId?: SortOrder
+    name?: SortOrder
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+    isEvo?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
+  export type CollectionSumOrderByAggregateInput = {
+    hungerLevel?: SortOrder
+    xp?: SortOrder
+    miningXp?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DailyMonstersCountOrderByAggregateInput = {
@@ -9133,14 +9405,6 @@ export namespace Prisma {
     price?: SortOrder
     isCoinsPrice?: SortOrder
     monsterId?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -9537,6 +9801,10 @@ export namespace Prisma {
     connect?: MonsterWhereUniqueInput
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneWithoutCollectionNestedInput = {
     create?: XOR<UserCreateWithoutCollectionInput, UserUncheckedCreateWithoutCollectionInput>
     connectOrCreate?: UserCreateOrConnectWithoutCollectionInput
@@ -9561,10 +9829,6 @@ export namespace Prisma {
     create?: XOR<MonsterCreateWithoutDailyMonstersInput, MonsterUncheckedCreateWithoutDailyMonstersInput>
     connectOrCreate?: MonsterCreateOrConnectWithoutDailyMonstersInput
     connect?: MonsterWhereUniqueInput
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type MonsterUpdateOneWithoutDailyMonstersNestedInput = {
@@ -9833,6 +10097,11 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
     monster?: MonsterCreateNestedOneWithoutCollectionInput
   }
 
@@ -9841,6 +10110,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     monsterId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type CollectionCreateOrConnectWithoutLeaderInput = {
@@ -9878,6 +10152,11 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"Collection"> | Date | string
     leaderId?: StringNullableFilter<"Collection"> | string | null
     monsterId?: StringNullableFilter<"Collection"> | string | null
+    name?: StringNullableFilter<"Collection"> | string | null
+    hungerLevel?: IntFilter<"Collection"> | number
+    xp?: IntFilter<"Collection"> | number
+    miningXp?: IntFilter<"Collection"> | number
+    isEvo?: BoolFilter<"Collection"> | boolean
   }
 
   export type MonsterCreateWithoutTypeInput = {
@@ -9890,6 +10169,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     collection?: CollectionCreateNestedManyWithoutMonsterInput
     dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
   }
@@ -9904,6 +10184,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
     dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
@@ -9948,6 +10229,7 @@ export namespace Prisma {
     branchEvo?: IntFilter<"Monster"> | number
     starts?: IntFilter<"Monster"> | number
     hunger?: IntFilter<"Monster"> | number
+    xpNextLvl?: IntFilter<"Monster"> | number
   }
 
   export type TypeMonsterCreateWithoutMonstersInput = {
@@ -9979,6 +10261,11 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
   }
 
@@ -9987,6 +10274,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     leaderId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type CollectionCreateOrConnectWithoutMonsterInput = {
@@ -10114,6 +10406,7 @@ export namespace Prisma {
     fullName: string
     reputation?: number
     userAvatar: string
+    evoPlaces?: number
   }
 
   export type UserUncheckedCreateWithoutCollectionInput = {
@@ -10127,6 +10420,7 @@ export namespace Prisma {
     fullName: string
     reputation?: number
     userAvatar: string
+    evoPlaces?: number
   }
 
   export type UserCreateOrConnectWithoutCollectionInput = {
@@ -10144,6 +10438,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     type?: TypeMonsterCreateNestedOneWithoutMonstersInput
     dailyMonsters?: DailyMonstersCreateNestedManyWithoutMonsterInput
   }
@@ -10159,6 +10454,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     dailyMonsters?: DailyMonstersUncheckedCreateNestedManyWithoutMonsterInput
   }
 
@@ -10189,6 +10485,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserUncheckedUpdateWithoutCollectionInput = {
@@ -10202,6 +10499,7 @@ export namespace Prisma {
     fullName?: StringFieldUpdateOperationsInput | string
     reputation?: IntFieldUpdateOperationsInput | number
     userAvatar?: StringFieldUpdateOperationsInput | string
+    evoPlaces?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonsterUpsertWithoutCollectionInput = {
@@ -10225,6 +10523,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
     dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
   }
@@ -10240,6 +10539,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
@@ -10253,6 +10553,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     type?: TypeMonsterCreateNestedOneWithoutMonstersInput
     collection?: CollectionCreateNestedManyWithoutMonsterInput
   }
@@ -10268,6 +10569,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
     collection?: CollectionUncheckedCreateNestedManyWithoutMonsterInput
   }
 
@@ -10297,6 +10599,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     type?: TypeMonsterUpdateOneWithoutMonstersNestedInput
     collection?: CollectionUpdateManyWithoutMonsterNestedInput
   }
@@ -10312,6 +10615,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
@@ -10320,12 +10624,22 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     monsterId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type CollectionUpdateWithoutLeaderInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
   }
 
@@ -10334,6 +10648,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyWithoutLeaderInput = {
@@ -10341,6 +10660,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MonsterCreateManyTypeInput = {
@@ -10353,6 +10677,7 @@ export namespace Prisma {
     branchEvo?: number
     starts: number
     hunger?: number
+    xpNextLvl?: number
   }
 
   export type MonsterUpdateWithoutTypeInput = {
@@ -10365,6 +10690,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUpdateManyWithoutMonsterNestedInput
     dailyMonsters?: DailyMonstersUpdateManyWithoutMonsterNestedInput
   }
@@ -10379,6 +10705,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
     dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
@@ -10393,6 +10720,7 @@ export namespace Prisma {
     branchEvo?: IntFieldUpdateOperationsInput | number
     starts?: IntFieldUpdateOperationsInput | number
     hunger?: IntFieldUpdateOperationsInput | number
+    xpNextLvl?: IntFieldUpdateOperationsInput | number
   }
 
   export type CollectionCreateManyMonsterInput = {
@@ -10400,6 +10728,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     leaderId?: string | null
+    name?: string | null
+    hungerLevel?: number
+    xp?: number
+    miningXp?: number
+    isEvo?: boolean
   }
 
   export type DailyMonstersCreateManyMonsterInput = {
@@ -10415,6 +10748,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
   }
 
@@ -10423,6 +10761,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyWithoutMonsterInput = {
@@ -10430,6 +10773,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    hungerLevel?: IntFieldUpdateOperationsInput | number
+    xp?: IntFieldUpdateOperationsInput | number
+    miningXp?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DailyMonstersUpdateWithoutMonsterInput = {

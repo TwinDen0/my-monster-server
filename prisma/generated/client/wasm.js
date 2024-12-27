@@ -127,7 +127,8 @@ exports.Prisma.UserScalarFieldEnum = {
   username: 'username',
   fullName: 'fullName',
   reputation: 'reputation',
-  userAvatar: 'userAvatar'
+  userAvatar: 'userAvatar',
+  evoPlaces: 'evoPlaces'
 };
 
 exports.Prisma.TypeMonsterScalarFieldEnum = {
@@ -150,7 +151,8 @@ exports.Prisma.MonsterScalarFieldEnum = {
   stageEvo: 'stageEvo',
   branchEvo: 'branchEvo',
   starts: 'starts',
-  hunger: 'hunger'
+  hunger: 'hunger',
+  xpNextLvl: 'xpNextLvl'
 };
 
 exports.Prisma.CollectionScalarFieldEnum = {
@@ -158,7 +160,12 @@ exports.Prisma.CollectionScalarFieldEnum = {
   createdAt: 'createdAt',
   updateAt: 'updateAt',
   leaderId: 'leaderId',
-  monsterId: 'monsterId'
+  monsterId: 'monsterId',
+  name: 'name',
+  hungerLevel: 'hungerLevel',
+  xp: 'xp',
+  miningXp: 'miningXp',
+  isEvo: 'isEvo'
 };
 
 exports.Prisma.DailyMonstersScalarFieldEnum = {

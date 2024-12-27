@@ -16,7 +16,7 @@ export class TgCollectionService {
 
   async addCollection1(ctx: Context) {
     await ctx.reply(
-      `Для добавления монстра в коллекцию введите:\n\nTgIdUser | IdMonster`,
+      `Для добавления монстра в коллекцию введите:\n\nTgIdUser | IdMonster | name`,
     );
     ctx.session.type = 'add_collection';
   }
@@ -26,7 +26,7 @@ export class TgCollectionService {
 
     const parts = message.split(' | ').map((part) => part.trim());
 
-    if (parts.length !== 2) {
+    if (parts.length !== 3) {
       await ctx.reply(`Введены неверные данные`);
       await clearSession(ctx);
       return;
@@ -36,7 +36,7 @@ export class TgCollectionService {
     const monster = await this.monsterService.getMonsterById(parts[1]);
 
     if (!user || !monster) {
-      await ctx.reply(`Введены неверные id`);
+      await ctx.reply(`Введены неверные id ${parts[0]} ${parts[1]}`);
       await clearSession(ctx);
       return;
     }
@@ -44,13 +44,14 @@ export class TgCollectionService {
     const dto: CollectionDto = {
       leaderId: user.telegramId,
       monsterId: monster.id,
+      name: parts[2],
     };
 
     const newCollectionRecord = await this.collectionService.createEntry(dto);
 
     console.log(newCollectionRecord);
     await ctx.reply(
-      `${user.fullName} получает ${monster.subtypeName}!\n\nНовая запись: ${newCollectionRecord.id}`,
+      `${user.fullName} получает ${parts[2]} ${monster.subtypeName}!\n\nНовая запись: ${newCollectionRecord.id}`,
     );
     ctx.session.type = 'add_collection';
   }
