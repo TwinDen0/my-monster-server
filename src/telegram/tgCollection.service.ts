@@ -73,7 +73,7 @@ export class TgCollectionService {
         isEvo: false,
       },
     });
-    console.log(collection);
+    console.log('Удаляю активных монстров: ', collection);
 
     const user = await this.prisma.user.update({
       where: {
@@ -85,7 +85,7 @@ export class TgCollectionService {
     });
 
     console.log(user);
-    await ctx.reply(`Удалил ...`);
+    await ctx.reply(`Удалил ${collection.count} записи`);
     await clearSession(ctx);
   }
 }

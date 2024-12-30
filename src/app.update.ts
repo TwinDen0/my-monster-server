@@ -171,6 +171,11 @@ export class AppUpdate {
       await this.tgMonsterService.createFinale(ctx);
       return;
     }
+
+    if (ctx.session.type === 'create_pack') {
+      await this.tgMarketService.createPackStep3(ctx);
+      return;
+    }
   }
 
   @Action('handle_no')
@@ -183,6 +188,11 @@ export class AppUpdate {
     if (ctx.session.type === 'create_monster_2') {
       await ctx.deleteMessage();
       await ctx.reply('Создание монстра отменено!');
+    }
+
+    if (ctx.session.type === 'create_pack') {
+      await ctx.deleteMessage();
+      await ctx.reply('Создание пака отменено!');
     }
 
     await clearSession(ctx);
