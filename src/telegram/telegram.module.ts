@@ -10,6 +10,7 @@ import { TgCollectionService } from './tgCollection.service';
 import { TgFileService } from './tgFile.service';
 import { TgMarketService } from './tgMarket.service';
 import { TgMonsterService } from './tgMonster.service';
+import { TgUserService } from './tgUser.service';
 
 @Module({
   providers: [
@@ -24,6 +25,7 @@ import { TgMonsterService } from './tgMonster.service';
     TgMarketService,
     TgFileService,
     TgCollectionService,
+    TgUserService,
   ],
   exports: [
     TgMonsterService,
@@ -31,6 +33,7 @@ import { TgMonsterService } from './tgMonster.service';
     TgMarketService,
     TgFileService,
     TgCollectionService,
+    TgUserService,
   ],
 })
 export class TelegramModule {}

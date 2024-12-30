@@ -20,6 +20,7 @@ import { TgCollectionService } from './telegram/tgCollection.service';
 import { TgFileService } from './telegram/tgFile.service';
 import { TgMarketService } from './telegram/tgMarket.service';
 import { TgMonsterService } from './telegram/tgMonster.service';
+import { TgUserService } from './telegram/tgUser.service';
 import { UserService } from './user/user.service';
 
 @Update()
@@ -34,6 +35,7 @@ export class AppUpdate {
     private readonly tgMarketService: TgMarketService,
     private readonly tgFileService: TgFileService,
     private readonly tgCollectionService: TgCollectionService,
+    private readonly tgUserService: TgUserService,
     private readonly handlersService: HandlersService,
   ) {}
 
@@ -86,6 +88,11 @@ export class AppUpdate {
     await this.tgCollectionService.deleteActiveMonster(ctx);
   }
 
+  @Hears('💎 Добавить пользователю кристаллы')
+  async addUserCrystals(ctx: Context) {
+    await this.tgUserService.addUserCrystalsStep1(ctx);
+  }
+
   @On('document')
   async getPhoto(@Message() message: any, @Ctx() ctx: Context) {
     if (ctx.session.type === 'save_file') {
@@ -96,6 +103,9 @@ export class AppUpdate {
   @On('text')
   async getText(@Message('text') message: string, @Ctx() ctx: Context) {
     switch (ctx.session.type) {
+      case 'add_user_crystal':
+        await this.tgUserService.addUserCrystalsStep2(message, ctx);
+        break;
       case 'create_type_monster':
         await this.tgMonsterService.createTypeStep2(message, ctx);
         break;
