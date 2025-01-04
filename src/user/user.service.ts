@@ -112,7 +112,8 @@ export class UserService {
         user.collection.map(async (collection) => {
           if (collection.monstersFood) {
             const foodId = collection.monstersFood[0].food.id;
-            console.log(foodId);
+            console.log('foodId', foodId);
+            console.log('monstersFood length', collection.monstersFood.length);
             // Проверяем, существует ли запись в MonstersFood
             const foodExists = await this.prisma.monstersFood.findUnique({
               where: { id: foodId },
