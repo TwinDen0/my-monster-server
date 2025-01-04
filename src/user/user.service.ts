@@ -117,7 +117,7 @@ export class UserService {
           } else {
             isHunger = true;
           }
-
+          //ошибка
           collection.monstersFood = newMonstersFood;
           collection.isStop = isHunger;
           collection.days = daysPassed;
