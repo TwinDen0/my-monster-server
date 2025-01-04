@@ -163,8 +163,17 @@ exports.Prisma.CollectionScalarFieldEnum = {
   name: 'name',
   days: 'days',
   foodMinutes: 'foodMinutes',
+  foodPlaces: 'foodPlaces',
   isEvo: 'isEvo',
   isStop: 'isStop'
+};
+
+exports.Prisma.MonstersFoodScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt',
+  foodId: 'foodId',
+  collectionId: 'collectionId'
 };
 
 exports.Prisma.DailyMonstersScalarFieldEnum = {
@@ -194,6 +203,24 @@ exports.Prisma.PackScalarFieldEnum = {
   crystalMax: 'crystalMax',
   percentDropMonster: 'percentDropMonster',
   monsters: 'monsters'
+};
+
+exports.Prisma.FoodScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updateAt: 'updateAt',
+  name: 'name',
+  img: 'img',
+  time: 'time',
+  price: 'price',
+  isCoins: 'isCoins',
+  mucus: 'mucus',
+  tentacle: 'tentacle',
+  fish: 'fish',
+  eye: 'eye',
+  wing: 'wing',
+  fly: 'fly',
+  bone: 'bone'
 };
 
 exports.Prisma.SortOrder = {
@@ -239,8 +266,10 @@ exports.Prisma.ModelName = {
   TypeMonster: 'TypeMonster',
   Monster: 'Monster',
   Collection: 'Collection',
+  MonstersFood: 'MonstersFood',
   DailyMonsters: 'DailyMonsters',
-  Pack: 'Pack'
+  Pack: 'Pack',
+  Food: 'Food'
 };
 
 /**

@@ -10,6 +10,7 @@ export function adminButtons() {
       Markup.button.callback('🦖 Добавить монстра', 'create_monster'),
       Markup.button.callback('➕ Добавить пак', 'create_pack'),
       Markup.button.callback('⬇️ Загрузить файл', 'save_file'),
+      Markup.button.callback('🥣 Добавить блюдо', 'save_file'),
     ],
     {
       columns: 2,

@@ -81,12 +81,26 @@ model Collection {
   name String?
   days Int     @default(0)
 
-  foodMinutes Int @default(0) @map("food_minutes")
+  foodMinutes  Int            @default(0) @map("food_minutes")
+  foodPlaces   Int            @default(3) @map("food_places")
+  monstersFood MonstersFood[]
 
   isEvo  Boolean @default(false)
   isStop Boolean @default(false)
 
   @@map("collection")
+}
+
+model MonstersFood {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  food   Food   @relation(fields: [foodId], references: [id])
+  foodId String @map("food_id")
+
+  collection   Collection @relation(fields: [collectionId], references: [id])
+  collectionId String     @map("collection_id")
 }
 
 // market
@@ -132,6 +146,30 @@ model Pack {
   monsters           Json? // {id: String, percent: 13}
 
   @@map("pack")
+}
+
+model Food {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("updated_at")
+
+  name    String
+  img     String
+  time    Int
+  price   Int
+  isCoins Boolean @map("is_coins")
+
+  mucus    Int @default(0)
+  tentacle Int @default(0)
+  fish     Int @default(0)
+  eye      Int @default(0)
+  wing     Int @default(0)
+  fly      Int @default(0)
+  bone     Int @default(0)
+
+  monstersFood MonstersFood[]
+
+  @@map("food")
 }
 
 enum EnumTypeElement {

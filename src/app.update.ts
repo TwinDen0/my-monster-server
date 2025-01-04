@@ -18,6 +18,7 @@ import { MonsterService } from './monster/monster.service';
 import { HandlersService } from './telegram/handlers.service';
 import { TgCollectionService } from './telegram/tgCollection.service';
 import { TgFileService } from './telegram/tgFile.service';
+import { TgFoodService } from './telegram/tgFood.service';
 import { TgMarketService } from './telegram/tgMarket.service';
 import { TgMonsterService } from './telegram/tgMonster.service';
 import { TgUserService } from './telegram/tgUser.service';
@@ -36,6 +37,7 @@ export class AppUpdate {
     private readonly tgFileService: TgFileService,
     private readonly tgCollectionService: TgCollectionService,
     private readonly tgUserService: TgUserService,
+    private readonly tgFoodService: TgFoodService,
     private readonly handlersService: HandlersService,
   ) {}
 
@@ -66,6 +68,11 @@ export class AppUpdate {
   @Hears('🚮 Отчистить базу данных')
   async deleteAllDb(ctx: Context) {
     await this.tgCollectionService.deleteData(ctx);
+  }
+
+  @Hears('🥣 Добавить блюдо')
+  async createFood(ctx: Context) {
+    await this.tgFoodService.createFood1(ctx);
   }
 
   @Hears('🦖 Добавить монстра')
@@ -111,6 +118,7 @@ export class AppUpdate {
       case 'add_user_crystal':
         await this.tgUserService.addUserCrystalsStep2(message, ctx);
         break;
+
       case 'create_type_monster':
         await this.tgMonsterService.createTypeStep2(message, ctx);
         break;
@@ -136,8 +144,11 @@ export class AppUpdate {
         await this.tgCollectionService.addCollection2(message, ctx);
         break;
 
+      case 'create_food':
+        await this.tgFoodService.createFood2(message, ctx);
+        break;
+
       default:
-        // Обработка случая, если тип не совпадает ни с одним из ожидаемых
         await ctx.reply('Неизвестный тип действия.');
     }
   }
@@ -191,25 +202,17 @@ export class AppUpdate {
       await this.tgMarketService.createPackStep3(ctx);
       return;
     }
+
+    if (ctx.session.type === 'create_food') {
+      await this.tgFoodService.createFood3(ctx);
+      return;
+    }
   }
 
   @Action('handle_no')
   async handleNo(@Ctx() ctx: Context) {
-    if (ctx.session.type === 'send_message') {
-      await ctx.deleteMessage();
-      await ctx.reply('Отправка отменена!');
-    }
-
-    if (ctx.session.type === 'create_monster_2') {
-      await ctx.deleteMessage();
-      await ctx.reply('Создание монстра отменено!');
-    }
-
-    if (ctx.session.type === 'create_pack') {
-      await ctx.deleteMessage();
-      await ctx.reply('Создание пака отменено!');
-    }
-
+    await ctx.deleteMessage();
+    await ctx.reply('Отмена!');
     await clearSession(ctx);
   }
 

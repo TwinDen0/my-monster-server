@@ -4,6 +4,7 @@ import * as LocalSession from 'telegraf-session-local';
 import { AppUpdate } from './app.update';
 import { CollectionModule } from './collection/collection.module';
 import { FileModule } from './file/file.module';
+import { FoodModule } from './food/food.module';
 import { MarketModule } from './market/market.module';
 import { MonsterModule } from './monster/monster.module';
 import { PrismaService } from './prisma.service';
@@ -25,6 +26,7 @@ const session = new LocalSession({ database: 'session_db.json' });
     }),
     TelegramModule,
     CollectionModule,
+    FoodModule,
   ],
   providers: [AppUpdate, PrismaService],
 })

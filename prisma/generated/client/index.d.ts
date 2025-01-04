@@ -34,6 +34,11 @@ export type Monster = $Result.DefaultSelection<Prisma.$MonsterPayload>
  */
 export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
 /**
+ * Model MonstersFood
+ * 
+ */
+export type MonstersFood = $Result.DefaultSelection<Prisma.$MonstersFoodPayload>
+/**
  * Model DailyMonsters
  * 
  */
@@ -43,6 +48,11 @@ export type DailyMonsters = $Result.DefaultSelection<Prisma.$DailyMonstersPayloa
  * 
  */
 export type Pack = $Result.DefaultSelection<Prisma.$PackPayload>
+/**
+ * Model Food
+ * 
+ */
+export type Food = $Result.DefaultSelection<Prisma.$FoodPayload>
 
 /**
  * Enums
@@ -233,6 +243,16 @@ export class PrismaClient<
   get collection(): Prisma.CollectionDelegate<ExtArgs>;
 
   /**
+   * `prisma.monstersFood`: Exposes CRUD operations for the **MonstersFood** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MonstersFoods
+    * const monstersFoods = await prisma.monstersFood.findMany()
+    * ```
+    */
+  get monstersFood(): Prisma.MonstersFoodDelegate<ExtArgs>;
+
+  /**
    * `prisma.dailyMonsters`: Exposes CRUD operations for the **DailyMonsters** model.
     * Example usage:
     * ```ts
@@ -251,6 +271,16 @@ export class PrismaClient<
     * ```
     */
   get pack(): Prisma.PackDelegate<ExtArgs>;
+
+  /**
+   * `prisma.food`: Exposes CRUD operations for the **Food** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Foods
+    * const foods = await prisma.food.findMany()
+    * ```
+    */
+  get food(): Prisma.FoodDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -695,8 +725,10 @@ export namespace Prisma {
     TypeMonster: 'TypeMonster',
     Monster: 'Monster',
     Collection: 'Collection',
+    MonstersFood: 'MonstersFood',
     DailyMonsters: 'DailyMonsters',
-    Pack: 'Pack'
+    Pack: 'Pack',
+    Food: 'Food'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -712,7 +744,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "typeMonster" | "monster" | "collection" | "dailyMonsters" | "pack"
+      modelProps: "user" | "typeMonster" | "monster" | "collection" | "monstersFood" | "dailyMonsters" | "pack" | "food"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -996,6 +1028,76 @@ export namespace Prisma {
           }
         }
       }
+      MonstersFood: {
+        payload: Prisma.$MonstersFoodPayload<ExtArgs>
+        fields: Prisma.MonstersFoodFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MonstersFoodFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MonstersFoodFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          findFirst: {
+            args: Prisma.MonstersFoodFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MonstersFoodFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          findMany: {
+            args: Prisma.MonstersFoodFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>[]
+          }
+          create: {
+            args: Prisma.MonstersFoodCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          createMany: {
+            args: Prisma.MonstersFoodCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MonstersFoodCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>[]
+          }
+          delete: {
+            args: Prisma.MonstersFoodDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          update: {
+            args: Prisma.MonstersFoodUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          deleteMany: {
+            args: Prisma.MonstersFoodDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MonstersFoodUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MonstersFoodUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonstersFoodPayload>
+          }
+          aggregate: {
+            args: Prisma.MonstersFoodAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMonstersFood>
+          }
+          groupBy: {
+            args: Prisma.MonstersFoodGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MonstersFoodGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MonstersFoodCountArgs<ExtArgs>
+            result: $Utils.Optional<MonstersFoodCountAggregateOutputType> | number
+          }
+        }
+      }
       DailyMonsters: {
         payload: Prisma.$DailyMonstersPayload<ExtArgs>
         fields: Prisma.DailyMonstersFieldRefs
@@ -1133,6 +1235,76 @@ export namespace Prisma {
           count: {
             args: Prisma.PackCountArgs<ExtArgs>
             result: $Utils.Optional<PackCountAggregateOutputType> | number
+          }
+        }
+      }
+      Food: {
+        payload: Prisma.$FoodPayload<ExtArgs>
+        fields: Prisma.FoodFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FoodFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FoodFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          findFirst: {
+            args: Prisma.FoodFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FoodFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          findMany: {
+            args: Prisma.FoodFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>[]
+          }
+          create: {
+            args: Prisma.FoodCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          createMany: {
+            args: Prisma.FoodCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FoodCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>[]
+          }
+          delete: {
+            args: Prisma.FoodDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          update: {
+            args: Prisma.FoodUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          deleteMany: {
+            args: Prisma.FoodDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FoodUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FoodUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FoodPayload>
+          }
+          aggregate: {
+            args: Prisma.FoodAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFood>
+          }
+          groupBy: {
+            args: Prisma.FoodGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FoodGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FoodCountArgs<ExtArgs>
+            result: $Utils.Optional<FoodCountAggregateOutputType> | number
           }
         }
       }
@@ -1391,6 +1563,68 @@ export namespace Prisma {
    */
   export type MonsterCountOutputTypeCountDailyMonstersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DailyMonstersWhereInput
+  }
+
+
+  /**
+   * Count Type CollectionCountOutputType
+   */
+
+  export type CollectionCountOutputType = {
+    monstersFood: number
+  }
+
+  export type CollectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    monstersFood?: boolean | CollectionCountOutputTypeCountMonstersFoodArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CollectionCountOutputType
+     */
+    select?: CollectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CollectionCountOutputType without action
+   */
+  export type CollectionCountOutputTypeCountMonstersFoodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MonstersFoodWhereInput
+  }
+
+
+  /**
+   * Count Type FoodCountOutputType
+   */
+
+  export type FoodCountOutputType = {
+    monstersFood: number
+  }
+
+  export type FoodCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    monstersFood?: boolean | FoodCountOutputTypeCountMonstersFoodArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * FoodCountOutputType without action
+   */
+  export type FoodCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FoodCountOutputType
+     */
+    select?: FoodCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * FoodCountOutputType without action
+   */
+  export type FoodCountOutputTypeCountMonstersFoodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MonstersFoodWhereInput
   }
 
 
@@ -4555,11 +4789,13 @@ export namespace Prisma {
   export type CollectionAvgAggregateOutputType = {
     days: number | null
     foodMinutes: number | null
+    foodPlaces: number | null
   }
 
   export type CollectionSumAggregateOutputType = {
     days: number | null
     foodMinutes: number | null
+    foodPlaces: number | null
   }
 
   export type CollectionMinAggregateOutputType = {
@@ -4571,6 +4807,7 @@ export namespace Prisma {
     name: string | null
     days: number | null
     foodMinutes: number | null
+    foodPlaces: number | null
     isEvo: boolean | null
     isStop: boolean | null
   }
@@ -4584,6 +4821,7 @@ export namespace Prisma {
     name: string | null
     days: number | null
     foodMinutes: number | null
+    foodPlaces: number | null
     isEvo: boolean | null
     isStop: boolean | null
   }
@@ -4597,6 +4835,7 @@ export namespace Prisma {
     name: number
     days: number
     foodMinutes: number
+    foodPlaces: number
     isEvo: number
     isStop: number
     _all: number
@@ -4606,11 +4845,13 @@ export namespace Prisma {
   export type CollectionAvgAggregateInputType = {
     days?: true
     foodMinutes?: true
+    foodPlaces?: true
   }
 
   export type CollectionSumAggregateInputType = {
     days?: true
     foodMinutes?: true
+    foodPlaces?: true
   }
 
   export type CollectionMinAggregateInputType = {
@@ -4622,6 +4863,7 @@ export namespace Prisma {
     name?: true
     days?: true
     foodMinutes?: true
+    foodPlaces?: true
     isEvo?: true
     isStop?: true
   }
@@ -4635,6 +4877,7 @@ export namespace Prisma {
     name?: true
     days?: true
     foodMinutes?: true
+    foodPlaces?: true
     isEvo?: true
     isStop?: true
   }
@@ -4648,6 +4891,7 @@ export namespace Prisma {
     name?: true
     days?: true
     foodMinutes?: true
+    foodPlaces?: true
     isEvo?: true
     isStop?: true
     _all?: true
@@ -4748,6 +4992,7 @@ export namespace Prisma {
     name: string | null
     days: number
     foodMinutes: number
+    foodPlaces: number
     isEvo: boolean
     isStop: boolean
     _count: CollectionCountAggregateOutputType | null
@@ -4780,10 +5025,13 @@ export namespace Prisma {
     name?: boolean
     days?: boolean
     foodMinutes?: boolean
+    foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
+    monstersFood?: boolean | Collection$monstersFoodArgs<ExtArgs>
+    _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
 
   export type CollectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4795,6 +5043,7 @@ export namespace Prisma {
     name?: boolean
     days?: boolean
     foodMinutes?: boolean
+    foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
@@ -4810,6 +5059,7 @@ export namespace Prisma {
     name?: boolean
     days?: boolean
     foodMinutes?: boolean
+    foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
   }
@@ -4817,6 +5067,8 @@ export namespace Prisma {
   export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
+    monstersFood?: boolean | Collection$monstersFoodArgs<ExtArgs>
+    _count?: boolean | CollectionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CollectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leader?: boolean | Collection$leaderArgs<ExtArgs>
@@ -4828,6 +5080,7 @@ export namespace Prisma {
     objects: {
       leader: Prisma.$UserPayload<ExtArgs> | null
       monster: Prisma.$MonsterPayload<ExtArgs> | null
+      monstersFood: Prisma.$MonstersFoodPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4838,6 +5091,7 @@ export namespace Prisma {
       name: string | null
       days: number
       foodMinutes: number
+      foodPlaces: number
       isEvo: boolean
       isStop: boolean
     }, ExtArgs["result"]["collection"]>
@@ -5206,6 +5460,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     leader<T extends Collection$leaderArgs<ExtArgs> = {}>(args?: Subset<T, Collection$leaderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     monster<T extends Collection$monsterArgs<ExtArgs> = {}>(args?: Subset<T, Collection$monsterArgs<ExtArgs>>): Prisma__MonsterClient<$Result.GetResult<Prisma.$MonsterPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    monstersFood<T extends Collection$monstersFoodArgs<ExtArgs> = {}>(args?: Subset<T, Collection$monstersFoodArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5243,6 +5498,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Collection", 'String'>
     readonly days: FieldRef<"Collection", 'Int'>
     readonly foodMinutes: FieldRef<"Collection", 'Int'>
+    readonly foodPlaces: FieldRef<"Collection", 'Int'>
     readonly isEvo: FieldRef<"Collection", 'Boolean'>
     readonly isStop: FieldRef<"Collection", 'Boolean'>
   }
@@ -5593,6 +5849,26 @@ export namespace Prisma {
   }
 
   /**
+   * Collection.monstersFood
+   */
+  export type Collection$monstersFoodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    where?: MonstersFoodWhereInput
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    cursor?: MonstersFoodWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MonstersFoodScalarFieldEnum | MonstersFoodScalarFieldEnum[]
+  }
+
+  /**
    * Collection without action
    */
   export type CollectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5604,6 +5880,945 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CollectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MonstersFood
+   */
+
+  export type AggregateMonstersFood = {
+    _count: MonstersFoodCountAggregateOutputType | null
+    _min: MonstersFoodMinAggregateOutputType | null
+    _max: MonstersFoodMaxAggregateOutputType | null
+  }
+
+  export type MonstersFoodMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    foodId: string | null
+    collectionId: string | null
+  }
+
+  export type MonstersFoodMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    foodId: string | null
+    collectionId: string | null
+  }
+
+  export type MonstersFoodCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updateAt: number
+    foodId: number
+    collectionId: number
+    _all: number
+  }
+
+
+  export type MonstersFoodMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    foodId?: true
+    collectionId?: true
+  }
+
+  export type MonstersFoodMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    foodId?: true
+    collectionId?: true
+  }
+
+  export type MonstersFoodCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    foodId?: true
+    collectionId?: true
+    _all?: true
+  }
+
+  export type MonstersFoodAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MonstersFood to aggregate.
+     */
+    where?: MonstersFoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonstersFoods to fetch.
+     */
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MonstersFoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonstersFoods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonstersFoods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MonstersFoods
+    **/
+    _count?: true | MonstersFoodCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MonstersFoodMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MonstersFoodMaxAggregateInputType
+  }
+
+  export type GetMonstersFoodAggregateType<T extends MonstersFoodAggregateArgs> = {
+        [P in keyof T & keyof AggregateMonstersFood]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMonstersFood[P]>
+      : GetScalarType<T[P], AggregateMonstersFood[P]>
+  }
+
+
+
+
+  export type MonstersFoodGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MonstersFoodWhereInput
+    orderBy?: MonstersFoodOrderByWithAggregationInput | MonstersFoodOrderByWithAggregationInput[]
+    by: MonstersFoodScalarFieldEnum[] | MonstersFoodScalarFieldEnum
+    having?: MonstersFoodScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MonstersFoodCountAggregateInputType | true
+    _min?: MonstersFoodMinAggregateInputType
+    _max?: MonstersFoodMaxAggregateInputType
+  }
+
+  export type MonstersFoodGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updateAt: Date
+    foodId: string
+    collectionId: string
+    _count: MonstersFoodCountAggregateOutputType | null
+    _min: MonstersFoodMinAggregateOutputType | null
+    _max: MonstersFoodMaxAggregateOutputType | null
+  }
+
+  type GetMonstersFoodGroupByPayload<T extends MonstersFoodGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MonstersFoodGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MonstersFoodGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MonstersFoodGroupByOutputType[P]>
+            : GetScalarType<T[P], MonstersFoodGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MonstersFoodSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    foodId?: boolean
+    collectionId?: boolean
+    food?: boolean | FoodDefaultArgs<ExtArgs>
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["monstersFood"]>
+
+  export type MonstersFoodSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    foodId?: boolean
+    collectionId?: boolean
+    food?: boolean | FoodDefaultArgs<ExtArgs>
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["monstersFood"]>
+
+  export type MonstersFoodSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    foodId?: boolean
+    collectionId?: boolean
+  }
+
+  export type MonstersFoodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    food?: boolean | FoodDefaultArgs<ExtArgs>
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }
+  export type MonstersFoodIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    food?: boolean | FoodDefaultArgs<ExtArgs>
+    collection?: boolean | CollectionDefaultArgs<ExtArgs>
+  }
+
+  export type $MonstersFoodPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MonstersFood"
+    objects: {
+      food: Prisma.$FoodPayload<ExtArgs>
+      collection: Prisma.$CollectionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updateAt: Date
+      foodId: string
+      collectionId: string
+    }, ExtArgs["result"]["monstersFood"]>
+    composites: {}
+  }
+
+  type MonstersFoodGetPayload<S extends boolean | null | undefined | MonstersFoodDefaultArgs> = $Result.GetResult<Prisma.$MonstersFoodPayload, S>
+
+  type MonstersFoodCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MonstersFoodFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MonstersFoodCountAggregateInputType | true
+    }
+
+  export interface MonstersFoodDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MonstersFood'], meta: { name: 'MonstersFood' } }
+    /**
+     * Find zero or one MonstersFood that matches the filter.
+     * @param {MonstersFoodFindUniqueArgs} args - Arguments to find a MonstersFood
+     * @example
+     * // Get one MonstersFood
+     * const monstersFood = await prisma.monstersFood.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MonstersFoodFindUniqueArgs>(args: SelectSubset<T, MonstersFoodFindUniqueArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one MonstersFood that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MonstersFoodFindUniqueOrThrowArgs} args - Arguments to find a MonstersFood
+     * @example
+     * // Get one MonstersFood
+     * const monstersFood = await prisma.monstersFood.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MonstersFoodFindUniqueOrThrowArgs>(args: SelectSubset<T, MonstersFoodFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first MonstersFood that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodFindFirstArgs} args - Arguments to find a MonstersFood
+     * @example
+     * // Get one MonstersFood
+     * const monstersFood = await prisma.monstersFood.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MonstersFoodFindFirstArgs>(args?: SelectSubset<T, MonstersFoodFindFirstArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first MonstersFood that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodFindFirstOrThrowArgs} args - Arguments to find a MonstersFood
+     * @example
+     * // Get one MonstersFood
+     * const monstersFood = await prisma.monstersFood.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MonstersFoodFindFirstOrThrowArgs>(args?: SelectSubset<T, MonstersFoodFindFirstOrThrowArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more MonstersFoods that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MonstersFoods
+     * const monstersFoods = await prisma.monstersFood.findMany()
+     * 
+     * // Get first 10 MonstersFoods
+     * const monstersFoods = await prisma.monstersFood.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const monstersFoodWithIdOnly = await prisma.monstersFood.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MonstersFoodFindManyArgs>(args?: SelectSubset<T, MonstersFoodFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a MonstersFood.
+     * @param {MonstersFoodCreateArgs} args - Arguments to create a MonstersFood.
+     * @example
+     * // Create one MonstersFood
+     * const MonstersFood = await prisma.monstersFood.create({
+     *   data: {
+     *     // ... data to create a MonstersFood
+     *   }
+     * })
+     * 
+     */
+    create<T extends MonstersFoodCreateArgs>(args: SelectSubset<T, MonstersFoodCreateArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many MonstersFoods.
+     * @param {MonstersFoodCreateManyArgs} args - Arguments to create many MonstersFoods.
+     * @example
+     * // Create many MonstersFoods
+     * const monstersFood = await prisma.monstersFood.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MonstersFoodCreateManyArgs>(args?: SelectSubset<T, MonstersFoodCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MonstersFoods and returns the data saved in the database.
+     * @param {MonstersFoodCreateManyAndReturnArgs} args - Arguments to create many MonstersFoods.
+     * @example
+     * // Create many MonstersFoods
+     * const monstersFood = await prisma.monstersFood.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MonstersFoods and only return the `id`
+     * const monstersFoodWithIdOnly = await prisma.monstersFood.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MonstersFoodCreateManyAndReturnArgs>(args?: SelectSubset<T, MonstersFoodCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a MonstersFood.
+     * @param {MonstersFoodDeleteArgs} args - Arguments to delete one MonstersFood.
+     * @example
+     * // Delete one MonstersFood
+     * const MonstersFood = await prisma.monstersFood.delete({
+     *   where: {
+     *     // ... filter to delete one MonstersFood
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MonstersFoodDeleteArgs>(args: SelectSubset<T, MonstersFoodDeleteArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one MonstersFood.
+     * @param {MonstersFoodUpdateArgs} args - Arguments to update one MonstersFood.
+     * @example
+     * // Update one MonstersFood
+     * const monstersFood = await prisma.monstersFood.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MonstersFoodUpdateArgs>(args: SelectSubset<T, MonstersFoodUpdateArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more MonstersFoods.
+     * @param {MonstersFoodDeleteManyArgs} args - Arguments to filter MonstersFoods to delete.
+     * @example
+     * // Delete a few MonstersFoods
+     * const { count } = await prisma.monstersFood.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MonstersFoodDeleteManyArgs>(args?: SelectSubset<T, MonstersFoodDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MonstersFoods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MonstersFoods
+     * const monstersFood = await prisma.monstersFood.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MonstersFoodUpdateManyArgs>(args: SelectSubset<T, MonstersFoodUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MonstersFood.
+     * @param {MonstersFoodUpsertArgs} args - Arguments to update or create a MonstersFood.
+     * @example
+     * // Update or create a MonstersFood
+     * const monstersFood = await prisma.monstersFood.upsert({
+     *   create: {
+     *     // ... data to create a MonstersFood
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MonstersFood we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MonstersFoodUpsertArgs>(args: SelectSubset<T, MonstersFoodUpsertArgs<ExtArgs>>): Prisma__MonstersFoodClient<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of MonstersFoods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodCountArgs} args - Arguments to filter MonstersFoods to count.
+     * @example
+     * // Count the number of MonstersFoods
+     * const count = await prisma.monstersFood.count({
+     *   where: {
+     *     // ... the filter for the MonstersFoods we want to count
+     *   }
+     * })
+    **/
+    count<T extends MonstersFoodCountArgs>(
+      args?: Subset<T, MonstersFoodCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MonstersFoodCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MonstersFood.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MonstersFoodAggregateArgs>(args: Subset<T, MonstersFoodAggregateArgs>): Prisma.PrismaPromise<GetMonstersFoodAggregateType<T>>
+
+    /**
+     * Group by MonstersFood.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonstersFoodGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MonstersFoodGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MonstersFoodGroupByArgs['orderBy'] }
+        : { orderBy?: MonstersFoodGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MonstersFoodGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMonstersFoodGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MonstersFood model
+   */
+  readonly fields: MonstersFoodFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MonstersFood.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MonstersFoodClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    food<T extends FoodDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FoodDefaultArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    collection<T extends CollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CollectionDefaultArgs<ExtArgs>>): Prisma__CollectionClient<$Result.GetResult<Prisma.$CollectionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MonstersFood model
+   */ 
+  interface MonstersFoodFieldRefs {
+    readonly id: FieldRef<"MonstersFood", 'String'>
+    readonly createdAt: FieldRef<"MonstersFood", 'DateTime'>
+    readonly updateAt: FieldRef<"MonstersFood", 'DateTime'>
+    readonly foodId: FieldRef<"MonstersFood", 'String'>
+    readonly collectionId: FieldRef<"MonstersFood", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MonstersFood findUnique
+   */
+  export type MonstersFoodFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter, which MonstersFood to fetch.
+     */
+    where: MonstersFoodWhereUniqueInput
+  }
+
+  /**
+   * MonstersFood findUniqueOrThrow
+   */
+  export type MonstersFoodFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter, which MonstersFood to fetch.
+     */
+    where: MonstersFoodWhereUniqueInput
+  }
+
+  /**
+   * MonstersFood findFirst
+   */
+  export type MonstersFoodFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter, which MonstersFood to fetch.
+     */
+    where?: MonstersFoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonstersFoods to fetch.
+     */
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MonstersFoods.
+     */
+    cursor?: MonstersFoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonstersFoods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonstersFoods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MonstersFoods.
+     */
+    distinct?: MonstersFoodScalarFieldEnum | MonstersFoodScalarFieldEnum[]
+  }
+
+  /**
+   * MonstersFood findFirstOrThrow
+   */
+  export type MonstersFoodFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter, which MonstersFood to fetch.
+     */
+    where?: MonstersFoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonstersFoods to fetch.
+     */
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MonstersFoods.
+     */
+    cursor?: MonstersFoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonstersFoods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonstersFoods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MonstersFoods.
+     */
+    distinct?: MonstersFoodScalarFieldEnum | MonstersFoodScalarFieldEnum[]
+  }
+
+  /**
+   * MonstersFood findMany
+   */
+  export type MonstersFoodFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter, which MonstersFoods to fetch.
+     */
+    where?: MonstersFoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonstersFoods to fetch.
+     */
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MonstersFoods.
+     */
+    cursor?: MonstersFoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonstersFoods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonstersFoods.
+     */
+    skip?: number
+    distinct?: MonstersFoodScalarFieldEnum | MonstersFoodScalarFieldEnum[]
+  }
+
+  /**
+   * MonstersFood create
+   */
+  export type MonstersFoodCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MonstersFood.
+     */
+    data: XOR<MonstersFoodCreateInput, MonstersFoodUncheckedCreateInput>
+  }
+
+  /**
+   * MonstersFood createMany
+   */
+  export type MonstersFoodCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MonstersFoods.
+     */
+    data: MonstersFoodCreateManyInput | MonstersFoodCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MonstersFood createManyAndReturn
+   */
+  export type MonstersFoodCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many MonstersFoods.
+     */
+    data: MonstersFoodCreateManyInput | MonstersFoodCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MonstersFood update
+   */
+  export type MonstersFoodUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MonstersFood.
+     */
+    data: XOR<MonstersFoodUpdateInput, MonstersFoodUncheckedUpdateInput>
+    /**
+     * Choose, which MonstersFood to update.
+     */
+    where: MonstersFoodWhereUniqueInput
+  }
+
+  /**
+   * MonstersFood updateMany
+   */
+  export type MonstersFoodUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MonstersFoods.
+     */
+    data: XOR<MonstersFoodUpdateManyMutationInput, MonstersFoodUncheckedUpdateManyInput>
+    /**
+     * Filter which MonstersFoods to update
+     */
+    where?: MonstersFoodWhereInput
+  }
+
+  /**
+   * MonstersFood upsert
+   */
+  export type MonstersFoodUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MonstersFood to update in case it exists.
+     */
+    where: MonstersFoodWhereUniqueInput
+    /**
+     * In case the MonstersFood found by the `where` argument doesn't exist, create a new MonstersFood with this data.
+     */
+    create: XOR<MonstersFoodCreateInput, MonstersFoodUncheckedCreateInput>
+    /**
+     * In case the MonstersFood was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MonstersFoodUpdateInput, MonstersFoodUncheckedUpdateInput>
+  }
+
+  /**
+   * MonstersFood delete
+   */
+  export type MonstersFoodDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    /**
+     * Filter which MonstersFood to delete.
+     */
+    where: MonstersFoodWhereUniqueInput
+  }
+
+  /**
+   * MonstersFood deleteMany
+   */
+  export type MonstersFoodDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MonstersFoods to delete
+     */
+    where?: MonstersFoodWhereInput
+  }
+
+  /**
+   * MonstersFood without action
+   */
+  export type MonstersFoodDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
   }
 
 
@@ -7644,6 +8859,1140 @@ export namespace Prisma {
 
 
   /**
+   * Model Food
+   */
+
+  export type AggregateFood = {
+    _count: FoodCountAggregateOutputType | null
+    _avg: FoodAvgAggregateOutputType | null
+    _sum: FoodSumAggregateOutputType | null
+    _min: FoodMinAggregateOutputType | null
+    _max: FoodMaxAggregateOutputType | null
+  }
+
+  export type FoodAvgAggregateOutputType = {
+    time: number | null
+    price: number | null
+    mucus: number | null
+    tentacle: number | null
+    fish: number | null
+    eye: number | null
+    wing: number | null
+    fly: number | null
+    bone: number | null
+  }
+
+  export type FoodSumAggregateOutputType = {
+    time: number | null
+    price: number | null
+    mucus: number | null
+    tentacle: number | null
+    fish: number | null
+    eye: number | null
+    wing: number | null
+    fly: number | null
+    bone: number | null
+  }
+
+  export type FoodMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    name: string | null
+    img: string | null
+    time: number | null
+    price: number | null
+    isCoins: boolean | null
+    mucus: number | null
+    tentacle: number | null
+    fish: number | null
+    eye: number | null
+    wing: number | null
+    fly: number | null
+    bone: number | null
+  }
+
+  export type FoodMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updateAt: Date | null
+    name: string | null
+    img: string | null
+    time: number | null
+    price: number | null
+    isCoins: boolean | null
+    mucus: number | null
+    tentacle: number | null
+    fish: number | null
+    eye: number | null
+    wing: number | null
+    fly: number | null
+    bone: number | null
+  }
+
+  export type FoodCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updateAt: number
+    name: number
+    img: number
+    time: number
+    price: number
+    isCoins: number
+    mucus: number
+    tentacle: number
+    fish: number
+    eye: number
+    wing: number
+    fly: number
+    bone: number
+    _all: number
+  }
+
+
+  export type FoodAvgAggregateInputType = {
+    time?: true
+    price?: true
+    mucus?: true
+    tentacle?: true
+    fish?: true
+    eye?: true
+    wing?: true
+    fly?: true
+    bone?: true
+  }
+
+  export type FoodSumAggregateInputType = {
+    time?: true
+    price?: true
+    mucus?: true
+    tentacle?: true
+    fish?: true
+    eye?: true
+    wing?: true
+    fly?: true
+    bone?: true
+  }
+
+  export type FoodMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    img?: true
+    time?: true
+    price?: true
+    isCoins?: true
+    mucus?: true
+    tentacle?: true
+    fish?: true
+    eye?: true
+    wing?: true
+    fly?: true
+    bone?: true
+  }
+
+  export type FoodMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    img?: true
+    time?: true
+    price?: true
+    isCoins?: true
+    mucus?: true
+    tentacle?: true
+    fish?: true
+    eye?: true
+    wing?: true
+    fly?: true
+    bone?: true
+  }
+
+  export type FoodCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updateAt?: true
+    name?: true
+    img?: true
+    time?: true
+    price?: true
+    isCoins?: true
+    mucus?: true
+    tentacle?: true
+    fish?: true
+    eye?: true
+    wing?: true
+    fly?: true
+    bone?: true
+    _all?: true
+  }
+
+  export type FoodAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Food to aggregate.
+     */
+    where?: FoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Foods to fetch.
+     */
+    orderBy?: FoodOrderByWithRelationInput | FoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Foods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Foods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Foods
+    **/
+    _count?: true | FoodCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FoodAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FoodSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FoodMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FoodMaxAggregateInputType
+  }
+
+  export type GetFoodAggregateType<T extends FoodAggregateArgs> = {
+        [P in keyof T & keyof AggregateFood]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFood[P]>
+      : GetScalarType<T[P], AggregateFood[P]>
+  }
+
+
+
+
+  export type FoodGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FoodWhereInput
+    orderBy?: FoodOrderByWithAggregationInput | FoodOrderByWithAggregationInput[]
+    by: FoodScalarFieldEnum[] | FoodScalarFieldEnum
+    having?: FoodScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FoodCountAggregateInputType | true
+    _avg?: FoodAvgAggregateInputType
+    _sum?: FoodSumAggregateInputType
+    _min?: FoodMinAggregateInputType
+    _max?: FoodMaxAggregateInputType
+  }
+
+  export type FoodGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updateAt: Date
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus: number
+    tentacle: number
+    fish: number
+    eye: number
+    wing: number
+    fly: number
+    bone: number
+    _count: FoodCountAggregateOutputType | null
+    _avg: FoodAvgAggregateOutputType | null
+    _sum: FoodSumAggregateOutputType | null
+    _min: FoodMinAggregateOutputType | null
+    _max: FoodMaxAggregateOutputType | null
+  }
+
+  type GetFoodGroupByPayload<T extends FoodGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FoodGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FoodGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FoodGroupByOutputType[P]>
+            : GetScalarType<T[P], FoodGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FoodSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    img?: boolean
+    time?: boolean
+    price?: boolean
+    isCoins?: boolean
+    mucus?: boolean
+    tentacle?: boolean
+    fish?: boolean
+    eye?: boolean
+    wing?: boolean
+    fly?: boolean
+    bone?: boolean
+    monstersFood?: boolean | Food$monstersFoodArgs<ExtArgs>
+    _count?: boolean | FoodCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["food"]>
+
+  export type FoodSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    img?: boolean
+    time?: boolean
+    price?: boolean
+    isCoins?: boolean
+    mucus?: boolean
+    tentacle?: boolean
+    fish?: boolean
+    eye?: boolean
+    wing?: boolean
+    fly?: boolean
+    bone?: boolean
+  }, ExtArgs["result"]["food"]>
+
+  export type FoodSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updateAt?: boolean
+    name?: boolean
+    img?: boolean
+    time?: boolean
+    price?: boolean
+    isCoins?: boolean
+    mucus?: boolean
+    tentacle?: boolean
+    fish?: boolean
+    eye?: boolean
+    wing?: boolean
+    fly?: boolean
+    bone?: boolean
+  }
+
+  export type FoodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    monstersFood?: boolean | Food$monstersFoodArgs<ExtArgs>
+    _count?: boolean | FoodCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type FoodIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $FoodPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Food"
+    objects: {
+      monstersFood: Prisma.$MonstersFoodPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updateAt: Date
+      name: string
+      img: string
+      time: number
+      price: number
+      isCoins: boolean
+      mucus: number
+      tentacle: number
+      fish: number
+      eye: number
+      wing: number
+      fly: number
+      bone: number
+    }, ExtArgs["result"]["food"]>
+    composites: {}
+  }
+
+  type FoodGetPayload<S extends boolean | null | undefined | FoodDefaultArgs> = $Result.GetResult<Prisma.$FoodPayload, S>
+
+  type FoodCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FoodFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FoodCountAggregateInputType | true
+    }
+
+  export interface FoodDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Food'], meta: { name: 'Food' } }
+    /**
+     * Find zero or one Food that matches the filter.
+     * @param {FoodFindUniqueArgs} args - Arguments to find a Food
+     * @example
+     * // Get one Food
+     * const food = await prisma.food.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FoodFindUniqueArgs>(args: SelectSubset<T, FoodFindUniqueArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Food that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {FoodFindUniqueOrThrowArgs} args - Arguments to find a Food
+     * @example
+     * // Get one Food
+     * const food = await prisma.food.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FoodFindUniqueOrThrowArgs>(args: SelectSubset<T, FoodFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Food that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodFindFirstArgs} args - Arguments to find a Food
+     * @example
+     * // Get one Food
+     * const food = await prisma.food.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FoodFindFirstArgs>(args?: SelectSubset<T, FoodFindFirstArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Food that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodFindFirstOrThrowArgs} args - Arguments to find a Food
+     * @example
+     * // Get one Food
+     * const food = await prisma.food.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FoodFindFirstOrThrowArgs>(args?: SelectSubset<T, FoodFindFirstOrThrowArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Foods that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Foods
+     * const foods = await prisma.food.findMany()
+     * 
+     * // Get first 10 Foods
+     * const foods = await prisma.food.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const foodWithIdOnly = await prisma.food.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FoodFindManyArgs>(args?: SelectSubset<T, FoodFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Food.
+     * @param {FoodCreateArgs} args - Arguments to create a Food.
+     * @example
+     * // Create one Food
+     * const Food = await prisma.food.create({
+     *   data: {
+     *     // ... data to create a Food
+     *   }
+     * })
+     * 
+     */
+    create<T extends FoodCreateArgs>(args: SelectSubset<T, FoodCreateArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Foods.
+     * @param {FoodCreateManyArgs} args - Arguments to create many Foods.
+     * @example
+     * // Create many Foods
+     * const food = await prisma.food.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FoodCreateManyArgs>(args?: SelectSubset<T, FoodCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Foods and returns the data saved in the database.
+     * @param {FoodCreateManyAndReturnArgs} args - Arguments to create many Foods.
+     * @example
+     * // Create many Foods
+     * const food = await prisma.food.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Foods and only return the `id`
+     * const foodWithIdOnly = await prisma.food.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FoodCreateManyAndReturnArgs>(args?: SelectSubset<T, FoodCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Food.
+     * @param {FoodDeleteArgs} args - Arguments to delete one Food.
+     * @example
+     * // Delete one Food
+     * const Food = await prisma.food.delete({
+     *   where: {
+     *     // ... filter to delete one Food
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FoodDeleteArgs>(args: SelectSubset<T, FoodDeleteArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Food.
+     * @param {FoodUpdateArgs} args - Arguments to update one Food.
+     * @example
+     * // Update one Food
+     * const food = await prisma.food.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FoodUpdateArgs>(args: SelectSubset<T, FoodUpdateArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Foods.
+     * @param {FoodDeleteManyArgs} args - Arguments to filter Foods to delete.
+     * @example
+     * // Delete a few Foods
+     * const { count } = await prisma.food.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FoodDeleteManyArgs>(args?: SelectSubset<T, FoodDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Foods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Foods
+     * const food = await prisma.food.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FoodUpdateManyArgs>(args: SelectSubset<T, FoodUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Food.
+     * @param {FoodUpsertArgs} args - Arguments to update or create a Food.
+     * @example
+     * // Update or create a Food
+     * const food = await prisma.food.upsert({
+     *   create: {
+     *     // ... data to create a Food
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Food we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FoodUpsertArgs>(args: SelectSubset<T, FoodUpsertArgs<ExtArgs>>): Prisma__FoodClient<$Result.GetResult<Prisma.$FoodPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Foods.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodCountArgs} args - Arguments to filter Foods to count.
+     * @example
+     * // Count the number of Foods
+     * const count = await prisma.food.count({
+     *   where: {
+     *     // ... the filter for the Foods we want to count
+     *   }
+     * })
+    **/
+    count<T extends FoodCountArgs>(
+      args?: Subset<T, FoodCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FoodCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Food.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FoodAggregateArgs>(args: Subset<T, FoodAggregateArgs>): Prisma.PrismaPromise<GetFoodAggregateType<T>>
+
+    /**
+     * Group by Food.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FoodGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FoodGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FoodGroupByArgs['orderBy'] }
+        : { orderBy?: FoodGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FoodGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFoodGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Food model
+   */
+  readonly fields: FoodFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Food.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FoodClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    monstersFood<T extends Food$monstersFoodArgs<ExtArgs> = {}>(args?: Subset<T, Food$monstersFoodArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonstersFoodPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Food model
+   */ 
+  interface FoodFieldRefs {
+    readonly id: FieldRef<"Food", 'String'>
+    readonly createdAt: FieldRef<"Food", 'DateTime'>
+    readonly updateAt: FieldRef<"Food", 'DateTime'>
+    readonly name: FieldRef<"Food", 'String'>
+    readonly img: FieldRef<"Food", 'String'>
+    readonly time: FieldRef<"Food", 'Int'>
+    readonly price: FieldRef<"Food", 'Int'>
+    readonly isCoins: FieldRef<"Food", 'Boolean'>
+    readonly mucus: FieldRef<"Food", 'Int'>
+    readonly tentacle: FieldRef<"Food", 'Int'>
+    readonly fish: FieldRef<"Food", 'Int'>
+    readonly eye: FieldRef<"Food", 'Int'>
+    readonly wing: FieldRef<"Food", 'Int'>
+    readonly fly: FieldRef<"Food", 'Int'>
+    readonly bone: FieldRef<"Food", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Food findUnique
+   */
+  export type FoodFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter, which Food to fetch.
+     */
+    where: FoodWhereUniqueInput
+  }
+
+  /**
+   * Food findUniqueOrThrow
+   */
+  export type FoodFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter, which Food to fetch.
+     */
+    where: FoodWhereUniqueInput
+  }
+
+  /**
+   * Food findFirst
+   */
+  export type FoodFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter, which Food to fetch.
+     */
+    where?: FoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Foods to fetch.
+     */
+    orderBy?: FoodOrderByWithRelationInput | FoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Foods.
+     */
+    cursor?: FoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Foods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Foods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Foods.
+     */
+    distinct?: FoodScalarFieldEnum | FoodScalarFieldEnum[]
+  }
+
+  /**
+   * Food findFirstOrThrow
+   */
+  export type FoodFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter, which Food to fetch.
+     */
+    where?: FoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Foods to fetch.
+     */
+    orderBy?: FoodOrderByWithRelationInput | FoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Foods.
+     */
+    cursor?: FoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Foods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Foods.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Foods.
+     */
+    distinct?: FoodScalarFieldEnum | FoodScalarFieldEnum[]
+  }
+
+  /**
+   * Food findMany
+   */
+  export type FoodFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter, which Foods to fetch.
+     */
+    where?: FoodWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Foods to fetch.
+     */
+    orderBy?: FoodOrderByWithRelationInput | FoodOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Foods.
+     */
+    cursor?: FoodWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Foods from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Foods.
+     */
+    skip?: number
+    distinct?: FoodScalarFieldEnum | FoodScalarFieldEnum[]
+  }
+
+  /**
+   * Food create
+   */
+  export type FoodCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Food.
+     */
+    data: XOR<FoodCreateInput, FoodUncheckedCreateInput>
+  }
+
+  /**
+   * Food createMany
+   */
+  export type FoodCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Foods.
+     */
+    data: FoodCreateManyInput | FoodCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Food createManyAndReturn
+   */
+  export type FoodCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Foods.
+     */
+    data: FoodCreateManyInput | FoodCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Food update
+   */
+  export type FoodUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Food.
+     */
+    data: XOR<FoodUpdateInput, FoodUncheckedUpdateInput>
+    /**
+     * Choose, which Food to update.
+     */
+    where: FoodWhereUniqueInput
+  }
+
+  /**
+   * Food updateMany
+   */
+  export type FoodUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Foods.
+     */
+    data: XOR<FoodUpdateManyMutationInput, FoodUncheckedUpdateManyInput>
+    /**
+     * Filter which Foods to update
+     */
+    where?: FoodWhereInput
+  }
+
+  /**
+   * Food upsert
+   */
+  export type FoodUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Food to update in case it exists.
+     */
+    where: FoodWhereUniqueInput
+    /**
+     * In case the Food found by the `where` argument doesn't exist, create a new Food with this data.
+     */
+    create: XOR<FoodCreateInput, FoodUncheckedCreateInput>
+    /**
+     * In case the Food was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FoodUpdateInput, FoodUncheckedUpdateInput>
+  }
+
+  /**
+   * Food delete
+   */
+  export type FoodDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+    /**
+     * Filter which Food to delete.
+     */
+    where: FoodWhereUniqueInput
+  }
+
+  /**
+   * Food deleteMany
+   */
+  export type FoodDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Foods to delete
+     */
+    where?: FoodWhereInput
+  }
+
+  /**
+   * Food.monstersFood
+   */
+  export type Food$monstersFoodArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonstersFood
+     */
+    select?: MonstersFoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonstersFoodInclude<ExtArgs> | null
+    where?: MonstersFoodWhereInput
+    orderBy?: MonstersFoodOrderByWithRelationInput | MonstersFoodOrderByWithRelationInput[]
+    cursor?: MonstersFoodWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MonstersFoodScalarFieldEnum | MonstersFoodScalarFieldEnum[]
+  }
+
+  /**
+   * Food without action
+   */
+  export type FoodDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Food
+     */
+    select?: FoodSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FoodInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7712,11 +10061,23 @@ export namespace Prisma {
     name: 'name',
     days: 'days',
     foodMinutes: 'foodMinutes',
+    foodPlaces: 'foodPlaces',
     isEvo: 'isEvo',
     isStop: 'isStop'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
+
+
+  export const MonstersFoodScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updateAt: 'updateAt',
+    foodId: 'foodId',
+    collectionId: 'collectionId'
+  };
+
+  export type MonstersFoodScalarFieldEnum = (typeof MonstersFoodScalarFieldEnum)[keyof typeof MonstersFoodScalarFieldEnum]
 
 
   export const DailyMonstersScalarFieldEnum: {
@@ -7752,6 +10113,27 @@ export namespace Prisma {
   };
 
   export type PackScalarFieldEnum = (typeof PackScalarFieldEnum)[keyof typeof PackScalarFieldEnum]
+
+
+  export const FoodScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updateAt: 'updateAt',
+    name: 'name',
+    img: 'img',
+    time: 'time',
+    price: 'price',
+    isCoins: 'isCoins',
+    mucus: 'mucus',
+    tentacle: 'tentacle',
+    fish: 'fish',
+    eye: 'eye',
+    wing: 'wing',
+    fly: 'fly',
+    bone: 'bone'
+  };
+
+  export type FoodScalarFieldEnum = (typeof FoodScalarFieldEnum)[keyof typeof FoodScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8139,10 +10521,12 @@ export namespace Prisma {
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
     foodMinutes?: IntFilter<"Collection"> | number
+    foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
+    monstersFood?: MonstersFoodListRelationFilter
   }
 
   export type CollectionOrderByWithRelationInput = {
@@ -8154,10 +10538,12 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
     leader?: UserOrderByWithRelationInput
     monster?: MonsterOrderByWithRelationInput
+    monstersFood?: MonstersFoodOrderByRelationAggregateInput
   }
 
   export type CollectionWhereUniqueInput = Prisma.AtLeast<{
@@ -8172,10 +10558,12 @@ export namespace Prisma {
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
     foodMinutes?: IntFilter<"Collection"> | number
+    foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
+    monstersFood?: MonstersFoodListRelationFilter
   }, "id">
 
   export type CollectionOrderByWithAggregationInput = {
@@ -8187,6 +10575,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
     _count?: CollectionCountOrderByAggregateInput
@@ -8208,8 +10597,67 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     days?: IntWithAggregatesFilter<"Collection"> | number
     foodMinutes?: IntWithAggregatesFilter<"Collection"> | number
+    foodPlaces?: IntWithAggregatesFilter<"Collection"> | number
     isEvo?: BoolWithAggregatesFilter<"Collection"> | boolean
     isStop?: BoolWithAggregatesFilter<"Collection"> | boolean
+  }
+
+  export type MonstersFoodWhereInput = {
+    AND?: MonstersFoodWhereInput | MonstersFoodWhereInput[]
+    OR?: MonstersFoodWhereInput[]
+    NOT?: MonstersFoodWhereInput | MonstersFoodWhereInput[]
+    id?: StringFilter<"MonstersFood"> | string
+    createdAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    foodId?: StringFilter<"MonstersFood"> | string
+    collectionId?: StringFilter<"MonstersFood"> | string
+    food?: XOR<FoodScalarRelationFilter, FoodWhereInput>
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+  }
+
+  export type MonstersFoodOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    foodId?: SortOrder
+    collectionId?: SortOrder
+    food?: FoodOrderByWithRelationInput
+    collection?: CollectionOrderByWithRelationInput
+  }
+
+  export type MonstersFoodWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MonstersFoodWhereInput | MonstersFoodWhereInput[]
+    OR?: MonstersFoodWhereInput[]
+    NOT?: MonstersFoodWhereInput | MonstersFoodWhereInput[]
+    createdAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    foodId?: StringFilter<"MonstersFood"> | string
+    collectionId?: StringFilter<"MonstersFood"> | string
+    food?: XOR<FoodScalarRelationFilter, FoodWhereInput>
+    collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
+  }, "id">
+
+  export type MonstersFoodOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    foodId?: SortOrder
+    collectionId?: SortOrder
+    _count?: MonstersFoodCountOrderByAggregateInput
+    _max?: MonstersFoodMaxOrderByAggregateInput
+    _min?: MonstersFoodMinOrderByAggregateInput
+  }
+
+  export type MonstersFoodScalarWhereWithAggregatesInput = {
+    AND?: MonstersFoodScalarWhereWithAggregatesInput | MonstersFoodScalarWhereWithAggregatesInput[]
+    OR?: MonstersFoodScalarWhereWithAggregatesInput[]
+    NOT?: MonstersFoodScalarWhereWithAggregatesInput | MonstersFoodScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MonstersFood"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MonstersFood"> | Date | string
+    updateAt?: DateTimeWithAggregatesFilter<"MonstersFood"> | Date | string
+    foodId?: StringWithAggregatesFilter<"MonstersFood"> | string
+    collectionId?: StringWithAggregatesFilter<"MonstersFood"> | string
   }
 
   export type DailyMonstersWhereInput = {
@@ -8384,6 +10832,113 @@ export namespace Prisma {
     crystalMax?: IntWithAggregatesFilter<"Pack"> | number
     percentDropMonster?: IntWithAggregatesFilter<"Pack"> | number
     monsters?: JsonNullableWithAggregatesFilter<"Pack">
+  }
+
+  export type FoodWhereInput = {
+    AND?: FoodWhereInput | FoodWhereInput[]
+    OR?: FoodWhereInput[]
+    NOT?: FoodWhereInput | FoodWhereInput[]
+    id?: StringFilter<"Food"> | string
+    createdAt?: DateTimeFilter<"Food"> | Date | string
+    updateAt?: DateTimeFilter<"Food"> | Date | string
+    name?: StringFilter<"Food"> | string
+    img?: StringFilter<"Food"> | string
+    time?: IntFilter<"Food"> | number
+    price?: IntFilter<"Food"> | number
+    isCoins?: BoolFilter<"Food"> | boolean
+    mucus?: IntFilter<"Food"> | number
+    tentacle?: IntFilter<"Food"> | number
+    fish?: IntFilter<"Food"> | number
+    eye?: IntFilter<"Food"> | number
+    wing?: IntFilter<"Food"> | number
+    fly?: IntFilter<"Food"> | number
+    bone?: IntFilter<"Food"> | number
+    monstersFood?: MonstersFoodListRelationFilter
+  }
+
+  export type FoodOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    time?: SortOrder
+    price?: SortOrder
+    isCoins?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+    monstersFood?: MonstersFoodOrderByRelationAggregateInput
+  }
+
+  export type FoodWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FoodWhereInput | FoodWhereInput[]
+    OR?: FoodWhereInput[]
+    NOT?: FoodWhereInput | FoodWhereInput[]
+    createdAt?: DateTimeFilter<"Food"> | Date | string
+    updateAt?: DateTimeFilter<"Food"> | Date | string
+    name?: StringFilter<"Food"> | string
+    img?: StringFilter<"Food"> | string
+    time?: IntFilter<"Food"> | number
+    price?: IntFilter<"Food"> | number
+    isCoins?: BoolFilter<"Food"> | boolean
+    mucus?: IntFilter<"Food"> | number
+    tentacle?: IntFilter<"Food"> | number
+    fish?: IntFilter<"Food"> | number
+    eye?: IntFilter<"Food"> | number
+    wing?: IntFilter<"Food"> | number
+    fly?: IntFilter<"Food"> | number
+    bone?: IntFilter<"Food"> | number
+    monstersFood?: MonstersFoodListRelationFilter
+  }, "id">
+
+  export type FoodOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    time?: SortOrder
+    price?: SortOrder
+    isCoins?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+    _count?: FoodCountOrderByAggregateInput
+    _avg?: FoodAvgOrderByAggregateInput
+    _max?: FoodMaxOrderByAggregateInput
+    _min?: FoodMinOrderByAggregateInput
+    _sum?: FoodSumOrderByAggregateInput
+  }
+
+  export type FoodScalarWhereWithAggregatesInput = {
+    AND?: FoodScalarWhereWithAggregatesInput | FoodScalarWhereWithAggregatesInput[]
+    OR?: FoodScalarWhereWithAggregatesInput[]
+    NOT?: FoodScalarWhereWithAggregatesInput | FoodScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Food"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Food"> | Date | string
+    updateAt?: DateTimeWithAggregatesFilter<"Food"> | Date | string
+    name?: StringWithAggregatesFilter<"Food"> | string
+    img?: StringWithAggregatesFilter<"Food"> | string
+    time?: IntWithAggregatesFilter<"Food"> | number
+    price?: IntWithAggregatesFilter<"Food"> | number
+    isCoins?: BoolWithAggregatesFilter<"Food"> | boolean
+    mucus?: IntWithAggregatesFilter<"Food"> | number
+    tentacle?: IntWithAggregatesFilter<"Food"> | number
+    fish?: IntWithAggregatesFilter<"Food"> | number
+    eye?: IntWithAggregatesFilter<"Food"> | number
+    wing?: IntWithAggregatesFilter<"Food"> | number
+    fly?: IntWithAggregatesFilter<"Food"> | number
+    bone?: IntWithAggregatesFilter<"Food"> | number
   }
 
   export type UserCreateInput = {
@@ -8667,10 +11222,12 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monster?: MonsterCreateNestedOneWithoutCollectionInput
+    monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateInput = {
@@ -8682,8 +11239,10 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUpdateInput = {
@@ -8693,10 +11252,12 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
+    monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateInput = {
@@ -8708,8 +11269,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionCreateManyInput = {
@@ -8721,6 +11284,7 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
   }
@@ -8732,6 +11296,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8745,8 +11310,63 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MonstersFoodCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    food: FoodCreateNestedOneWithoutMonstersFoodInput
+    collection: CollectionCreateNestedOneWithoutMonstersFoodInput
+  }
+
+  export type MonstersFoodUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    foodId: string
+    collectionId: string
+  }
+
+  export type MonstersFoodUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    food?: FoodUpdateOneRequiredWithoutMonstersFoodNestedInput
+    collection?: CollectionUpdateOneRequiredWithoutMonstersFoodNestedInput
+  }
+
+  export type MonstersFoodUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    foodId?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MonstersFoodCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    foodId: string
+    collectionId: string
+  }
+
+  export type MonstersFoodUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MonstersFoodUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    foodId?: StringFieldUpdateOperationsInput | string
+    collectionId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DailyMonstersCreateInput = {
@@ -8949,6 +11569,136 @@ export namespace Prisma {
     crystalMax?: IntFieldUpdateOperationsInput | number
     percentDropMonster?: IntFieldUpdateOperationsInput | number
     monsters?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type FoodCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus?: number
+    tentacle?: number
+    fish?: number
+    eye?: number
+    wing?: number
+    fly?: number
+    bone?: number
+    monstersFood?: MonstersFoodCreateNestedManyWithoutFoodInput
+  }
+
+  export type FoodUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus?: number
+    tentacle?: number
+    fish?: number
+    eye?: number
+    wing?: number
+    fly?: number
+    bone?: number
+    monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutFoodInput
+  }
+
+  export type FoodUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
+    monstersFood?: MonstersFoodUpdateManyWithoutFoodNestedInput
+  }
+
+  export type FoodUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
+    monstersFood?: MonstersFoodUncheckedUpdateManyWithoutFoodNestedInput
+  }
+
+  export type FoodCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus?: number
+    tentacle?: number
+    fish?: number
+    eye?: number
+    wing?: number
+    fly?: number
+    bone?: number
+  }
+
+  export type FoodUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FoodUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -9280,6 +12030,16 @@ export namespace Prisma {
     isNot?: MonsterWhereInput | null
   }
 
+  export type MonstersFoodListRelationFilter = {
+    every?: MonstersFoodWhereInput
+    some?: MonstersFoodWhereInput
+    none?: MonstersFoodWhereInput
+  }
+
+  export type MonstersFoodOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type CollectionCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
@@ -9289,6 +12049,7 @@ export namespace Prisma {
     name?: SortOrder
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
   }
@@ -9296,6 +12057,7 @@ export namespace Prisma {
   export type CollectionAvgOrderByAggregateInput = {
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
   }
 
   export type CollectionMaxOrderByAggregateInput = {
@@ -9307,6 +12069,7 @@ export namespace Prisma {
     name?: SortOrder
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
   }
@@ -9320,6 +12083,7 @@ export namespace Prisma {
     name?: SortOrder
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
   }
@@ -9327,6 +12091,7 @@ export namespace Prisma {
   export type CollectionSumOrderByAggregateInput = {
     days?: SortOrder
     foodMinutes?: SortOrder
+    foodPlaces?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -9335,6 +12100,40 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FoodScalarRelationFilter = {
+    is?: FoodWhereInput
+    isNot?: FoodWhereInput
+  }
+
+  export type CollectionScalarRelationFilter = {
+    is?: CollectionWhereInput
+    isNot?: CollectionWhereInput
+  }
+
+  export type MonstersFoodCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    foodId?: SortOrder
+    collectionId?: SortOrder
+  }
+
+  export type MonstersFoodMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    foodId?: SortOrder
+    collectionId?: SortOrder
+  }
+
+  export type MonstersFoodMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    foodId?: SortOrder
+    collectionId?: SortOrder
   }
 
   export type DailyMonstersCountOrderByAggregateInput = {
@@ -9539,6 +12338,84 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type FoodCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    time?: SortOrder
+    price?: SortOrder
+    isCoins?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+  }
+
+  export type FoodAvgOrderByAggregateInput = {
+    time?: SortOrder
+    price?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+  }
+
+  export type FoodMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    time?: SortOrder
+    price?: SortOrder
+    isCoins?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+  }
+
+  export type FoodMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updateAt?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    time?: SortOrder
+    price?: SortOrder
+    isCoins?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
+  }
+
+  export type FoodSumOrderByAggregateInput = {
+    time?: SortOrder
+    price?: SortOrder
+    mucus?: SortOrder
+    tentacle?: SortOrder
+    fish?: SortOrder
+    eye?: SortOrder
+    wing?: SortOrder
+    fly?: SortOrder
+    bone?: SortOrder
   }
 
   export type CollectionCreateNestedManyWithoutLeaderInput = {
@@ -9761,6 +12638,20 @@ export namespace Prisma {
     connect?: MonsterWhereUniqueInput
   }
 
+  export type MonstersFoodCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput> | MonstersFoodCreateWithoutCollectionInput[] | MonstersFoodUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutCollectionInput | MonstersFoodCreateOrConnectWithoutCollectionInput[]
+    createMany?: MonstersFoodCreateManyCollectionInputEnvelope
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+  }
+
+  export type MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput> | MonstersFoodCreateWithoutCollectionInput[] | MonstersFoodUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutCollectionInput | MonstersFoodCreateOrConnectWithoutCollectionInput[]
+    createMany?: MonstersFoodCreateManyCollectionInputEnvelope
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -9783,6 +12674,62 @@ export namespace Prisma {
     delete?: MonsterWhereInput | boolean
     connect?: MonsterWhereUniqueInput
     update?: XOR<XOR<MonsterUpdateToOneWithWhereWithoutCollectionInput, MonsterUpdateWithoutCollectionInput>, MonsterUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type MonstersFoodUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput> | MonstersFoodCreateWithoutCollectionInput[] | MonstersFoodUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutCollectionInput | MonstersFoodCreateOrConnectWithoutCollectionInput[]
+    upsert?: MonstersFoodUpsertWithWhereUniqueWithoutCollectionInput | MonstersFoodUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: MonstersFoodCreateManyCollectionInputEnvelope
+    set?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    disconnect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    delete?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    update?: MonstersFoodUpdateWithWhereUniqueWithoutCollectionInput | MonstersFoodUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: MonstersFoodUpdateManyWithWhereWithoutCollectionInput | MonstersFoodUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
+  }
+
+  export type MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput> | MonstersFoodCreateWithoutCollectionInput[] | MonstersFoodUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutCollectionInput | MonstersFoodCreateOrConnectWithoutCollectionInput[]
+    upsert?: MonstersFoodUpsertWithWhereUniqueWithoutCollectionInput | MonstersFoodUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: MonstersFoodCreateManyCollectionInputEnvelope
+    set?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    disconnect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    delete?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    update?: MonstersFoodUpdateWithWhereUniqueWithoutCollectionInput | MonstersFoodUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: MonstersFoodUpdateManyWithWhereWithoutCollectionInput | MonstersFoodUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
+  }
+
+  export type FoodCreateNestedOneWithoutMonstersFoodInput = {
+    create?: XOR<FoodCreateWithoutMonstersFoodInput, FoodUncheckedCreateWithoutMonstersFoodInput>
+    connectOrCreate?: FoodCreateOrConnectWithoutMonstersFoodInput
+    connect?: FoodWhereUniqueInput
+  }
+
+  export type CollectionCreateNestedOneWithoutMonstersFoodInput = {
+    create?: XOR<CollectionCreateWithoutMonstersFoodInput, CollectionUncheckedCreateWithoutMonstersFoodInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutMonstersFoodInput
+    connect?: CollectionWhereUniqueInput
+  }
+
+  export type FoodUpdateOneRequiredWithoutMonstersFoodNestedInput = {
+    create?: XOR<FoodCreateWithoutMonstersFoodInput, FoodUncheckedCreateWithoutMonstersFoodInput>
+    connectOrCreate?: FoodCreateOrConnectWithoutMonstersFoodInput
+    upsert?: FoodUpsertWithoutMonstersFoodInput
+    connect?: FoodWhereUniqueInput
+    update?: XOR<XOR<FoodUpdateToOneWithWhereWithoutMonstersFoodInput, FoodUpdateWithoutMonstersFoodInput>, FoodUncheckedUpdateWithoutMonstersFoodInput>
+  }
+
+  export type CollectionUpdateOneRequiredWithoutMonstersFoodNestedInput = {
+    create?: XOR<CollectionCreateWithoutMonstersFoodInput, CollectionUncheckedCreateWithoutMonstersFoodInput>
+    connectOrCreate?: CollectionCreateOrConnectWithoutMonstersFoodInput
+    upsert?: CollectionUpsertWithoutMonstersFoodInput
+    connect?: CollectionWhereUniqueInput
+    update?: XOR<XOR<CollectionUpdateToOneWithWhereWithoutMonstersFoodInput, CollectionUpdateWithoutMonstersFoodInput>, CollectionUncheckedUpdateWithoutMonstersFoodInput>
   }
 
   export type MonsterCreateNestedOneWithoutDailyMonstersInput = {
@@ -9811,6 +12758,48 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type MonstersFoodCreateNestedManyWithoutFoodInput = {
+    create?: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput> | MonstersFoodCreateWithoutFoodInput[] | MonstersFoodUncheckedCreateWithoutFoodInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutFoodInput | MonstersFoodCreateOrConnectWithoutFoodInput[]
+    createMany?: MonstersFoodCreateManyFoodInputEnvelope
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+  }
+
+  export type MonstersFoodUncheckedCreateNestedManyWithoutFoodInput = {
+    create?: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput> | MonstersFoodCreateWithoutFoodInput[] | MonstersFoodUncheckedCreateWithoutFoodInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutFoodInput | MonstersFoodCreateOrConnectWithoutFoodInput[]
+    createMany?: MonstersFoodCreateManyFoodInputEnvelope
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+  }
+
+  export type MonstersFoodUpdateManyWithoutFoodNestedInput = {
+    create?: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput> | MonstersFoodCreateWithoutFoodInput[] | MonstersFoodUncheckedCreateWithoutFoodInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutFoodInput | MonstersFoodCreateOrConnectWithoutFoodInput[]
+    upsert?: MonstersFoodUpsertWithWhereUniqueWithoutFoodInput | MonstersFoodUpsertWithWhereUniqueWithoutFoodInput[]
+    createMany?: MonstersFoodCreateManyFoodInputEnvelope
+    set?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    disconnect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    delete?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    update?: MonstersFoodUpdateWithWhereUniqueWithoutFoodInput | MonstersFoodUpdateWithWhereUniqueWithoutFoodInput[]
+    updateMany?: MonstersFoodUpdateManyWithWhereWithoutFoodInput | MonstersFoodUpdateManyWithWhereWithoutFoodInput[]
+    deleteMany?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
+  }
+
+  export type MonstersFoodUncheckedUpdateManyWithoutFoodNestedInput = {
+    create?: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput> | MonstersFoodCreateWithoutFoodInput[] | MonstersFoodUncheckedCreateWithoutFoodInput[]
+    connectOrCreate?: MonstersFoodCreateOrConnectWithoutFoodInput | MonstersFoodCreateOrConnectWithoutFoodInput[]
+    upsert?: MonstersFoodUpsertWithWhereUniqueWithoutFoodInput | MonstersFoodUpsertWithWhereUniqueWithoutFoodInput[]
+    createMany?: MonstersFoodCreateManyFoodInputEnvelope
+    set?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    disconnect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    delete?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
+    update?: MonstersFoodUpdateWithWhereUniqueWithoutFoodInput | MonstersFoodUpdateWithWhereUniqueWithoutFoodInput[]
+    updateMany?: MonstersFoodUpdateManyWithWhereWithoutFoodInput | MonstersFoodUpdateManyWithWhereWithoutFoodInput[]
+    deleteMany?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -10060,9 +13049,11 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
     monster?: MonsterCreateNestedOneWithoutCollectionInput
+    monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateWithoutLeaderInput = {
@@ -10073,8 +13064,10 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionCreateOrConnectWithoutLeaderInput = {
@@ -10115,6 +13108,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
     foodMinutes?: IntFilter<"Collection"> | number
+    foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
   }
@@ -10221,9 +13215,11 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
+    monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionUncheckedCreateWithoutMonsterInput = {
@@ -10234,8 +13230,10 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type CollectionCreateOrConnectWithoutMonsterInput = {
@@ -10418,6 +13416,30 @@ export namespace Prisma {
     create: XOR<MonsterCreateWithoutCollectionInput, MonsterUncheckedCreateWithoutCollectionInput>
   }
 
+  export type MonstersFoodCreateWithoutCollectionInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    food: FoodCreateNestedOneWithoutMonstersFoodInput
+  }
+
+  export type MonstersFoodUncheckedCreateWithoutCollectionInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    foodId: string
+  }
+
+  export type MonstersFoodCreateOrConnectWithoutCollectionInput = {
+    where: MonstersFoodWhereUniqueInput
+    create: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type MonstersFoodCreateManyCollectionInputEnvelope = {
+    data: MonstersFoodCreateManyCollectionInput | MonstersFoodCreateManyCollectionInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutCollectionInput = {
     update: XOR<UserUpdateWithoutCollectionInput, UserUncheckedUpdateWithoutCollectionInput>
     create: XOR<UserCreateWithoutCollectionInput, UserUncheckedCreateWithoutCollectionInput>
@@ -10496,6 +13518,193 @@ export namespace Prisma {
     dailyMonsters?: DailyMonstersUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
+  export type MonstersFoodUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: MonstersFoodWhereUniqueInput
+    update: XOR<MonstersFoodUpdateWithoutCollectionInput, MonstersFoodUncheckedUpdateWithoutCollectionInput>
+    create: XOR<MonstersFoodCreateWithoutCollectionInput, MonstersFoodUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type MonstersFoodUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: MonstersFoodWhereUniqueInput
+    data: XOR<MonstersFoodUpdateWithoutCollectionInput, MonstersFoodUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type MonstersFoodUpdateManyWithWhereWithoutCollectionInput = {
+    where: MonstersFoodScalarWhereInput
+    data: XOR<MonstersFoodUpdateManyMutationInput, MonstersFoodUncheckedUpdateManyWithoutCollectionInput>
+  }
+
+  export type MonstersFoodScalarWhereInput = {
+    AND?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
+    OR?: MonstersFoodScalarWhereInput[]
+    NOT?: MonstersFoodScalarWhereInput | MonstersFoodScalarWhereInput[]
+    id?: StringFilter<"MonstersFood"> | string
+    createdAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
+    foodId?: StringFilter<"MonstersFood"> | string
+    collectionId?: StringFilter<"MonstersFood"> | string
+  }
+
+  export type FoodCreateWithoutMonstersFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus?: number
+    tentacle?: number
+    fish?: number
+    eye?: number
+    wing?: number
+    fly?: number
+    bone?: number
+  }
+
+  export type FoodUncheckedCreateWithoutMonstersFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name: string
+    img: string
+    time: number
+    price: number
+    isCoins: boolean
+    mucus?: number
+    tentacle?: number
+    fish?: number
+    eye?: number
+    wing?: number
+    fly?: number
+    bone?: number
+  }
+
+  export type FoodCreateOrConnectWithoutMonstersFoodInput = {
+    where: FoodWhereUniqueInput
+    create: XOR<FoodCreateWithoutMonstersFoodInput, FoodUncheckedCreateWithoutMonstersFoodInput>
+  }
+
+  export type CollectionCreateWithoutMonstersFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    name?: string | null
+    days?: number
+    foodMinutes?: number
+    foodPlaces?: number
+    isEvo?: boolean
+    isStop?: boolean
+    leader?: UserCreateNestedOneWithoutCollectionInput
+    monster?: MonsterCreateNestedOneWithoutCollectionInput
+  }
+
+  export type CollectionUncheckedCreateWithoutMonstersFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    leaderId?: string | null
+    monsterId?: string | null
+    name?: string | null
+    days?: number
+    foodMinutes?: number
+    foodPlaces?: number
+    isEvo?: boolean
+    isStop?: boolean
+  }
+
+  export type CollectionCreateOrConnectWithoutMonstersFoodInput = {
+    where: CollectionWhereUniqueInput
+    create: XOR<CollectionCreateWithoutMonstersFoodInput, CollectionUncheckedCreateWithoutMonstersFoodInput>
+  }
+
+  export type FoodUpsertWithoutMonstersFoodInput = {
+    update: XOR<FoodUpdateWithoutMonstersFoodInput, FoodUncheckedUpdateWithoutMonstersFoodInput>
+    create: XOR<FoodCreateWithoutMonstersFoodInput, FoodUncheckedCreateWithoutMonstersFoodInput>
+    where?: FoodWhereInput
+  }
+
+  export type FoodUpdateToOneWithWhereWithoutMonstersFoodInput = {
+    where?: FoodWhereInput
+    data: XOR<FoodUpdateWithoutMonstersFoodInput, FoodUncheckedUpdateWithoutMonstersFoodInput>
+  }
+
+  export type FoodUpdateWithoutMonstersFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FoodUncheckedUpdateWithoutMonstersFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    img?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
+    price?: IntFieldUpdateOperationsInput | number
+    isCoins?: BoolFieldUpdateOperationsInput | boolean
+    mucus?: IntFieldUpdateOperationsInput | number
+    tentacle?: IntFieldUpdateOperationsInput | number
+    fish?: IntFieldUpdateOperationsInput | number
+    eye?: IntFieldUpdateOperationsInput | number
+    wing?: IntFieldUpdateOperationsInput | number
+    fly?: IntFieldUpdateOperationsInput | number
+    bone?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CollectionUpsertWithoutMonstersFoodInput = {
+    update: XOR<CollectionUpdateWithoutMonstersFoodInput, CollectionUncheckedUpdateWithoutMonstersFoodInput>
+    create: XOR<CollectionCreateWithoutMonstersFoodInput, CollectionUncheckedCreateWithoutMonstersFoodInput>
+    where?: CollectionWhereInput
+  }
+
+  export type CollectionUpdateToOneWithWhereWithoutMonstersFoodInput = {
+    where?: CollectionWhereInput
+    data: XOR<CollectionUpdateWithoutMonstersFoodInput, CollectionUncheckedUpdateWithoutMonstersFoodInput>
+  }
+
+  export type CollectionUpdateWithoutMonstersFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isStop?: BoolFieldUpdateOperationsInput | boolean
+    leader?: UserUpdateOneWithoutCollectionNestedInput
+    monster?: MonsterUpdateOneWithoutCollectionNestedInput
+  }
+
+  export type CollectionUncheckedUpdateWithoutMonstersFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaderId?: NullableStringFieldUpdateOperationsInput | string | null
+    monsterId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    days?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
+    isEvo?: BoolFieldUpdateOperationsInput | boolean
+    isStop?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type MonsterCreateWithoutDailyMonstersInput = {
     id?: string
     createdAt?: Date | string
@@ -10568,6 +13777,46 @@ export namespace Prisma {
     collection?: CollectionUncheckedUpdateManyWithoutMonsterNestedInput
   }
 
+  export type MonstersFoodCreateWithoutFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    collection: CollectionCreateNestedOneWithoutMonstersFoodInput
+  }
+
+  export type MonstersFoodUncheckedCreateWithoutFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    collectionId: string
+  }
+
+  export type MonstersFoodCreateOrConnectWithoutFoodInput = {
+    where: MonstersFoodWhereUniqueInput
+    create: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput>
+  }
+
+  export type MonstersFoodCreateManyFoodInputEnvelope = {
+    data: MonstersFoodCreateManyFoodInput | MonstersFoodCreateManyFoodInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MonstersFoodUpsertWithWhereUniqueWithoutFoodInput = {
+    where: MonstersFoodWhereUniqueInput
+    update: XOR<MonstersFoodUpdateWithoutFoodInput, MonstersFoodUncheckedUpdateWithoutFoodInput>
+    create: XOR<MonstersFoodCreateWithoutFoodInput, MonstersFoodUncheckedCreateWithoutFoodInput>
+  }
+
+  export type MonstersFoodUpdateWithWhereUniqueWithoutFoodInput = {
+    where: MonstersFoodWhereUniqueInput
+    data: XOR<MonstersFoodUpdateWithoutFoodInput, MonstersFoodUncheckedUpdateWithoutFoodInput>
+  }
+
+  export type MonstersFoodUpdateManyWithWhereWithoutFoodInput = {
+    where: MonstersFoodScalarWhereInput
+    data: XOR<MonstersFoodUpdateManyMutationInput, MonstersFoodUncheckedUpdateManyWithoutFoodInput>
+  }
+
   export type CollectionCreateManyLeaderInput = {
     id?: string
     createdAt?: Date | string
@@ -10576,6 +13825,7 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
   }
@@ -10587,9 +13837,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
+    monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateWithoutLeaderInput = {
@@ -10600,8 +13852,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateManyWithoutLeaderInput = {
@@ -10612,6 +13866,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -10676,6 +13931,7 @@ export namespace Prisma {
     name?: string | null
     days?: number
     foodMinutes?: number
+    foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
   }
@@ -10696,9 +13952,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
+    monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateWithoutMonsterInput = {
@@ -10709,8 +13967,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
   export type CollectionUncheckedUpdateManyWithoutMonsterInput = {
@@ -10721,6 +13981,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
     foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -10750,6 +14011,62 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     price?: StringFieldUpdateOperationsInput | string
     isCoinsPrice?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type MonstersFoodCreateManyCollectionInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    foodId: string
+  }
+
+  export type MonstersFoodUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    food?: FoodUpdateOneRequiredWithoutMonstersFoodNestedInput
+  }
+
+  export type MonstersFoodUncheckedUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    foodId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MonstersFoodUncheckedUpdateManyWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    foodId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MonstersFoodCreateManyFoodInput = {
+    id?: string
+    createdAt?: Date | string
+    updateAt?: Date | string
+    collectionId: string
+  }
+
+  export type MonstersFoodUpdateWithoutFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: CollectionUpdateOneRequiredWithoutMonstersFoodNestedInput
+  }
+
+  export type MonstersFoodUncheckedUpdateWithoutFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collectionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MonstersFoodUncheckedUpdateManyWithoutFoodInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collectionId?: StringFieldUpdateOperationsInput | string
   }
 
 

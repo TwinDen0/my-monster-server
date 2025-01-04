@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CollectionService } from 'src/collection/collection.service';
 import { FileService } from 'src/file/file.service';
+import { FoodService } from 'src/food/food.service';
 import { MarketService } from 'src/market/market.service';
 import { MonsterService } from 'src/monster/monster.service';
 import { PrismaService } from 'src/prisma.service';
@@ -8,6 +9,7 @@ import { UserService } from 'src/user/user.service';
 import { HandlersService } from './handlers.service';
 import { TgCollectionService } from './tgCollection.service';
 import { TgFileService } from './tgFile.service';
+import { TgFoodService } from './tgFood.service';
 import { TgMarketService } from './tgMarket.service';
 import { TgMonsterService } from './tgMonster.service';
 import { TgUserService } from './tgUser.service';
@@ -26,6 +28,8 @@ import { TgUserService } from './tgUser.service';
     TgFileService,
     TgCollectionService,
     TgUserService,
+    TgFoodService,
+    FoodService,
   ],
   exports: [
     TgMonsterService,
@@ -34,6 +38,7 @@ import { TgUserService } from './tgUser.service';
     TgFileService,
     TgCollectionService,
     TgUserService,
+    TgFoodService,
   ],
 })
 export class TelegramModule {}
