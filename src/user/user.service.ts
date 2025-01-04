@@ -109,24 +109,39 @@ export class UserService {
 
       // Сохранение обновленных значений в базу данных
       await Promise.all(
-        user.collection.map((collection) =>
-          this.prisma.collection.update({
-            where: { id: collection.id },
-            data: {
-              monstersFood: {
-                update: collection.monstersFood.map((food) => ({
-                  where: { id: food.food.id }, // Укажите уникальный идентификатор для обновления
-                  data: {
-                    time: food.food.time,
-                  },
-                })),
+        user.collection.map((collection) => {
+          // Проверяем, есть ли элементы в monstersFood
+          if (collection.monstersFood.length > 0) {
+            return this.prisma.collection.update({
+              where: { id: collection.id },
+              data: {
+                monstersFood: {
+                  update: [
+                    {
+                      where: { id: collection.monstersFood[0].food.id },
+                      data: {
+                        time: collection.monstersFood[0].food.time,
+                      },
+                    },
+                  ],
+                },
+                isStop: collection.isStop,
+                days: collection.days,
+                isNewDay: collection.isNewDay,
               },
-              isStop: collection.isStop,
-              days: collection.days,
-              isNewDay: collection.isNewDay,
-            },
-          }),
-        ),
+            });
+          } else {
+            // Если monstersFood пустой, просто возвращаем обновление без изменений для monstersFood
+            return this.prisma.collection.update({
+              where: { id: collection.id },
+              data: {
+                isStop: collection.isStop,
+                days: collection.days,
+                isNewDay: collection.isNewDay,
+              },
+            });
+          }
+        }),
       );
     }
 
