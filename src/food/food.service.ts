@@ -17,4 +17,21 @@ export class FoodService {
     const foods = await this.prisma.food.findMany();
     return foods;
   }
+
+  async addMonsterFood(userMonsterId: string, foodId: string) {
+    const monsterFood = await this.prisma.monstersFood.create({
+      data: {
+        food: {
+          connect: {
+            id: foodId,
+          },
+        },
+        collection: {
+          connect: {
+            id: userMonsterId,
+          },
+        },
+      },
+    });
+  }
 }

@@ -32,6 +32,11 @@ export class UserService {
         collection: {
           include: {
             monster: true,
+            monstersFood: {
+              include: {
+                food: true,
+              },
+            },
           },
         },
       },
