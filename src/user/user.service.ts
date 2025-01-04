@@ -52,7 +52,8 @@ export class UserService {
 
     if (user && user.collection) {
       for (const collection of user.collection) {
-        if (collection.isEvo && collection.monster && !collection.isStop) {
+        if (collection.isEvo && collection.monster) {
+          // && !collection.isStop
           const { updateAt, createdAt, days } = collection;
 
           const timeDiffCreate = now.getTime() - new Date(createdAt).getTime();
@@ -72,40 +73,31 @@ export class UserService {
 
           if (newMonstersFood.length > 0) {
             let remainder = minutesPassed; // Начинаем с общего количества минут
-            console.log('Нужно наверстать минут: ', remainder);
             while (remainder > 0 && newMonstersFood.length > 0) {
               if (collection.foodMinutes - remainder < 0) {
                 // Если текущий элемент не может выдержать остаток, вычитаем его время
                 remainder -= collection.foodMinutes; // Уменьшаем остаток
                 //удалить из бд его
 
-                const deleteMonstersFood =
-                  await this.prisma.monstersFood.delete({
-                    where: {
-                      id: newMonstersFood[0].id,
-                    },
-                  });
+                await this.prisma.monstersFood.delete({
+                  where: {
+                    id: newMonstersFood[0].id,
+                  },
+                });
 
-                const deleteCollectionMonstersFood =
-                  await this.prisma.collection.update({
-                    where: { id: collection.id },
-                    data: {
-                      monstersFood: {
-                        delete: {
-                          id: collection.monstersFood[0].id, // Указываем id записи для удаления
-                        },
+                await this.prisma.collection.update({
+                  where: { id: collection.id },
+                  data: {
+                    monstersFood: {
+                      delete: {
+                        id: collection.monstersFood[0].id, // Указываем id записи для удаления
                       },
                     },
-                  });
-                console.log('deleteMonstersFood ', deleteMonstersFood);
-                console.log(
-                  'deleteCollectionMonstersFood ',
-                  deleteCollectionMonstersFood,
-                );
+                  },
+                });
 
                 newMonstersFood.shift(); // Удаляем текущий элемент
 
-                console.log('newMonstersFood ', newMonstersFood);
                 if (newMonstersFood.length > 0) {
                   collection.foodMinutes = newMonstersFood[0].food.time * 60;
                 } else {
@@ -142,7 +134,7 @@ export class UserService {
               isStop: collection.isStop,
               days: collection.days,
               isNewDay: collection.isNewDay,
-              foodMinutes: collection.foodMinutes,
+              foodMinutes: collection.foodMinutes + 25,
             },
           });
         }),
