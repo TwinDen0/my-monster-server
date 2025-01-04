@@ -46,7 +46,7 @@ export class TgMonsterService {
     table += '---------------------------------------------------\n';
 
     monsters.forEach((monster) => {
-      table += `${monster.id}\t${monster.subtypeName}\t${monster.img}\t${monster.stageEvo}\t${monster.branchEvo}\t${monster.starts}\t${monster.hunger}\n`;
+      table += `${monster.id}\t${monster.subtypeName}\t${monster.img}\t${monster.stageEvo}\t${monster.branchEvo}\t${monster.starts}\t$}\n`;
     });
 
     await ctx.reply(
@@ -68,7 +68,7 @@ export class TgMonsterService {
     }
 
     await ctx.reply(
-      `Введены данные:\n\ntypeId: ${ctx.session.text}\nsubtypeName: ${parts[0]}\nimg: ${parts[1]}\nstageEvo: ${parts[2]}\nbranchEvo: ${parts[3]}\nstarts: ${parts[4]}\nhunger: ${parts[5]}\n\nСоздать монстра?`,
+      `Введены данные:\n\ntypeId: ${ctx.session.text}\nsubtypeName: ${parts[0]}\nimg: ${parts[1]}\nstageEvo: ${parts[2]}\nbranchEvo: ${parts[3]}\nstarts: ${parts[4]}\nДней до следующего левела: ${parts[5]}\n\nСоздать монстра?`,
       yesOrNoButtons(),
     );
     ctx.session.text = ctx.session.text + ' | ' + message;
@@ -91,7 +91,7 @@ export class TgMonsterService {
       stageEvo: Number(parts[3]),
       branchEvo: Number(parts[4]),
       starts: Number(parts[5]),
-      hunger: Number(parts[6]),
+      daysNextLvl: Number(parts[6]),
     };
 
     const createMonster = await this.monsterService.createMonster(monster);

@@ -63,6 +63,11 @@ export class AppUpdate {
     );
   }
 
+  @Hears('🚮 Отчистить базу данных')
+  async deleteAllDb(ctx: Context) {
+    await this.tgCollectionService.deleteData(ctx);
+  }
+
   @Hears('🦖 Добавить монстра')
   async createMonster(ctx: Context) {
     await this.tgMonsterService.createStep1(ctx);

@@ -58,10 +58,8 @@ model Monster {
   img         String
   stageEvo    Int    @default(0) @map("stage_evo")
   branchEvo   Int    @default(0) @map("branch_evo")
-  starts      Int
-  hunger      Int    @default(100)
-
-  xpNextLvl Int @default(2880)
+  starts      Int    @default(3)
+  daysNextLvl Int    @default(3) @map("days_next_lvl")
 
   collection    Collection[]
   dailyMonsters DailyMonsters[]
@@ -81,14 +79,12 @@ model Collection {
   monsterId String?  @map("monster_id")
 
   name String?
+  days Int     @default(0)
 
-  hungerLevel Int @default(0)
-  xp          Int @default(0)
+  foodMinutes Int @default(0) @map("food_minutes")
 
-  miningXp Int @default(1)
-
-  isEvo   Boolean @default(false)
-  isSleep Boolean @default(false)
+  isEvo  Boolean @default(false)
+  isStop Boolean @default(false)
 
   @@map("collection")
 }

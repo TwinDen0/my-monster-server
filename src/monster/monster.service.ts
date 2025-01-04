@@ -36,7 +36,7 @@ export class MonsterService {
           stageEvo: dto.stageEvo,
           branchEvo: dto.branchEvo,
           starts: dto.starts,
-          hunger: dto.hunger,
+          daysNextLvl: dto.daysNextLvl,
           type: {
             connect: {
               id: dto.typeId,

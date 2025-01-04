@@ -5,5 +5,5 @@ export class MonsterDto {
   stageEvo: number;
   branchEvo: number;
   starts: number;
-  hunger: number;
+  daysNextLvl: number;
 }

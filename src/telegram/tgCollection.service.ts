@@ -16,6 +16,16 @@ export class TgCollectionService {
     private readonly prisma: PrismaService,
   ) {}
 
+  async deleteData(ctx: Context) {
+    await ctx.reply(`Удаляю...`);
+    const collections = await this.prisma.collection.deleteMany();
+    const monsters = await this.prisma.collection.deleteMany();
+
+    await ctx.reply(
+      `Удалено Коллекций:${collections.count} Монстеров:${monsters.count}`,
+    );
+  }
+
   async addCollection1(ctx: Context) {
     await ctx.reply(
       `Для добавления монстра в коллекцию введите:\n\nTgIdUser | IdMonster | name`,
