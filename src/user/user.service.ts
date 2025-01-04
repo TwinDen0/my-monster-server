@@ -109,16 +109,26 @@ export class UserService {
 
       // Сохранение обновленных значений в базу данных
       await Promise.all(
-        user.collection.map((collection) => {
-          // Проверяем, есть ли элементы в monstersFood
-          if (collection.monstersFood.length > 0) {
+        user.collection.map(async (collection) => {
+          if (collection.monstersFood) {
+            const foodId = collection.monstersFood[0].food.id;
+
+            // Проверяем, существует ли запись в MonstersFood
+            const foodExists = await this.prisma.monstersFood.findUnique({
+              where: { id: foodId },
+            });
+            if (!foodExists) {
+              console.log(`MonstersFood with id ${foodId} does not exist.`);
+              return; // Обработка ошибки, если запись не найдена
+            }
+
             return this.prisma.collection.update({
               where: { id: collection.id },
               data: {
                 monstersFood: {
                   update: [
                     {
-                      where: { id: collection.monstersFood[0].food.id },
+                      where: { id: foodId },
                       data: {
                         time: collection.monstersFood[0].food.time,
                       },
@@ -131,7 +141,6 @@ export class UserService {
               },
             });
           } else {
-            // Если monstersFood пустой, просто возвращаем обновление без изменений для monstersFood
             return this.prisma.collection.update({
               where: { id: collection.id },
               data: {
