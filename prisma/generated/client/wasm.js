@@ -165,7 +165,8 @@ exports.Prisma.CollectionScalarFieldEnum = {
   foodMinutes: 'foodMinutes',
   foodPlaces: 'foodPlaces',
   isEvo: 'isEvo',
-  isStop: 'isStop'
+  isStop: 'isStop',
+  isNewDay: 'isNewDay'
 };
 
 exports.Prisma.MonstersFoodScalarFieldEnum = {
@@ -173,7 +174,8 @@ exports.Prisma.MonstersFoodScalarFieldEnum = {
   createdAt: 'createdAt',
   updateAt: 'updateAt',
   foodId: 'foodId',
-  collectionId: 'collectionId'
+  collectionId: 'collectionId',
+  time: 'time'
 };
 
 exports.Prisma.DailyMonstersScalarFieldEnum = {

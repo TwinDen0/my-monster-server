@@ -44,39 +44,91 @@ export class UserService {
 
     const now = new Date();
 
-    // if (user && user.collection) {
-    //   for (const collection of user.collection) {
-    //     if (collection.isEvo && collection.monster) {
-    //       const { updateAt } = collection;
-    //       const { hunger } = collection.monster;
+    // поменять день
+    // проверить не кончилась ли еда
+    // // зайти в коллекцию еду
+    // // отнять у первого time в зависимости от timeDiff
+    // // удалить если время == 0
 
-    //       // Вычисляем время, прошедшее с последнего обновления
-    //       const timeDiff = now.getTime() - new Date(updateAt).getTime(); // миллисекунды
-    //       const hoursPassed = Math.floor(timeDiff / (1000 * 60 * 60)); // преобразуем в часы
+    if (user && user.collection) {
+      for (const collection of user.collection) {
+        if (collection.isEvo && collection.monster && !collection.isStop) {
+          const { updateAt, createdAt, days } = collection;
 
-    //       // Обновляем hungerLevel
-    //       collection.hungerLevel += hoursPassed;
+          const timeDiffCreate = now.getTime() - new Date(createdAt).getTime();
+          const daysPassed = Math.floor(timeDiffCreate / (1000 * 60 * 60 * 24));
 
-    //       // Проверяем, если голод превышает максимум
-    //       if (collection.hungerLevel >= hunger) {
-    //         collection.isSleep = true;
-    //       }
-    //     }
-    //   }
+          let newDay = false;
+          if (days < daysPassed) {
+            newDay = true;
+          }
 
-    //   // Сохранение обновленных значений в базу данных
-    //   await Promise.all(
-    //     user.collection.map((collection) =>
-    //       this.prisma.collection.update({
-    //         where: { id: collection.id },
-    //         data: {
-    //           hungerLevel: collection.hungerLevel,
-    //           isSleep: collection.isSleep,
-    //         },
-    //       }),
-    //     ),
-    //   );
-    // }
+          let isHunger = false;
+          let newMonstersFood = collection.monstersFood;
+
+          // Вычисляем время, прошедшее с последнего обновления
+          const timeDiff = now.getTime() - new Date(updateAt).getTime(); // миллисекунды
+          const minutesPassed = Math.floor(timeDiff / (1000 * 60));
+
+          if (newMonstersFood.length > 0) {
+            let remainder = minutesPassed; // Начинаем с общего количества минут
+
+            while (remainder > 0 && newMonstersFood.length > 0) {
+              if (newMonstersFood[0].time - remainder < 0) {
+                // Если текущий элемент не может выдержать остаток, вычитаем его время
+                remainder -= newMonstersFood[0].time; // Уменьшаем остаток
+                //удалить из бд его
+
+                await this.prisma.monstersFood.delete({
+                  where: {
+                    id: newMonstersFood[0].id,
+                  },
+                });
+
+                newMonstersFood.shift(); // Удаляем текущий элемент
+              } else {
+                // Если текущий элемент может выдержать остаток, просто уменьшаем его время
+                newMonstersFood[0].time -= remainder;
+                remainder = 0; // Остаток теперь равен нулю, выходим из цикла
+              }
+            }
+
+            if (remainder > 0) {
+              isHunger = true;
+            }
+          } else {
+            isHunger = true;
+          }
+
+          collection.monstersFood = newMonstersFood;
+          collection.isStop = isHunger;
+          collection.days = daysPassed;
+          collection.isNewDay = newDay;
+        }
+      }
+
+      // Сохранение обновленных значений в базу данных
+      await Promise.all(
+        user.collection.map((collection) =>
+          this.prisma.collection.update({
+            where: { id: collection.id },
+            data: {
+              monstersFood: {
+                update: collection.monstersFood.map((food) => ({
+                  where: { id: food.food.id }, // Укажите уникальный идентификатор для обновления
+                  data: {
+                    time: food.food.time,
+                  },
+                })),
+              },
+              isStop: collection.isStop,
+              days: collection.days,
+              isNewDay: collection.isNewDay,
+            },
+          }),
+        ),
+      );
+    }
 
     console.log('Пришел: ', telegramId, ' Вернулся: ', user);
     return user;

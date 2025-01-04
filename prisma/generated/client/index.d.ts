@@ -4810,6 +4810,7 @@ export namespace Prisma {
     foodPlaces: number | null
     isEvo: boolean | null
     isStop: boolean | null
+    isNewDay: boolean | null
   }
 
   export type CollectionMaxAggregateOutputType = {
@@ -4824,6 +4825,7 @@ export namespace Prisma {
     foodPlaces: number | null
     isEvo: boolean | null
     isStop: boolean | null
+    isNewDay: boolean | null
   }
 
   export type CollectionCountAggregateOutputType = {
@@ -4838,6 +4840,7 @@ export namespace Prisma {
     foodPlaces: number
     isEvo: number
     isStop: number
+    isNewDay: number
     _all: number
   }
 
@@ -4866,6 +4869,7 @@ export namespace Prisma {
     foodPlaces?: true
     isEvo?: true
     isStop?: true
+    isNewDay?: true
   }
 
   export type CollectionMaxAggregateInputType = {
@@ -4880,6 +4884,7 @@ export namespace Prisma {
     foodPlaces?: true
     isEvo?: true
     isStop?: true
+    isNewDay?: true
   }
 
   export type CollectionCountAggregateInputType = {
@@ -4894,6 +4899,7 @@ export namespace Prisma {
     foodPlaces?: true
     isEvo?: true
     isStop?: true
+    isNewDay?: true
     _all?: true
   }
 
@@ -4995,6 +5001,7 @@ export namespace Prisma {
     foodPlaces: number
     isEvo: boolean
     isStop: boolean
+    isNewDay: boolean
     _count: CollectionCountAggregateOutputType | null
     _avg: CollectionAvgAggregateOutputType | null
     _sum: CollectionSumAggregateOutputType | null
@@ -5028,6 +5035,7 @@ export namespace Prisma {
     foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
     monstersFood?: boolean | Collection$monstersFoodArgs<ExtArgs>
@@ -5046,6 +5054,7 @@ export namespace Prisma {
     foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     leader?: boolean | Collection$leaderArgs<ExtArgs>
     monster?: boolean | Collection$monsterArgs<ExtArgs>
   }, ExtArgs["result"]["collection"]>
@@ -5062,6 +5071,7 @@ export namespace Prisma {
     foodPlaces?: boolean
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
   }
 
   export type CollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5094,6 +5104,7 @@ export namespace Prisma {
       foodPlaces: number
       isEvo: boolean
       isStop: boolean
+      isNewDay: boolean
     }, ExtArgs["result"]["collection"]>
     composites: {}
   }
@@ -5501,6 +5512,7 @@ export namespace Prisma {
     readonly foodPlaces: FieldRef<"Collection", 'Int'>
     readonly isEvo: FieldRef<"Collection", 'Boolean'>
     readonly isStop: FieldRef<"Collection", 'Boolean'>
+    readonly isNewDay: FieldRef<"Collection", 'Boolean'>
   }
     
 
@@ -5889,8 +5901,18 @@ export namespace Prisma {
 
   export type AggregateMonstersFood = {
     _count: MonstersFoodCountAggregateOutputType | null
+    _avg: MonstersFoodAvgAggregateOutputType | null
+    _sum: MonstersFoodSumAggregateOutputType | null
     _min: MonstersFoodMinAggregateOutputType | null
     _max: MonstersFoodMaxAggregateOutputType | null
+  }
+
+  export type MonstersFoodAvgAggregateOutputType = {
+    time: number | null
+  }
+
+  export type MonstersFoodSumAggregateOutputType = {
+    time: number | null
   }
 
   export type MonstersFoodMinAggregateOutputType = {
@@ -5899,6 +5921,7 @@ export namespace Prisma {
     updateAt: Date | null
     foodId: string | null
     collectionId: string | null
+    time: number | null
   }
 
   export type MonstersFoodMaxAggregateOutputType = {
@@ -5907,6 +5930,7 @@ export namespace Prisma {
     updateAt: Date | null
     foodId: string | null
     collectionId: string | null
+    time: number | null
   }
 
   export type MonstersFoodCountAggregateOutputType = {
@@ -5915,9 +5939,18 @@ export namespace Prisma {
     updateAt: number
     foodId: number
     collectionId: number
+    time: number
     _all: number
   }
 
+
+  export type MonstersFoodAvgAggregateInputType = {
+    time?: true
+  }
+
+  export type MonstersFoodSumAggregateInputType = {
+    time?: true
+  }
 
   export type MonstersFoodMinAggregateInputType = {
     id?: true
@@ -5925,6 +5958,7 @@ export namespace Prisma {
     updateAt?: true
     foodId?: true
     collectionId?: true
+    time?: true
   }
 
   export type MonstersFoodMaxAggregateInputType = {
@@ -5933,6 +5967,7 @@ export namespace Prisma {
     updateAt?: true
     foodId?: true
     collectionId?: true
+    time?: true
   }
 
   export type MonstersFoodCountAggregateInputType = {
@@ -5941,6 +5976,7 @@ export namespace Prisma {
     updateAt?: true
     foodId?: true
     collectionId?: true
+    time?: true
     _all?: true
   }
 
@@ -5982,6 +6018,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: MonstersFoodAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MonstersFoodSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: MonstersFoodMinAggregateInputType
@@ -6012,6 +6060,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: MonstersFoodCountAggregateInputType | true
+    _avg?: MonstersFoodAvgAggregateInputType
+    _sum?: MonstersFoodSumAggregateInputType
     _min?: MonstersFoodMinAggregateInputType
     _max?: MonstersFoodMaxAggregateInputType
   }
@@ -6022,7 +6072,10 @@ export namespace Prisma {
     updateAt: Date
     foodId: string
     collectionId: string
+    time: number
     _count: MonstersFoodCountAggregateOutputType | null
+    _avg: MonstersFoodAvgAggregateOutputType | null
+    _sum: MonstersFoodSumAggregateOutputType | null
     _min: MonstersFoodMinAggregateOutputType | null
     _max: MonstersFoodMaxAggregateOutputType | null
   }
@@ -6047,6 +6100,7 @@ export namespace Prisma {
     updateAt?: boolean
     foodId?: boolean
     collectionId?: boolean
+    time?: boolean
     food?: boolean | FoodDefaultArgs<ExtArgs>
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["monstersFood"]>
@@ -6057,6 +6111,7 @@ export namespace Prisma {
     updateAt?: boolean
     foodId?: boolean
     collectionId?: boolean
+    time?: boolean
     food?: boolean | FoodDefaultArgs<ExtArgs>
     collection?: boolean | CollectionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["monstersFood"]>
@@ -6067,6 +6122,7 @@ export namespace Prisma {
     updateAt?: boolean
     foodId?: boolean
     collectionId?: boolean
+    time?: boolean
   }
 
   export type MonstersFoodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6090,6 +6146,7 @@ export namespace Prisma {
       updateAt: Date
       foodId: string
       collectionId: string
+      time: number
     }, ExtArgs["result"]["monstersFood"]>
     composites: {}
   }
@@ -6490,6 +6547,7 @@ export namespace Prisma {
     readonly updateAt: FieldRef<"MonstersFood", 'DateTime'>
     readonly foodId: FieldRef<"MonstersFood", 'String'>
     readonly collectionId: FieldRef<"MonstersFood", 'String'>
+    readonly time: FieldRef<"MonstersFood", 'Int'>
   }
     
 
@@ -10063,7 +10121,8 @@ export namespace Prisma {
     foodMinutes: 'foodMinutes',
     foodPlaces: 'foodPlaces',
     isEvo: 'isEvo',
-    isStop: 'isStop'
+    isStop: 'isStop',
+    isNewDay: 'isNewDay'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
@@ -10074,7 +10133,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updateAt: 'updateAt',
     foodId: 'foodId',
-    collectionId: 'collectionId'
+    collectionId: 'collectionId',
+    time: 'time'
   };
 
   export type MonstersFoodScalarFieldEnum = (typeof MonstersFoodScalarFieldEnum)[keyof typeof MonstersFoodScalarFieldEnum]
@@ -10524,6 +10584,7 @@ export namespace Prisma {
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
+    isNewDay?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
     monstersFood?: MonstersFoodListRelationFilter
@@ -10541,6 +10602,7 @@ export namespace Prisma {
     foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
+    isNewDay?: SortOrder
     leader?: UserOrderByWithRelationInput
     monster?: MonsterOrderByWithRelationInput
     monstersFood?: MonstersFoodOrderByRelationAggregateInput
@@ -10561,6 +10623,7 @@ export namespace Prisma {
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
+    isNewDay?: BoolFilter<"Collection"> | boolean
     leader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     monster?: XOR<MonsterNullableScalarRelationFilter, MonsterWhereInput> | null
     monstersFood?: MonstersFoodListRelationFilter
@@ -10578,6 +10641,7 @@ export namespace Prisma {
     foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
+    isNewDay?: SortOrder
     _count?: CollectionCountOrderByAggregateInput
     _avg?: CollectionAvgOrderByAggregateInput
     _max?: CollectionMaxOrderByAggregateInput
@@ -10600,6 +10664,7 @@ export namespace Prisma {
     foodPlaces?: IntWithAggregatesFilter<"Collection"> | number
     isEvo?: BoolWithAggregatesFilter<"Collection"> | boolean
     isStop?: BoolWithAggregatesFilter<"Collection"> | boolean
+    isNewDay?: BoolWithAggregatesFilter<"Collection"> | boolean
   }
 
   export type MonstersFoodWhereInput = {
@@ -10611,6 +10676,7 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
     foodId?: StringFilter<"MonstersFood"> | string
     collectionId?: StringFilter<"MonstersFood"> | string
+    time?: IntFilter<"MonstersFood"> | number
     food?: XOR<FoodScalarRelationFilter, FoodWhereInput>
     collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
   }
@@ -10621,6 +10687,7 @@ export namespace Prisma {
     updateAt?: SortOrder
     foodId?: SortOrder
     collectionId?: SortOrder
+    time?: SortOrder
     food?: FoodOrderByWithRelationInput
     collection?: CollectionOrderByWithRelationInput
   }
@@ -10634,6 +10701,7 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
     foodId?: StringFilter<"MonstersFood"> | string
     collectionId?: StringFilter<"MonstersFood"> | string
+    time?: IntFilter<"MonstersFood"> | number
     food?: XOR<FoodScalarRelationFilter, FoodWhereInput>
     collection?: XOR<CollectionScalarRelationFilter, CollectionWhereInput>
   }, "id">
@@ -10644,9 +10712,12 @@ export namespace Prisma {
     updateAt?: SortOrder
     foodId?: SortOrder
     collectionId?: SortOrder
+    time?: SortOrder
     _count?: MonstersFoodCountOrderByAggregateInput
+    _avg?: MonstersFoodAvgOrderByAggregateInput
     _max?: MonstersFoodMaxOrderByAggregateInput
     _min?: MonstersFoodMinOrderByAggregateInput
+    _sum?: MonstersFoodSumOrderByAggregateInput
   }
 
   export type MonstersFoodScalarWhereWithAggregatesInput = {
@@ -10658,6 +10729,7 @@ export namespace Prisma {
     updateAt?: DateTimeWithAggregatesFilter<"MonstersFood"> | Date | string
     foodId?: StringWithAggregatesFilter<"MonstersFood"> | string
     collectionId?: StringWithAggregatesFilter<"MonstersFood"> | string
+    time?: IntWithAggregatesFilter<"MonstersFood"> | number
   }
 
   export type DailyMonstersWhereInput = {
@@ -11225,6 +11297,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monster?: MonsterCreateNestedOneWithoutCollectionInput
     monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
@@ -11242,6 +11315,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -11255,6 +11329,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
     monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
@@ -11272,6 +11347,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -11287,6 +11363,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
   }
 
   export type CollectionUpdateManyMutationInput = {
@@ -11299,6 +11376,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CollectionUncheckedUpdateManyInput = {
@@ -11313,12 +11391,14 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MonstersFoodCreateInput = {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    time?: number
     food: FoodCreateNestedOneWithoutMonstersFoodInput
     collection: CollectionCreateNestedOneWithoutMonstersFoodInput
   }
@@ -11329,12 +11409,14 @@ export namespace Prisma {
     updateAt?: Date | string
     foodId: string
     collectionId: string
+    time?: number
   }
 
   export type MonstersFoodUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    time?: IntFieldUpdateOperationsInput | number
     food?: FoodUpdateOneRequiredWithoutMonstersFoodNestedInput
     collection?: CollectionUpdateOneRequiredWithoutMonstersFoodNestedInput
   }
@@ -11345,6 +11427,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foodId?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonstersFoodCreateManyInput = {
@@ -11353,12 +11436,14 @@ export namespace Prisma {
     updateAt?: Date | string
     foodId: string
     collectionId: string
+    time?: number
   }
 
   export type MonstersFoodUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonstersFoodUncheckedUpdateManyInput = {
@@ -11367,6 +11452,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foodId?: StringFieldUpdateOperationsInput | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type DailyMonstersCreateInput = {
@@ -11579,7 +11665,7 @@ export namespace Prisma {
     img: string
     time: number
     price: number
-    isCoins: boolean
+    isCoins?: boolean
     mucus?: number
     tentacle?: number
     fish?: number
@@ -11598,7 +11684,7 @@ export namespace Prisma {
     img: string
     time: number
     price: number
-    isCoins: boolean
+    isCoins?: boolean
     mucus?: number
     tentacle?: number
     fish?: number
@@ -11655,7 +11741,7 @@ export namespace Prisma {
     img: string
     time: number
     price: number
-    isCoins: boolean
+    isCoins?: boolean
     mucus?: number
     tentacle?: number
     fish?: number
@@ -12052,6 +12138,7 @@ export namespace Prisma {
     foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
+    isNewDay?: SortOrder
   }
 
   export type CollectionAvgOrderByAggregateInput = {
@@ -12072,6 +12159,7 @@ export namespace Prisma {
     foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
+    isNewDay?: SortOrder
   }
 
   export type CollectionMinOrderByAggregateInput = {
@@ -12086,6 +12174,7 @@ export namespace Prisma {
     foodPlaces?: SortOrder
     isEvo?: SortOrder
     isStop?: SortOrder
+    isNewDay?: SortOrder
   }
 
   export type CollectionSumOrderByAggregateInput = {
@@ -12118,6 +12207,11 @@ export namespace Prisma {
     updateAt?: SortOrder
     foodId?: SortOrder
     collectionId?: SortOrder
+    time?: SortOrder
+  }
+
+  export type MonstersFoodAvgOrderByAggregateInput = {
+    time?: SortOrder
   }
 
   export type MonstersFoodMaxOrderByAggregateInput = {
@@ -12126,6 +12220,7 @@ export namespace Prisma {
     updateAt?: SortOrder
     foodId?: SortOrder
     collectionId?: SortOrder
+    time?: SortOrder
   }
 
   export type MonstersFoodMinOrderByAggregateInput = {
@@ -12134,6 +12229,11 @@ export namespace Prisma {
     updateAt?: SortOrder
     foodId?: SortOrder
     collectionId?: SortOrder
+    time?: SortOrder
+  }
+
+  export type MonstersFoodSumOrderByAggregateInput = {
+    time?: SortOrder
   }
 
   export type DailyMonstersCountOrderByAggregateInput = {
@@ -13052,6 +13152,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     monster?: MonsterCreateNestedOneWithoutCollectionInput
     monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
   }
@@ -13067,6 +13168,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -13111,6 +13213,7 @@ export namespace Prisma {
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
+    isNewDay?: BoolFilter<"Collection"> | boolean
   }
 
   export type MonsterCreateWithoutTypeInput = {
@@ -13218,6 +13321,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monstersFood?: MonstersFoodCreateNestedManyWithoutCollectionInput
   }
@@ -13233,6 +13337,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     monstersFood?: MonstersFoodUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -13420,6 +13525,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    time?: number
     food: FoodCreateNestedOneWithoutMonstersFoodInput
   }
 
@@ -13428,6 +13534,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     foodId: string
+    time?: number
   }
 
   export type MonstersFoodCreateOrConnectWithoutCollectionInput = {
@@ -13543,6 +13650,7 @@ export namespace Prisma {
     updateAt?: DateTimeFilter<"MonstersFood"> | Date | string
     foodId?: StringFilter<"MonstersFood"> | string
     collectionId?: StringFilter<"MonstersFood"> | string
+    time?: IntFilter<"MonstersFood"> | number
   }
 
   export type FoodCreateWithoutMonstersFoodInput = {
@@ -13553,7 +13661,7 @@ export namespace Prisma {
     img: string
     time: number
     price: number
-    isCoins: boolean
+    isCoins?: boolean
     mucus?: number
     tentacle?: number
     fish?: number
@@ -13571,7 +13679,7 @@ export namespace Prisma {
     img: string
     time: number
     price: number
-    isCoins: boolean
+    isCoins?: boolean
     mucus?: number
     tentacle?: number
     fish?: number
@@ -13596,6 +13704,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
     leader?: UserCreateNestedOneWithoutCollectionInput
     monster?: MonsterCreateNestedOneWithoutCollectionInput
   }
@@ -13612,6 +13721,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
   }
 
   export type CollectionCreateOrConnectWithoutMonstersFoodInput = {
@@ -13687,6 +13797,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
   }
@@ -13703,6 +13814,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MonsterCreateWithoutDailyMonstersInput = {
@@ -13781,6 +13893,7 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updateAt?: Date | string
+    time?: number
     collection: CollectionCreateNestedOneWithoutMonstersFoodInput
   }
 
@@ -13789,6 +13902,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     collectionId: string
+    time?: number
   }
 
   export type MonstersFoodCreateOrConnectWithoutFoodInput = {
@@ -13828,6 +13942,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
   }
 
   export type CollectionUpdateWithoutLeaderInput = {
@@ -13840,6 +13955,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     monster?: MonsterUpdateOneWithoutCollectionNestedInput
     monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
   }
@@ -13855,6 +13971,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -13869,6 +13986,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MonsterCreateManyTypeInput = {
@@ -13934,6 +14052,7 @@ export namespace Prisma {
     foodPlaces?: number
     isEvo?: boolean
     isStop?: boolean
+    isNewDay?: boolean
   }
 
   export type DailyMonstersCreateManyMonsterInput = {
@@ -13955,6 +14074,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     leader?: UserUpdateOneWithoutCollectionNestedInput
     monstersFood?: MonstersFoodUpdateManyWithoutCollectionNestedInput
   }
@@ -13970,6 +14090,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
     monstersFood?: MonstersFoodUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -13984,6 +14105,7 @@ export namespace Prisma {
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
+    isNewDay?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type DailyMonstersUpdateWithoutMonsterInput = {
@@ -14018,12 +14140,14 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     foodId: string
+    time?: number
   }
 
   export type MonstersFoodUpdateWithoutCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    time?: IntFieldUpdateOperationsInput | number
     food?: FoodUpdateOneRequiredWithoutMonstersFoodNestedInput
   }
 
@@ -14032,6 +14156,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foodId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonstersFoodUncheckedUpdateManyWithoutCollectionInput = {
@@ -14039,6 +14164,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     foodId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonstersFoodCreateManyFoodInput = {
@@ -14046,12 +14172,14 @@ export namespace Prisma {
     createdAt?: Date | string
     updateAt?: Date | string
     collectionId: string
+    time?: number
   }
 
   export type MonstersFoodUpdateWithoutFoodInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    time?: IntFieldUpdateOperationsInput | number
     collection?: CollectionUpdateOneRequiredWithoutMonstersFoodNestedInput
   }
 
@@ -14060,6 +14188,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
   export type MonstersFoodUncheckedUpdateManyWithoutFoodInput = {
@@ -14067,6 +14196,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     collectionId?: StringFieldUpdateOperationsInput | string
+    time?: IntFieldUpdateOperationsInput | number
   }
 
 

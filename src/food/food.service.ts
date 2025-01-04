@@ -18,7 +18,7 @@ export class FoodService {
     return foods;
   }
 
-  async addMonsterFood(userMonsterId: string, foodId: string) {
+  async addMonsterFood(userMonsterId: string, foodId: string, time: number) {
     const monsterFood = await this.prisma.monstersFood.create({
       data: {
         food: {
@@ -31,6 +31,7 @@ export class FoodService {
             id: userMonsterId,
           },
         },
+        time: time * 60,
       },
     });
   }

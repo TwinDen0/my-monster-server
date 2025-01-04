@@ -85,8 +85,9 @@ model Collection {
   foodPlaces   Int            @default(3) @map("food_places")
   monstersFood MonstersFood[]
 
-  isEvo  Boolean @default(false)
-  isStop Boolean @default(false)
+  isEvo    Boolean @default(false)
+  isStop   Boolean @default(false)
+  isNewDay Boolean @default(false)
 
   @@map("collection")
 }
@@ -101,6 +102,8 @@ model MonstersFood {
 
   collection   Collection @relation(fields: [collectionId], references: [id])
   collectionId String     @map("collection_id")
+
+  time Int @default(0)
 }
 
 // market
