@@ -58,6 +58,7 @@ export class UserService {
 
           const timeDiffCreate = now.getTime() - new Date(createdAt).getTime();
           const daysPassed = Math.floor(timeDiffCreate / (1000 * 60 * 60 * 24));
+          console.log('дней прошло', daysPassed);
 
           let newDay = false;
           if (days < daysPassed) {
@@ -69,7 +70,8 @@ export class UserService {
 
           // Вычисляем время, прошедшее с последнего обновления
           const timeDiff = now.getTime() - new Date(updateAt).getTime(); // миллисекунды
-          const minutesPassed = Math.floor(timeDiff / (1000 * 60));
+          const minutesPassed = timeDiff / (1000 * 60);
+          console.log('минут прошло', minutesPassed);
 
           if (newMonstersFood.length > 0) {
             let remainder = minutesPassed; // Начинаем с общего количества минут
@@ -78,7 +80,6 @@ export class UserService {
                 // Если текущий элемент не может выдержать остаток, вычитаем его время
                 remainder -= collection.foodMinutes; // Уменьшаем остаток
                 //удалить из бд его
-
                 await this.prisma.monstersFood.delete({
                   where: {
                     id: newMonstersFood[0].id,
@@ -134,14 +135,14 @@ export class UserService {
               isStop: collection.isStop,
               days: collection.days,
               isNewDay: collection.isNewDay,
-              foodMinutes: collection.foodMinutes + 25,
+              foodMinutes: collection.foodMinutes,
             },
           });
         }),
       );
     }
 
-    console.log('Пришел: ', telegramId, ' Вернулся: ', user);
+    // console.log('Пришел: ', telegramId, ' Вернулся: ', user);
     return user;
   }
 
