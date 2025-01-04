@@ -174,8 +174,7 @@ exports.Prisma.MonstersFoodScalarFieldEnum = {
   createdAt: 'createdAt',
   updateAt: 'updateAt',
   foodId: 'foodId',
-  collectionId: 'collectionId',
-  time: 'time'
+  collectionId: 'collectionId'
 };
 
 exports.Prisma.DailyMonstersScalarFieldEnum = {

@@ -31,7 +31,6 @@ export class FoodService {
             id: userMonsterId,
           },
         },
-        time: time * 60,
       },
     });
   }

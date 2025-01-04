@@ -97,13 +97,11 @@ model MonstersFood {
   createdAt DateTime @default(now()) @map("created_at")
   updateAt  DateTime @updatedAt @map("updated_at")
 
-  food   Food   @relation(fields: [foodId], references: [id])
+  food   Food   @relation(fields: [foodId], references: [id], onDelete: Cascade)
   foodId String @map("food_id")
 
   collection   Collection @relation(fields: [collectionId], references: [id])
   collectionId String     @map("collection_id")
-
-  time Int @default(0)
 }
 
 // market

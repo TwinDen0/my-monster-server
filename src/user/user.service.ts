@@ -74,10 +74,21 @@ export class UserService {
             let remainder = minutesPassed; // Начинаем с общего количества минут
 
             while (remainder > 0 && newMonstersFood.length > 0) {
-              if (newMonstersFood[0].time - remainder < 0) {
+              if (collection.foodMinutes - remainder < 0) {
                 // Если текущий элемент не может выдержать остаток, вычитаем его время
-                remainder -= newMonstersFood[0].time; // Уменьшаем остаток
+                remainder -= collection.foodMinutes; // Уменьшаем остаток
                 //удалить из бд его
+
+                await this.prisma.collection.update({
+                  where: { id: collection.id },
+                  data: {
+                    monstersFood: {
+                      delete: {
+                        id: collection.monstersFood[0].id, // Указываем id записи для удаления
+                      },
+                    },
+                  },
+                });
 
                 await this.prisma.monstersFood.delete({
                   where: {
@@ -86,9 +97,15 @@ export class UserService {
                 });
 
                 newMonstersFood.shift(); // Удаляем текущий элемент
+                if (newMonstersFood.length > 0) {
+                  collection.foodMinutes = newMonstersFood[0].food.time * 60;
+                } else {
+                  collection.foodMinutes = 0;
+                  isHunger = true;
+                }
               } else {
                 // Если текущий элемент может выдержать остаток, просто уменьшаем его время
-                newMonstersFood[0].time -= remainder;
+                collection.foodMinutes -= remainder;
                 remainder = 0; // Остаток теперь равен нулю, выходим из цикла
               }
             }
@@ -110,55 +127,15 @@ export class UserService {
       // Сохранение обновленных значений в базу данных
       await Promise.all(
         user.collection.map(async (collection) => {
-          if (collection.monstersFood) {
-            const foodId = collection.monstersFood[0].food.id;
-            console.log('foodId', foodId);
-            console.log('monstersFood length', collection.monstersFood.length);
-            // Проверяем, существует ли запись в MonstersFood
-            const foodExists = await this.prisma.monstersFood.findUnique({
-              where: { id: foodId },
-            });
-            if (!foodExists) {
-              this.prisma.collection.update({
-                where: { id: collection.id },
-                data: {
-                  monstersFood: {
-                    delete: {
-                      id: collection.monstersFood[0].id, // Указываем id записи для удаления
-                    },
-                  },
-                },
-              });
-            }
-
-            return this.prisma.collection.update({
-              where: { id: collection.id },
-              data: {
-                monstersFood: {
-                  update: [
-                    {
-                      where: { id: foodId },
-                      data: {
-                        time: collection.monstersFood[0].food.time,
-                      },
-                    },
-                  ],
-                },
-                isStop: collection.isStop,
-                days: collection.days,
-                isNewDay: collection.isNewDay,
-              },
-            });
-          } else {
-            return this.prisma.collection.update({
-              where: { id: collection.id },
-              data: {
-                isStop: collection.isStop,
-                days: collection.days,
-                isNewDay: collection.isNewDay,
-              },
-            });
-          }
+          return this.prisma.collection.update({
+            where: { id: collection.id },
+            data: {
+              isStop: collection.isStop,
+              days: collection.days,
+              isNewDay: collection.isNewDay,
+              foodMinutes: collection.foodMinutes,
+            },
+          });
         }),
       );
     }
