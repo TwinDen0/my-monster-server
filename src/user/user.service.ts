@@ -112,14 +112,22 @@ export class UserService {
         user.collection.map(async (collection) => {
           if (collection.monstersFood) {
             const foodId = collection.monstersFood[0].food.id;
-
+            console.log(foodId);
             // Проверяем, существует ли запись в MonstersFood
             const foodExists = await this.prisma.monstersFood.findUnique({
               where: { id: foodId },
             });
             if (!foodExists) {
-              console.log(`MonstersFood with id ${foodId} does not exist.`);
-              return; // Обработка ошибки, если запись не найдена
+              this.prisma.collection.update({
+                where: { id: collection.id },
+                data: {
+                  monstersFood: {
+                    delete: {
+                      id: collection.monstersFood[0].id, // Указываем id записи для удаления
+                    },
+                  },
+                },
+              });
             }
 
             return this.prisma.collection.update({
