@@ -74,14 +74,18 @@ export class UserService {
 
           console.log('минут прошло', minutesPassed);
           console.log('еды ', newMonstersFood.length);
+          console.log('до голода: ', collection.foodMinutes);
 
           if (newMonstersFood.length > 0) {
             let remainder = minutesPassed; // Начинаем с общего количества минут
             while (remainder > 0 && newMonstersFood.length > 0) {
+              console.log('цикл');
               if (collection.foodMinutes - remainder < 0) {
+                console.log('не хватает!');
                 // Если текущий элемент не может выдержать остаток, вычитаем его время
                 remainder -= collection.foodMinutes; // Уменьшаем остаток
                 //удалить из бд его
+                console.log('остаток', remainder);
                 await this.prisma.monstersFood.delete({
                   where: {
                     id: newMonstersFood[0].id,
@@ -99,16 +103,22 @@ export class UserService {
                   },
                 });
 
-                newMonstersFood.shift(); // Удаляем текущий элемент
+                console.log('удалил еду: ', newMonstersFood[0].id);
 
+                console.log('было еды ', newMonstersFood.length);
+                newMonstersFood.shift(); // Удаляем текущий элемент
+                console.log('стало еды ', newMonstersFood.length);
                 if (newMonstersFood.length > 0) {
                   collection.foodMinutes = newMonstersFood[0].food.time * 60;
+                  console.log('новый минут ', collection.foodMinutes);
                 } else {
+                  console.log('еды нет');
                   collection.foodMinutes = 0;
                   isHunger = true;
                 }
               } else {
                 // Если текущий элемент может выдержать остаток, просто уменьшаем его время
+                console.log('выдержал!');
                 collection.foodMinutes -= remainder;
                 remainder = 0; // Остаток теперь равен нулю, выходим из цикла
               }
@@ -125,9 +135,9 @@ export class UserService {
           collection.isStop = isHunger;
           collection.days = daysPassed;
           collection.isNewDay = newDay;
+          console.log('стало еды: ', collection.foodMinutes);
         }
       }
-
       // Сохранение обновленных значений в базу данных
       await Promise.all(
         user.collection.map(async (collection) => {
@@ -144,7 +154,7 @@ export class UserService {
       );
     }
 
-    // console.log('Пришел: ', telegramId, ' Вернулся: ', user);
+    console.log('Пришел: ', telegramId, ' Вернулся: ', user);
     return user;
   }
 

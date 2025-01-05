@@ -5508,7 +5508,7 @@ export namespace Prisma {
     readonly monsterId: FieldRef<"Collection", 'String'>
     readonly name: FieldRef<"Collection", 'String'>
     readonly days: FieldRef<"Collection", 'Int'>
-    readonly foodMinutes: FieldRef<"Collection", 'Int'>
+    readonly foodMinutes: FieldRef<"Collection", 'Float'>
     readonly foodPlaces: FieldRef<"Collection", 'Int'>
     readonly isEvo: FieldRef<"Collection", 'Boolean'>
     readonly isStop: FieldRef<"Collection", 'Boolean'>
@@ -10252,20 +10252,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -10276,6 +10262,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
   /**
    * Deep Input Types
@@ -10533,7 +10533,7 @@ export namespace Prisma {
     monsterId?: StringNullableFilter<"Collection"> | string | null
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
-    foodMinutes?: IntFilter<"Collection"> | number
+    foodMinutes?: FloatFilter<"Collection"> | number
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
@@ -10572,7 +10572,7 @@ export namespace Prisma {
     monsterId?: StringNullableFilter<"Collection"> | string | null
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
-    foodMinutes?: IntFilter<"Collection"> | number
+    foodMinutes?: FloatFilter<"Collection"> | number
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
@@ -10613,7 +10613,7 @@ export namespace Prisma {
     monsterId?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     name?: StringNullableWithAggregatesFilter<"Collection"> | string | null
     days?: IntWithAggregatesFilter<"Collection"> | number
-    foodMinutes?: IntWithAggregatesFilter<"Collection"> | number
+    foodMinutes?: FloatWithAggregatesFilter<"Collection"> | number
     foodPlaces?: IntWithAggregatesFilter<"Collection"> | number
     isEvo?: BoolWithAggregatesFilter<"Collection"> | boolean
     isStop?: BoolWithAggregatesFilter<"Collection"> | boolean
@@ -11271,7 +11271,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -11289,7 +11289,7 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -11318,7 +11318,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -11333,7 +11333,7 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -12040,6 +12040,17 @@ export namespace Prisma {
     daysNextLvl?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -12120,6 +12131,22 @@ export namespace Prisma {
     days?: SortOrder
     foodMinutes?: SortOrder
     foodPlaces?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -12680,6 +12707,14 @@ export namespace Prisma {
     connect?: MonstersFoodWhereUniqueInput | MonstersFoodWhereUniqueInput[]
   }
 
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -12988,6 +13023,22 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -13137,7 +13188,7 @@ export namespace Prisma {
     monsterId?: StringNullableFilter<"Collection"> | string | null
     name?: StringNullableFilter<"Collection"> | string | null
     days?: IntFilter<"Collection"> | number
-    foodMinutes?: IntFilter<"Collection"> | number
+    foodMinutes?: FloatFilter<"Collection"> | number
     foodPlaces?: IntFilter<"Collection"> | number
     isEvo?: BoolFilter<"Collection"> | boolean
     isStop?: BoolFilter<"Collection"> | boolean
@@ -13718,7 +13769,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -13735,7 +13786,7 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -13874,7 +13925,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -13890,7 +13941,7 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -13905,7 +13956,7 @@ export namespace Prisma {
     monsterId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -13993,7 +14044,7 @@ export namespace Prisma {
     updateAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -14009,7 +14060,7 @@ export namespace Prisma {
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean
@@ -14024,7 +14075,7 @@ export namespace Prisma {
     leaderId?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     days?: IntFieldUpdateOperationsInput | number
-    foodMinutes?: IntFieldUpdateOperationsInput | number
+    foodMinutes?: FloatFieldUpdateOperationsInput | number
     foodPlaces?: IntFieldUpdateOperationsInput | number
     isEvo?: BoolFieldUpdateOperationsInput | boolean
     isStop?: BoolFieldUpdateOperationsInput | boolean

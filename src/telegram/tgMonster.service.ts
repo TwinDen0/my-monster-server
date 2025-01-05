@@ -54,7 +54,7 @@ export class TgMonsterService {
     );
 
     await ctx.reply(
-      `Введи данные в формате:\nsubtypeName | img(введи name, но перед этим забрось картинку на бд) | stageEvo | branchEvo | starts | hunger?`,
+      `Введи данные в формате:\nsubtypeName | img(введи name, но перед этим забрось картинку на бд) | stageEvo | branchEvo | starts | Кол-во дней до следующей ступени?`,
     );
     ctx.session.text = message;
     ctx.session.type = 'create_monster_2';
