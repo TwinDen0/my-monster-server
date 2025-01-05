@@ -71,7 +71,9 @@ export class UserService {
           // Вычисляем время, прошедшее с последнего обновления
           const timeDiff = now.getTime() - new Date(updateAt).getTime(); // миллисекунды
           const minutesPassed = timeDiff / (1000 * 60);
+
           console.log('минут прошло', minutesPassed);
+          console.log('еды ', newMonstersFood.length);
 
           if (newMonstersFood.length > 0) {
             let remainder = minutesPassed; // Начинаем с общего количества минут

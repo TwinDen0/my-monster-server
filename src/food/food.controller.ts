@@ -14,10 +14,8 @@ export class FoodController {
 
   @Get('add_monster')
   @ApiOperation({ summary: 'Добавление еды к монстру' })
-  async startEvo(
-    @Query() query: { userMonsterId: string; foodId: string; time: number },
-  ) {
-    const { userMonsterId, foodId, time } = query;
-    return await this.foodService.addMonsterFood(userMonsterId, foodId, time);
+  async startEvo(@Query() query: { userMonsterId: string; foodId: string }) {
+    const { userMonsterId, foodId } = query;
+    return await this.foodService.addMonsterFood(userMonsterId, foodId);
   }
 }

@@ -1,8 +1,0 @@
--- AlterTable
-ALTER TABLE "collection" ADD COLUMN     "hungerLevel" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "miningXp" INTEGER NOT NULL DEFAULT 1,
-ADD COLUMN     "name" TEXT,
-ADD COLUMN     "xp" INTEGER NOT NULL DEFAULT 0;
-
--- AlterTable
-ALTER TABLE "monster" ADD COLUMN     "xpNextLvl" INTEGER NOT NULL DEFAULT 2880;

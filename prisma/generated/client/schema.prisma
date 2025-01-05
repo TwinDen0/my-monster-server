@@ -81,7 +81,7 @@ model Collection {
   name String?
   days Int     @default(0)
 
-  foodMinutes  Int            @default(0) @map("food_minutes")
+  foodMinutes  Int            @default(120) @map("food_minutes")
   foodPlaces   Int            @default(3) @map("food_places")
   monstersFood MonstersFood[]
 
