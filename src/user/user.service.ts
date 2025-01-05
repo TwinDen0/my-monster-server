@@ -92,17 +92,6 @@ export class UserService {
                   },
                 });
 
-                await this.prisma.collection.update({
-                  where: { id: collection.id },
-                  data: {
-                    monstersFood: {
-                      delete: {
-                        id: collection.monstersFood[0].id, // Указываем id записи для удаления
-                      },
-                    },
-                  },
-                });
-
                 console.log('удалил еду: ', newMonstersFood[0].id);
 
                 console.log('было еды ', newMonstersFood.length);
