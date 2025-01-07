@@ -57,7 +57,7 @@ export class MarketService {
     };
   }
 
-  async getDropPack(packId: string, isCoinsPrice: string, userId: string) {
+  async getDropPack(packId: string, isCoinsPrice: string, tgId: string) {
     let isCoins = isCoinsPrice === '1';
 
     const pack = await this.prisma.pack.findUnique({
@@ -68,7 +68,7 @@ export class MarketService {
 
     const user = await this.prisma.user.findUnique({
       where: {
-        id: userId,
+        telegramId: tgId,
       },
     });
 
@@ -99,7 +99,7 @@ export class MarketService {
     }
 
     await this.prisma.user.update({
-      where: { id: userId },
+      where: { telegramId: tgId },
       data: {
         coins: (isCoins ? user.coins - amountToDeduct : user.coins) + dropCoins,
         crystals:
@@ -113,7 +113,7 @@ export class MarketService {
         await this.prisma.collection.create({
           data: {
             leader: {
-              connect: { telegramId: userId },
+              connect: { telegramId: tgId },
             },
             monster: {
               connect: { id: dropMonster.id },
