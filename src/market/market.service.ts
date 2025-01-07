@@ -160,7 +160,7 @@ export class MarketService {
       const dropMonster = await this.monsterService.getMonsterById(
         monsters[0].id,
       );
-      return dropMonster;
+      return [dropMonster];
     }
     if (monsters.length > 0) {
       const totalProbability = monsters.reduce(
