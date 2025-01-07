@@ -97,6 +97,7 @@ export class MarketService {
 
     let dropMonster = null;
     if (isDropMonster) {
+      console.log(`Начинается getRandomMonster ${pack.monsters}`);
       dropMonster = await this.getRandomMonster(pack.monsters);
     }
 
@@ -156,8 +157,10 @@ export class MarketService {
 
   private async getRandomMonster(monsters) {
     if (!Array.isArray(monsters)) {
-      const monster = monsters[0];
-      return monster;
+      const dropMonster = await this.monsterService.getMonsterById(
+        monsters[0].id,
+      );
+      return dropMonster;
     }
     if (monsters.length > 0) {
       const totalProbability = monsters.reduce(
