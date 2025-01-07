@@ -96,7 +96,9 @@ export class MarketService {
     const isDropMonster = randomValue <= pack.percentDropMonster;
 
     let dropMonster = null;
+    let name = null;
     if (isDropMonster) {
+      name = 'Джо';
       dropMonster = await this.getRandomMonster(pack.monsters);
     }
 
@@ -115,7 +117,7 @@ export class MarketService {
         await this.collectionService.createUserMonster({
           leaderId: tgId,
           monsterId: dropMonster.id,
-          name: 'Боб',
+          name: name,
         });
       } catch (error) {
         return {
@@ -132,7 +134,11 @@ export class MarketService {
 
     return {
       success: true,
-      drop: { coins: dropCoins, crystals: dropCrystals, monster: dropMonster },
+      drop: {
+        coins: dropCoins,
+        crystals: dropCrystals,
+        monster: { ...dropMonster, name: name },
+      },
     };
   }
 
