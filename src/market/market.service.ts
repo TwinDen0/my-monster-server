@@ -97,7 +97,6 @@ export class MarketService {
 
     let dropMonster = null;
     if (isDropMonster) {
-      console.log(`Начинается getRandomMonster ${pack.monsters}`);
       dropMonster = await this.getRandomMonster(pack.monsters);
     }
 
@@ -113,7 +112,6 @@ export class MarketService {
 
     if (dropMonster != null) {
       try {
-        console.log(`Добавляю ${tgId} ${dropMonster.id}`);
         await this.collectionService.createUserMonster({
           leaderId: tgId,
           monsterId: dropMonster.id,
@@ -160,7 +158,7 @@ export class MarketService {
       const dropMonster = await this.monsterService.getMonsterById(
         monsters[0].id,
       );
-      return [dropMonster];
+      return dropMonster;
     }
     if (monsters.length > 0) {
       const totalProbability = monsters.reduce(
