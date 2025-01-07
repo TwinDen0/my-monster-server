@@ -157,6 +157,10 @@ export class MarketService {
   }
 
   private async getRandomMonster(monsters) {
+    if (!Array.isArray(monsters)) {
+      const monster = monsters[0];
+      return monster;
+    }
     if (monsters.length > 0) {
       const totalProbability = monsters.reduce(
         (sum, monster) => sum + monster.percent,

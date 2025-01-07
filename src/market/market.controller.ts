@@ -25,6 +25,7 @@ export class MarketController {
     @Query('type_price') isCoinsPrice: string,
     @Query('tgId') tgId: string,
   ) {
+    console.log('ПОЛУЧАЮ ПАК');
     return this.marketService.getDropPack(packId, isCoinsPrice, tgId);
   }
 
