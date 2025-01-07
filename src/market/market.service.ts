@@ -118,6 +118,7 @@ export class MarketService {
             monster: {
               connect: { id: dropMonster.id },
             },
+            name: 'Боб',
           },
         });
       } catch (error) {
