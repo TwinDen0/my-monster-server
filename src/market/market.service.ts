@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CollectionService } from 'src/collection/collection.service';
 import { MonsterService } from 'src/monster/monster.service';
 import { PrismaService } from 'src/prisma.service';
 import { PackDto } from './dto/pack.dto';
@@ -8,6 +9,7 @@ export class MarketService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly monsterService: MonsterService,
+    private readonly collectionService: CollectionService,
   ) {}
 
   async createPack(packDto: PackDto) {
@@ -110,16 +112,11 @@ export class MarketService {
 
     if (dropMonster != null) {
       try {
-        await this.prisma.collection.create({
-          data: {
-            leader: {
-              connect: { telegramId: tgId },
-            },
-            monster: {
-              connect: { id: dropMonster.id },
-            },
-            name: 'Боб',
-          },
+        console.log(`Добавляю ${tgId} ${dropMonster.id}`);
+        await this.collectionService.createUserMonster({
+          leaderId: tgId,
+          monsterId: dropMonster.id,
+          name: 'Боб',
         });
       } catch (error) {
         return {
