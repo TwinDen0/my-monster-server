@@ -46,4 +46,16 @@ export class HandlersService {
       `session.type: ${ctx.session.type}\nsession.text: ${ctx.session.text}`,
     );
   }
+
+  async updatePhoto(botTgId: Telegram, ctx: Context) {
+    const userAvatar = await this.userService.getUserAvatarUrl(
+      ctx.from.id,
+      botTgId,
+    );
+
+    userAvatar;
+    await this.userService.updatePhoto(String(ctx.from.id), userAvatar);
+
+    await ctx.reply(`Обновил фото!`);
+  }
 }

@@ -7,6 +7,18 @@ import { UserDto } from './dto/user.dto';
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
+  async updatePhoto(telegramId: string, userAvatar: string) {
+    const updateUser = await this.prisma.user.update({
+      where: {
+        telegramId,
+      },
+      data: {
+        userAvatar,
+      },
+    });
+    return updateUser;
+  }
+
   async create(userDto: UserDto) {
     const createdUser = await this.prisma.user.create({
       data: userDto,
@@ -154,7 +166,8 @@ export class UserService {
       return '';
     }
 
-    const fileId = userProfile.photos[0][0].file_id;
+    const fileId = userProfile.photos[userProfile.photos.length - 1][1].file_id;
+
     const file = await bot.getFile(fileId);
     const filePatch = file.file_path;
 

@@ -57,6 +57,12 @@ export class AppUpdate {
     await this.handlersService.sessionData(ctx);
   }
 
+  @Hears('/update_photo')
+  async updatePhoto(ctx: Context) {
+    const botTgId = this.bot.telegram;
+    await this.handlersService.updatePhoto(botTgId, ctx);
+  }
+
   @Hears('💬 Отправить сообщение пользователям')
   async sendMessage(ctx: Context) {
     ctx.session.type = 'send_message';
@@ -69,6 +75,11 @@ export class AppUpdate {
   async deleteAllDb(ctx: Context) {
     await this.tgCollectionService.deleteData(ctx);
   }
+
+  // @Hears('☠️ Удалить юзера')
+  // async deleteUser(ctx: Context) {
+  //   await this.tgCollectionService.deleteData(ctx);
+  // }
 
   @Hears('🥣 Добавить блюдо')
   async createFood(ctx: Context) {
